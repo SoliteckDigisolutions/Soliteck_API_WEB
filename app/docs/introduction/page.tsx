@@ -50,7 +50,7 @@ export default function IntroductionPage() {
         {/* What you can build */}
         <section>
           <h2 className="text-2xl flex gap-2 items-center font-semibold text-gray-900 mb-3">
-            What You Can Build <IoBuildOutline color="blue" />
+            What You Can Build 
           </h2>
 
           <p className="text-gray-600 leading-relaxed max-w-3xl">
