@@ -20,7 +20,7 @@ export default function ApiDropdown() {
 
   const apiRefs = [
     { label: "Payout API", href: "/docs/payoutapi" },
-    { label: "Mobile API", href: "/docs/mobileapi" },
+    { label: "Mobile API", href: "/docs/mobileRechargeAPI" },
     { label: "PG API", href: "/docs/pgapi" },
     { label: "DTH", href: "/docs/dth" },
     { label: "BBPS", href: "/docs/bbps" },

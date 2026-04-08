@@ -14,10 +14,10 @@ const API_REFS = [
   { label: "Payout API", href: "/docs/payoutapi" },
   { label: "Mobile API", href: "/docs/mobileapi" },
   { label: "PG API", href: "/docs/pgapi" },
-  { label: "DTH", href: "/docs/dth" },
-  { label: "BBPS", href: "/docs/bbps" },
-  { label: "CC BP API", href: "/docs/ccbp" },
-  { label: "AEPS", href: "/docs/aeps" },
+  { label: "DTH", href: "/docs/dthRecharge" },
+  { label: "BBPS", href: "/docs/bbpsapi" },
+  { label: "CC BP API", href: "/docs/ccbpapi" },
+  { label: "AEPS", href: "/docs/aepsapi" },
 ];
 
 export default function Navbar() {
@@ -114,10 +114,10 @@ export default function Navbar() {
         {/* RIGHT SIDE */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="https://soliteck.com"
-            className="flex items-center gap-1 px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
+            href="https://soliteck.com" target="blank"
+            className="flex opacity-100 items-center  px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
           >
-            soliteck.com <TiLink size={12} />
+                <Image src={logo} alt="Soliteck logo" className="w-24" />.com <TiLink size={12} />
           </a>
         </div>
 

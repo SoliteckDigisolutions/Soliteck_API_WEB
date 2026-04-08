@@ -3,13 +3,13 @@ import Link from "next/link"
 import StatsBar from "../components/StatsBar"
 
 const categories = [
-  { label: "Payout API",          href: "/docs/payoutapis",     color: "bg-blue-50 text-blue-700 border-blue-200",   dot: "bg-blue-500" },
-  { label: "Mobile Recharge API", href: "/docs/verify-payment", color: "bg-violet-50 text-violet-700 border-violet-200", dot: "bg-violet-500" },
-  { label: "DTH API",             href: "/docs/verify-payment", color: "bg-orange-50 text-orange-700 border-orange-200", dot: "bg-orange-400" },
-  { label: "Payment Gateway API", href: "/docs/verify-payment", color: "bg-green-50 text-green-700 border-green-200",   dot: "bg-green-500" },
-  { label: "BBPS API",            href: "/docs/verify-payment", color: "bg-yellow-50 text-yellow-700 border-yellow-200", dot: "bg-yellow-500" },
-  { label: "CC Bill Payment API", href: "/docs/verify-payment", color: "bg-rose-50 text-rose-700 border-rose-200",     dot: "bg-rose-500" },
-  { label: "AEPS API",            href: "/docs/verify-payment", color: "bg-teal-50 text-teal-700 border-teal-200",     dot: "bg-teal-500" },
+  { label: "Payout API",          href: "",     color: "bg-blue-50 text-blue-700 border-blue-200",   dot: "bg-blue-500" },
+  { label: "Mobile Recharge API", href: "", color: "bg-violet-50 text-violet-700 border-violet-200", dot: "bg-violet-500" },
+  { label: "DTH API",             href: "", color: "bg-orange-50 text-orange-700 border-orange-200", dot: "bg-orange-400" },
+  { label: "Payment Gateway API", href: "", color: "bg-green-50 text-green-700 border-green-200",   dot: "bg-green-500" },
+  { label: "BBPS API",            href: "", color: "bg-yellow-50 text-yellow-700 border-yellow-200", dot: "bg-yellow-500" },
+  { label: "CC Bill Payment API", href: "", color: "bg-rose-50 text-rose-700 border-rose-200",     dot: "bg-rose-500" },
+  { label: "AEPS API",            href: "", color: "bg-teal-50 text-teal-700 border-teal-200",     dot: "bg-teal-500" },
 ]
 
 const whyCards = [

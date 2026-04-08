@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import RightNavigation from "@/app/components/RightNavigation";
 import { MobileDocs } from "@/app/constants/mobileApi";
 import ApiEndpoint from "@/app/components/ApiEndpoint";
-import { payoutDocs } from "@/app/constants/payOut";
-import Search from "@/app/components/SearchGlobal";
-import HeadersAuth from "@/app/components/HeadersAuth"
+
 export default function page  () {
 
   const [active, setActive] = useState<string>("");
@@ -35,12 +33,11 @@ export default function page  () {
 
   return (
     <div className="flex mt-16 flex-col xl:flex-row w-full">
- 
+
       {/* LEFT CONTENT */}
       <div className="w-full xl:w-[76%] p-2 space-y-10">
-         <h1 className=" font-sans font-semibold text-2xl">{payoutDocs.title}</h1>
-         <HeadersAuth/>
-        {payoutDocs.Endpoints.map((endpoint, index) => (
+          <h1 className=" font-sans font-semibold text-2xl">{MobileDocs.title}</h1>
+        {MobileDocs.Endpoints.map((endpoint, index) => (
           <ApiEndpoint
             key={index}
             endpoint={endpoint}
@@ -50,9 +47,8 @@ export default function page  () {
       </div>
 
       {/* RIGHT NAVIGATION */}
-      
       <RightNavigation
-        endpoints={payoutDocs.Endpoints}
+        endpoints={MobileDocs.Endpoints}
         active={active}
       />
 

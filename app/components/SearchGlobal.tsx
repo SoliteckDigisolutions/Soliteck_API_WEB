@@ -6,7 +6,7 @@ import { CiSearch } from "react-icons/ci"
 import Link from "next/link"
 import {data} from "../constants/GlobalSearch"
 
-  
+
 export default function Search() {
 
   const [query, setQuery] = useState("")
@@ -15,7 +15,7 @@ export default function Search() {
   const fuse = useMemo(() => {
     return new Fuse(data, {
       keys: ["title"],
-      threshold: 0.3
+      threshold: 0.6
     })
   }, [])
 
