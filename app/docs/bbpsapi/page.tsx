@@ -1,42 +1,60 @@
-export default function Page() {
+"use client";
+
+import { useEffect, useState } from "react";
+import RightNavigation from "@/app/components/RightNavigation";
+import ApiEndpoint from "@/app/components/ApiEndpoint";
+import {BbpsApiD} from "@/app/constants/BbpsApiD"
+import HeadersAuth from "@/app/components/HeadersAuth"
+import BaseUrls from "@/app/components/BaseUrl"
+
+export default function page  () {
+
+  const [active, setActive] = useState<string>("");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: 0.4,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+     
   return (
-    <div className="flex items-center justify-center min-h-[80vh] px-6">
-
-      <div className="max-w-xl w-full text-center  rounded-xl p-12  bg-white">
-
-        {/* Icon */}
-        <div className="flex items-center justify-center mb-6">
-          <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-50">
-            <svg
-              className="w-7 h-7 text-blue-600"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
-              <circle cx="12" cy="12" r="9" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Title */}
-        <h1 className="text-4xl font-semibold text-gray-900 mb-3">
-          BBPS API
-        </h1>
-
-        {/* Badge */}
-        <span className="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded-full mb-6 animate-pulse">
-          Coming Soon
-        </span>
-
-        {/* Description */}
-        <p className="text-gray-500 max-w-md mx-auto">
-          Documentation for the BBPS API  is currently under development.
-          We're working hard to release it soon.
-        </p>
-
+    <div className="flex mt-16 flex-col xl:flex-row w-full">
+    
+      {/* LEFT CONTENT */}
+      <div className="w-full xl:w-[76%] p-2 space-y-10">
+          <h1 className=" font-sans font-semibold text-2xl">{BbpsApiD.title}</h1>
+            <BaseUrls/>
+           <HeadersAuth />
+        {BbpsApiD.Endpoints.map((endpoint:any, index : any) => (
+          <ApiEndpoint
+            key={index}
+            endpoint={endpoint}
+            index={index}
+          />
+        ))}
       </div>
+
+      {/* RIGHT NAVIGATION */}
+      <RightNavigation
+        endpoints={BbpsApiD.Endpoints}
+        active={active}
+      />
 
     </div>
   );

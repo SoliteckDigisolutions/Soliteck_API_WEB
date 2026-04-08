@@ -10,7 +10,7 @@ import HeadersAuth from "@/app/components/HeadersAuth"
 export default function page  () {
 
   const [active, setActive] = useState<string>("");
-
+  console.log(active)
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 

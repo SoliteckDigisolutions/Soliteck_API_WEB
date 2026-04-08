@@ -33,17 +33,18 @@ interface FailedInterface {
 }
 
 interface ResponseInterface {
-  success: SuccessResponseInterface;
-  pending: PendingInterface;
-  failed: FailedInterface;
+  success?: SuccessResponseInterface;
+  success1?: SuccessResponseInterface;
+  success2?: SuccessResponseInterface;
   error1: ErrorResponseInterface;
   error2?: ErrorResponseInterface;
 }
 
 interface EndpointInterface {
   id?: number;
+  topText?: string;
   title: string;
-  post: string;
+  post: any;
   request: string | object;
   response: ResponseInterface;
   note?: string;
@@ -54,14 +55,14 @@ interface BaseUrlsInterface {
   authentication: string;
 }
 
-interface   dthApiDInterface {
+interface dthApiDInterface {
   title: string;
   BaseUrls: BaseUrlsInterface;
   Endpoints: EndpointInterface[];
   note: string;
 }
 
-export const  dthApiD:dthApiDInterface= {
+export const dthApiD: dthApiDInterface = {
   title: "SOLITECK DTH API | Digital Transformation made easy",
 
   BaseUrls: {
@@ -74,10 +75,11 @@ export const  dthApiD:dthApiDInterface= {
   Endpoints: [
     {
       id: 4,
+      topText: "/DTHRecharge",
       title: "DTH Recharges",
-      post: "/ DTHRecharge",
+      request: "/DTHRecharge",
 
-      request: {
+      post: {
         CustomerDetails: "1234567890",
         Amount: "10",
         ClientOrderId: "MERCHANT ORDER ID (should be unique)",
@@ -95,7 +97,7 @@ export const  dthApiD:dthApiDInterface= {
           signalR: null,
         },
 
-        pending: {
+        success1: {
           responseCode: 201,
           responseMessage: "Pending",
           data: "TOKEN",
@@ -104,8 +106,8 @@ export const  dthApiD:dthApiDInterface= {
           signalR: null,
         },
 
-        failed: {
-          text: "Failed Response",
+        success2: {
+          // text: "Failed Response",
           responseCode: 204,
           responseMessage: "Failed",
           data: "TOKEN",

@@ -37,6 +37,11 @@ export default function page  () {
       {/* LEFT CONTENT */}
       <div className="w-full xl:w-[76%] p-2 space-y-10">
           <h1 className=" font-sans font-semibold text-2xl">{MobileDocs.title}</h1>
+        <ul>
+  <li><strong>Success:</strong> Use the Jio Operator ApiCode with amounts <b>19</b>, <b>29</b>, or <b>119</b>.</li>
+  <li><strong>Pending:</strong> Use the Airtel ApiCode.</li>
+  <li><strong>Failed:</strong> Use any remaining ApiCode.</li>
+</ul>
         {MobileDocs.Endpoints.map((endpoint, index) => (
           <ApiEndpoint
             key={index}

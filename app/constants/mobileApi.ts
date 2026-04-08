@@ -10,16 +10,17 @@ interface ErrorResponseInterface {
   responseCode: number;
   responseMessage: string;
   data: null;
-  responseData: null;
-  signalR: null;
+  responseData: null | string;
+  signalR: null | string;
   text? : string
 }
 
 interface ResponseInterface {
-  success: SucessResponseInterface;
-  pending: PendingInterface;
-  failed: FailedInterface;
-  error1: ErrorResponseInterface;
+  success?: SucessResponseInterface;
+  success1?: SucessResponseInterface;
+  success2?: SucessResponseInterface;
+  error?: FailedInterface;
+  error1?: ErrorResponseInterface;
   error2?: ErrorResponseInterface;
 }
 
@@ -45,7 +46,8 @@ interface FailedInterface {
 interface EndpointInterface {
   id?: number;
   title: string;
-  post: string;
+  topText: string;
+  post: any;
   request: string | object;
   response: ResponseInterface;
   note?: string;
@@ -57,6 +59,7 @@ interface BaseUrlsInterface {
 }
 
 interface Mobileinterface {
+  
   title: string;
   BaseUrls: BaseUrlsInterface;
   Endpoints: EndpointInterface[];
@@ -74,59 +77,62 @@ export const MobileDocs: Mobileinterface = {
   note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
 
   Endpoints: [
-    // {
-    //   title: "Generate Token",
-    //   post: "/GenerateUATToken",
-    //   request: "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
+    {
+      title: "Generate Token",
+      post: "/GenerateUATToken",
+      topText : "/GenerateUATToken",
+      request: "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
 
-    //   response: {
-    //     sucess: {
-    //       responseCode: 200,
-    //       responseMessage: "Token Generated Success",
-    //       data: "Generated Token",
-    //       responseData: null,
-    //       signalR: null,
-    //     },
+      response: {
+        success: {
+          responseCode: 200,
+          responseMessage: "Token Generated Success",
+          data: "Generated Token",
+          responseData: null,
+          signalR: null,
+        },
 
-    //     error: {
-    //       responseCode: 400,
-    //       responseMessage: "Client_Id is not present",
-    //       data: null,
-    //       responseData: null,
-    //       signalR: null,
-    //     },
-    //   },
-    // },
+        error1: {
+          responseCode: 400,
+          responseMessage: "Client_Id is not present",
+          data: null,
+          responseData: null,
+          signalR: null,
+        },
+      },
+    },
 
-    // {
-    //   title: "Verify Token",
-    //   post: "/VerifyUATToken",
-    //   request: "All headers required",
+    {
+      title: "Verify Token",
+      post: "/VerifyUATToken",
+      topText : "/VerifyUATToken",
+      request: "All headers required",
 
-    //   response: {
-    //     sucess: {
-    //       responseCode: 200,
-    //       responseMessage: "Token Is Valid",
-    //       data: "Token",
-    //       responseData: null,
-    //       signalR: null,
-    //     },
+      response: {
+        success: {
+          responseCode: 200,
+          responseMessage: "Token Is Valid",
+          data: "Token",
+          responseData: null,
+          signalR: null,
+        },
 
-    //     error: {
-    //       responseCode: 400,
-    //       responseMessage: "Token Expired, Re-Generate Token",
-    //       data: null,
-    //       responseData: null,
-    //       signalR: null,
-    //     },
-    //   },
-    // },
+        error1: {
+          responseCode: 400,
+          responseMessage: "Token Expired, Re-Generate Token",
+          data: null,
+          responseData: null,
+          signalR: null,
+        },
+      },
+    },
 
     {
       id: 4,
       title: "Mobile Recharges",
-      post: "",
-      request: {
+      topText:  "{Recharge Base URL}/MobileRecharge",
+      request: "All headers Required",
+      post: {
         CustomerDetails: "1234567890",
         Amount: "10",
         ClientOrderId: "MERCHANT ORDER ID (should be unique)",
@@ -144,7 +150,7 @@ export const MobileDocs: Mobileinterface = {
           signalR: null,
         },
 
-        pending: {
+        success1: {
           responseCode: 201,
           responseMessage: "pending",
           data: "TOKEN",
@@ -152,8 +158,7 @@ export const MobileDocs: Mobileinterface = {
             '{"Amount":"19","VendorRefNumber":"22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"22222222222","CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
           signalR: null,
         },
-        failed: {
-          text : "Failed Response",
+        success2: {
           responseCode: 204,
           responseMessage: "Failed",
           data: "TOKEN",
@@ -181,7 +186,7 @@ export const MobileDocs: Mobileinterface = {
           data: null,
           responseData: null,
           signalR: null,
-          text : "In case of any error "
+          text : "In case of any error1 "
         },
       },
       note: "Data in responseData field should be parsed, and below mentioned are all the keys with their following explanation..",

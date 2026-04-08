@@ -15,7 +15,7 @@ export default function Sidebar() {
       title: "Getting Started",
       items: [
         { name: "Introduction", href: "/docs/introduction" },
-        { name: "Error Codes", href: "/docs/errorcode" },
+        { name: "Error Codes", href: "/docs/errorcodes" },
         {
           name: "Global API Process",
           href: "#",

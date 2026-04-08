@@ -1,9 +1,8 @@
 "use client";
 
-import { httpErrors, apiErrors } from "@/constants/errorCodes";
 import { MdErrorOutline } from "react-icons/md";
 
-export default function ErrorCodes() {
+export default function IntroductionPage() {
 
     // constants/errorCodes.ts
 

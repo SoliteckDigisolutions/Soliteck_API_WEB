@@ -19,7 +19,7 @@ export default function ErrorBlock({ error }: Props) {
   <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${"bg-red-500"} opacity-75`}></span>
   <span className={`relative inline-flex rounded-full h-3 w-3 ${"bg-red-500"}`}></span>
 </span>
-          <h3 className="text-sm font-semibold text-gray-700">Error</h3>
+          <h3 className="text-sm font-semibold text-gray-700">Error {error.responseCode} : {error.responseMessage}</h3>
         </div>
    
            <CopyButton text={text} />

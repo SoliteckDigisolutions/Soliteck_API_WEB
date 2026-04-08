@@ -5,8 +5,9 @@ import BaseUrls from "./BaseUrl";
 import { RiTokenSwapLine } from "react-icons/ri";
 import { GoVerified } from "react-icons/go";
 import Link from "next/link";
-import HeadersAuth from "@/app/components/HeadersAuth"
-import RequestBoady from "@/app/components/RequestBoady"
+import HeadersAuth from "@/app/components/HeadersAuth";
+import RequestBoady from "@/app/components/RequestBoady";
+import TableComponent from "./TableComponent";
 interface Props {
   endpoint: any;
   index: number;
@@ -15,8 +16,7 @@ interface Props {
 export default function ApiEndpoint({ endpoint, index }: Props) {
   return (
     <>
-
-    {/* <div className="p-2 ">
+      {/* <div className="p-2 ">
             <BaseUrls/>
         <div className=" flex gap-2 m-4 mx-0">
             <Link href="/docs/authentication">
@@ -28,67 +28,95 @@ export default function ApiEndpoint({ endpoint, index }: Props) {
           </Link>
             </div>    
         </div> */}
-    <section
-      id={`endpoint-${index}`}
-      className="space-y-4 scroll-mt-24"
-    >
-        
-      <h2 className="text-2xl sm:text-2xl font-semibold text-gray-800">
-        {index + 1}. {endpoint.title}
-      </h2>
+      <section id={`endpoint-${index}`} className="space-y-4 scroll-mt-24">
+        <h2 className="text-2xl sm:text-2xl font-semibold text-gray-800">
+          {index + 1}. {endpoint.title}
+        </h2>
 
-      <div className="bg-white rounded-xl sm:p-4 space-y-6">
-        <div className="flex items-center gap-3">
-          <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-md">
-            POST
-          </span>
+        <div className="bg-white rounded-xl sm:p-4 space-y-6">
+          <div className="flex items-center gap-3">
+            <span className="bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-md">
+              POST
+            </span>
 
-          <code className="bg-gray-100 px-3 py-1 rounded-md text-sm">
-            {endpoint.topText}
-          </code>
+            <code className="bg-gray-100 px-3 py-1 rounded-md text-sm">
+              {endpoint.topText}
+            </code>
+          </div>
+
+          <RequestBlock request={endpoint.request} />
+          <RequestBoady request={endpoint.post} />
+
+          <ResponseBlock
+            title={`Success Response ${endpoint.response.success?.responseCode} : ${endpoint.response.success?.responseMessage}`}
+            data={endpoint.response.success}
+          />
+
+          <ResponseBlock
+            title={`Success Response ${endpoint.response.success1?.responseCode} : ${endpoint.response.success1?.responseMessage}`}
+            data={endpoint.response.success1}
+          />
+
+          <ResponseBlock
+            title={`Success Response ${endpoint.response.success2?.responseCode} : ${endpoint.response.success2?.responseMessage}`}
+            data={endpoint.response.success2}
+            color="text-red-400"
+          />
+
+          {endpoint.response.success2 &&
+            endpoint.response.title === "Webhook" && (
+              <ResponseBlock
+                title="Failed Response"
+                data={endpoint.response.success2}
+                color="text-red-400"
+              />
+            )}
+
+          {endpoint.response.pending && (
+            <ResponseBlock
+              title="Pending Response"
+              data={endpoint.response.pending}
+            />
+          )}
+
+{/* { 
+  endpoint.id === 3 && <ResponseBlock
+            title={`Success Response Flag 1 ${endpoint.response.success1?.responseCode} : ${endpoint.response.success1?.responseMessage}`}
+            data={endpoint.response.success1}
+          />
+} */}
+{/* { 
+  endpoint.id === 3 && <ResponseBlock
+            title={`Success Response Flag 2 ${endpoint.response.success1?.responseCode} : ${endpoint.response.success1?.responseMessage}`}
+            data={endpoint.response.success}
+          />
+} */}
+
+          <ErrorBlock error={endpoint.response.failed} />
+          <ErrorBlock error={endpoint.response.error1} />
+          <ErrorBlock error={endpoint.response.error2} />
+          {endpoint.table && endpoint.table.remitter && (
+            <TableComponent data={endpoint.table.remitter} />
+          )}
+          {endpoint.table && endpoint.table.beneficiary && (
+            <TableComponent data={endpoint.table.beneficiary} />
+          )}
+          {endpoint.table && endpoint.table.nonRegisteredRemitter && (
+            <TableComponent data={endpoint.table.nonRegisteredRemitter} />
+          )}
+          {endpoint.table && endpoint.table.transaction && (
+            <TableComponent data={endpoint.table.transaction} />
+          )}
+          {endpoint.table && endpoint.table.UnderTransfer && (
+            <TableComponent data={endpoint.table.UnderTransfer} />
+          )}
+
+          <div className="bg-yellow-50 border-l-4 border-black p-4 text-sm">
+            <span className="font-semibold text-yellow-700">Note:</span>{" "}
+            {endpoint.note}
+          </div>
         </div>
-
-        <RequestBlock request={endpoint.request} />
-        <RequestBoady request={endpoint.post} />
-        
-        <ResponseBlock
-          title="Success Response"
-          data={endpoint.response.success}
-        />
-
-         
-        <ResponseBlock
-          title="Success Response"
-          data={endpoint.response.success1}
-        />
-
-
-  <ResponseBlock
-          title="Success Response"
-          data={endpoint.response.success2}
-        />
-
-        {
-            endpoint.response.pending &&  
-        <ResponseBlock
-          title="Pending Response"
-          data={endpoint.response.pending}
-          color="text-yellow-400"
-        />
-        }
-
-       
-
-        <ErrorBlock error={endpoint.response.failed} />
-        <ErrorBlock error={endpoint.response.error1} />
-        <ErrorBlock error={endpoint.response.error2} />
-
-        <div className="bg-yellow-50 border-l-4 border-black p-4 text-sm">
-          <span className="font-semibold text-yellow-700">Note:</span>{" "}
-          {endpoint.note}
-        </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 }
