@@ -12,7 +12,7 @@ interface ErrorResponseInterface {
   data: null;
   responseData: null | string;
   signalR: null | string;
-  text? : string
+  text?: string;
 }
 
 interface ResponseInterface {
@@ -33,15 +33,13 @@ interface PendingInterface {
 }
 
 interface FailedInterface {
-  text: string,
+  text: string;
   responseCode: number;
   responseMessage: string;
   data: string;
   responseData: string;
   signalR: null;
 }
-
-
 
 interface EndpointInterface {
   id?: number;
@@ -59,7 +57,6 @@ interface BaseUrlsInterface {
 }
 
 interface Mobileinterface {
-  
   title: string;
   BaseUrls: BaseUrlsInterface;
   Endpoints: EndpointInterface[];
@@ -80,8 +77,9 @@ export const MobileDocs: Mobileinterface = {
     {
       title: "Generate Token",
       post: "/GenerateUATToken",
-      topText : "/GenerateUATToken",
-      request: "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
+      topText: "/GenerateUATToken",
+      request:
+        "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
 
       response: {
         success: {
@@ -105,7 +103,7 @@ export const MobileDocs: Mobileinterface = {
     {
       title: "Verify Token",
       post: "/VerifyUATToken",
-      topText : "/VerifyUATToken",
+      topText: "/VerifyUATToken",
       request: "All headers required",
 
       response: {
@@ -130,7 +128,7 @@ export const MobileDocs: Mobileinterface = {
     {
       id: 4,
       title: "Mobile Recharges",
-      topText:  "{Recharge Base URL}/MobileRecharge",
+      topText: "{Recharge Base URL}/MobileRecharge",
       request: "All headers Required",
       post: {
         CustomerDetails: "1234567890",
@@ -167,8 +165,6 @@ export const MobileDocs: Mobileinterface = {
           signalR: null,
         },
 
-
-        
         error1: {
           //401
           responseCode: 401,
@@ -176,7 +172,7 @@ export const MobileDocs: Mobileinterface = {
           data: null,
           responseData: null,
           signalR: null,
-          text : "For Token Expiry"
+          text: "For Token Expiry",
         },
 
         error2: {
@@ -186,7 +182,7 @@ export const MobileDocs: Mobileinterface = {
           data: null,
           responseData: null,
           signalR: null,
-          text : "In case of any error1 "
+          text: "In case of any error1 ",
         },
       },
       note: "Data in responseData field should be parsed, and below mentioned are all the keys with their following explanation..",

@@ -12,8 +12,6 @@ export default function RightNavigation({ endpoints, active }: Props) {
   return (
     <aside className="hidden xl:block xl:w-[260px] xl:sticky xl:top-24 h-fit pl-6">
       <div className="space-y-6">
-      
-        
         <div>
           <h3 className="text-xs gap-1 flex items-center  font-semibold text-gray-500 uppercase tracking-wider mb-3">
             <RiPageSeparator size={18} /> On this page

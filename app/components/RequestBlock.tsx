@@ -10,11 +10,10 @@ export default function RequestBlock({ request }: Props) {
 
   return (
     <div className="rounded-xl overflow-hidden border border-gray-200">
-
-      {/* Editor Header */} 
+      {/* Editor Header */}
       <div className="flex items-center justify-between  px-4 py-2">
         <span className="text-xs flex gap-1 items-center  text-gray-800  tracking-wider">
-        <RiGitPullRequestFill size={14} /> Request Header
+          <RiGitPullRequestFill size={14} /> Request Header
         </span>
 
         <CopyButton text={text} />

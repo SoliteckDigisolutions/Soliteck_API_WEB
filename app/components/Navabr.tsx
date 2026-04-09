@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { TiLink } from "react-icons/ti";
 import { ChevronDown } from "lucide-react";
-import Search from "../components/SearchGlobal"
+import Search from "../components/SearchGlobal";
 
 const API_REFS = [
   { label: "Payout API", href: "/docs/payoutapi" },
@@ -39,12 +39,10 @@ export default function Navbar() {
 
   return (
     <header className="w-full fixed top-0 left-0 z-[999] bg-white border-b border-gray-200 font-sans">
-
       {/* top gradient line */}
       <div className="h-[2px] bg-gradient-to-r from-blue-700 via-purple-600 to-cyan-600" />
 
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-14">
-
         {/* LOGO */}
         <div
           onClick={() => router.push("/")}
@@ -59,7 +57,6 @@ export default function Navbar() {
 
         {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-1">
-
           <Link
             href="/docs/introduction"
             className="text-[13px] font-medium text-gray-700 px-3 py-1 rounded-md hover:bg-gray-100 hover:text-gray-900 transition"
@@ -69,7 +66,6 @@ export default function Navbar() {
 
           {/* Dropdown */}
           <div ref={dropRef} className="relative">
-
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className={`flex items-center gap-1 text-[13px] font-medium px-3 py-1 rounded-md transition ${
@@ -79,7 +75,6 @@ export default function Navbar() {
               }`}
             >
               API Reference
-
               <ChevronDown
                 size={14}
                 className={`transition-transform ${
@@ -87,11 +82,9 @@ export default function Navbar() {
                 }`}
               />
             </button>
-           
 
             {dropdownOpen && (
               <div className="absolute top-full left-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animate-in fade-in zoom-in-95">
-
                 {API_REFS.map((item) => (
                   <button
                     key={item.href}
@@ -104,20 +97,20 @@ export default function Navbar() {
                     {item.label}
                   </button>
                 ))}
-
               </div>
             )}
           </div>
- 
         </nav>
-<Search />
+        <Search />
         {/* RIGHT SIDE */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="https://soliteck.com" target="blank"
+            href="https://soliteck.com"
+            target="blank"
             className="flex opacity-100 items-center  px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
           >
-                <Image src={logo} alt="Soliteck logo" className="w-24" />.com <TiLink size={12} />
+            <Image src={logo} alt="Soliteck logo" className="w-24" />
+            .com <TiLink size={12} />
           </a>
         </div>
 
@@ -133,7 +126,6 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-5 pb-5">
-
           <Link
             href="/docs/introduction"
             onClick={() => setMenuOpen(false)}
@@ -167,7 +159,6 @@ export default function Navbar() {
               soliteck.com <TiLink size={12} />
             </a>
           </div>
-
         </div>
       )}
     </header>

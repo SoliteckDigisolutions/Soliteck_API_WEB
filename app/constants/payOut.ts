@@ -15,13 +15,12 @@ interface ErrorResponseInterface {
   signalR: null;
 }
 
-
 interface ResponseInterface {
   success: SucessResponseInterface;
   success1?: SucessResponseInterface;
   success2?: SucessResponseInterface;
   error1?: ErrorResponseInterface;
-  failedColor? : string;
+  failedColor?: string;
   error2?: ErrorResponseInterface;
 }
 
@@ -35,7 +34,6 @@ interface EndpointInterface {
   note?: string;
   table?: any;
 }
-
 
 interface BaseUrlsInterface {
   payout: string;
@@ -613,49 +611,50 @@ completed successfully\"}]}]`,
         },
       },
 
-       table: {
+      table: {
         transaction: {
           id: 1,
           title: `RESPONSE PARAMETERS IN responseData
 USE: 11111 For Success 11113 For Pending and 11114 for Failed
 `,
-          tableData:  [
-    { key: "RetailerNumber", description: "Agent Number" },
-    { key: "ShopName", description: "Agent Institution" },
-    { key: "RemitterName", description: "Remitter Name" },
-    { key: "RemitterNumber", description: "Remitter Number" },
-    { key: "TransactionMode", description: "Transaction Mode" },
-    { key: "TransferMode", description: "Transfer Mode (IMPS / NEFT)" },
-    { key: "BeneAccount", description: "Beneficiary Account" },
-    { key: "BeneIfsc", description: "Beneficiary IFSC" },
-    { key: "BeneName", description: "Beneficiary Name" },
-    { key: "BeneBank", description: "Beneficiary Bank" },
-    { key: "ProductName", description: "Soliteck Product Name" },
-    { key: "Transfers", description: "Transaction Details Array" }
-  ]
+          tableData: [
+            { key: "RetailerNumber", description: "Agent Number" },
+            { key: "ShopName", description: "Agent Institution" },
+            { key: "RemitterName", description: "Remitter Name" },
+            { key: "RemitterNumber", description: "Remitter Number" },
+            { key: "TransactionMode", description: "Transaction Mode" },
+            { key: "TransferMode", description: "Transfer Mode (IMPS / NEFT)" },
+            { key: "BeneAccount", description: "Beneficiary Account" },
+            { key: "BeneIfsc", description: "Beneficiary IFSC" },
+            { key: "BeneName", description: "Beneficiary Name" },
+            { key: "BeneBank", description: "Beneficiary Bank" },
+            { key: "ProductName", description: "Soliteck Product Name" },
+            { key: "Transfers", description: "Transaction Details Array" },
+          ],
         },
 
-         UnderTransfer: {
+        UnderTransfer: {
           id: 2,
           title: "Under Transfer",
           tableData: [
-    { key: "OperatorName", description: "Soliteck Operator Name" },
-    { key: "TransactionNumber", description: "Soliteck Reference Id" },
-    { key: "TransactionAmount", description: "Transaction Amount" },
-    { key: "BankTxnId", description: "Bank Reference Id" },
-    { key: "OrderId", description: "External Reference Id" },
-    { key: "TransactionDate", description: "Transaction Date" },
-    { key: "ServiceCharge", description: "Service Charge for Transaction" },
-    { key: "Status", description: "Status of Transaction in Words" },
-    { key: "Message", description: "Message regarding Transaction" }
-  ]   },
-
-       
+            { key: "OperatorName", description: "Soliteck Operator Name" },
+            { key: "TransactionNumber", description: "Soliteck Reference Id" },
+            { key: "TransactionAmount", description: "Transaction Amount" },
+            { key: "BankTxnId", description: "Bank Reference Id" },
+            { key: "OrderId", description: "External Reference Id" },
+            { key: "TransactionDate", description: "Transaction Date" },
+            {
+              key: "ServiceCharge",
+              description: "Service Charge for Transaction",
+            },
+            { key: "Status", description: "Status of Transaction in Words" },
+            { key: "Message", description: "Message regarding Transaction" },
+          ],
+        },
       },
     },
 
-
-     {
+    {
       title: "Check Transaction Status",
 
       topText: "/Transfer",
@@ -672,7 +671,6 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
 \",\"TimeSeconds\":\"16218013\"}]`,
           signalR: null,
         },
-        
 
         error1: {
           responseCode: 401,
@@ -690,46 +688,42 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
         },
       },
 
-       table: {
+      table: {
         transaction: {
           id: 1,
           title: `Under ResponseData
 `,
-          
+
           tableData: [
-    { key: "Amount", description: "Amount" },
-    { key: "VendorRefNumber", description: "UTR / Other Reference ID" },
-    { key: "TransactionMode", description: "Transaction Mode" },
-    { key: "ExecutionMode", description: "Execution Mode" },
-    {
-      key: "StatusId",
-      description: "Status (1 = Success, 0 = Failed, 3 = Pending)"
-    },
-    {
-      key: "SPTransactionRef",
-      description: "Soliteck Transaction Reference"
-    },
-    {
-      key: "ServiceCharge",
-      description: "Service Charge for Transaction"
-    },
-    {
-      key: "TimeSeconds",
-      description: "Time of Transaction"
-    },
-    {
-      key: "TransactionName",
-      description: "Transaction Name"
-    }
-  ]
+            { key: "Amount", description: "Amount" },
+            { key: "VendorRefNumber", description: "UTR / Other Reference ID" },
+            { key: "TransactionMode", description: "Transaction Mode" },
+            { key: "ExecutionMode", description: "Execution Mode" },
+            {
+              key: "StatusId",
+              description: "Status (1 = Success, 0 = Failed, 3 = Pending)",
+            },
+            {
+              key: "SPTransactionRef",
+              description: "Soliteck Transaction Reference",
+            },
+            {
+              key: "ServiceCharge",
+              description: "Service Charge for Transaction",
+            },
+            {
+              key: "TimeSeconds",
+              description: "Time of Transaction",
+            },
+            {
+              key: "TransactionName",
+              description: "Transaction Name",
+            },
+          ],
         },
-
-        
-       
       },
-      note: " Final Transaction Status Should be verified from StatusId Parameter in responseData."
+      note: " Final Transaction Status Should be verified from StatusId Parameter in responseData.",
     },
-
 
     {
       title: "Webhook",
@@ -741,41 +735,35 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
         success: {
           responseCode: 200,
           responseMessage: "Transaction Success",
-          data:  "Client Order Id",
+          data: "Client Order Id",
           responseData: `UTR`,
           signalR: null,
         },
 
-          success1: {
+        success1: {
           responseCode: 204,
           responseMessage: "Transaction Failed",
-          data:  "Client Order Id",
+          data: "Client Order Id",
           responseData: `UTR`,
           signalR: null,
         },
-        
-
-        
       },
 
-       table: {
+      table: {
         transaction: {
           id: 1,
           title: `Response Structure
 `,
-          
-           tableData: [
-    { key: "responseCode", description: "Status of transaction" },
-    { key: "responseMessage", description: "Message of transaction" },
-    { key: "Data", description: "Client Order ID" },
-    { key: "responseData", description: "UTR" }
-  ]
-        },
 
-        
-       
+          tableData: [
+            { key: "responseCode", description: "Status of transaction" },
+            { key: "responseMessage", description: "Message of transaction" },
+            { key: "Data", description: "Client Order ID" },
+            { key: "responseData", description: "UTR" },
+          ],
+        },
       },
-      note: "-"
+      note: "-",
     },
   ],
 };

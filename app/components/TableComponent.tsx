@@ -1,6 +1,4 @@
-
-
-export default function TableComponent({data}:any) {
+export default function TableComponent({ data }: any) {
   return (
     <section id="authentication" className="mb-10">
       <h2 className="mb-4 text-gray-600">{data?.title}</h2>
@@ -15,7 +13,7 @@ export default function TableComponent({data}:any) {
           </thead>
 
           <tbody className="divide-y divide-gray-200">
-            {data?.tableData.map((d: any,i:any) => (
+            {data?.tableData.map((d: any, i: any) => (
               <tr key={i} className="hover:bg-gray-50">
                 <td className="px-4 py-3 font-medium">{d.key}</td>
                 <td className="px-4 py-3 text-gray-600">{d.description}</td>

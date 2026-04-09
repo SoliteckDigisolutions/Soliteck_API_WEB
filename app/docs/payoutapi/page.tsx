@@ -6,11 +6,10 @@ import { MobileDocs } from "@/app/constants/mobileApi";
 import ApiEndpoint from "@/app/components/ApiEndpoint";
 import { payoutDocs } from "@/app/constants/payOut";
 import Search from "@/app/components/SearchGlobal";
-import HeadersAuth from "@/app/components/HeadersAuth"
-export default function page  () {
-
+import HeadersAuth from "@/app/components/HeadersAuth";
+export default function page() {
   const [active, setActive] = useState<string>("");
-  console.log(active)
+  console.log(active);
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -25,7 +24,7 @@ export default function page  () {
       {
         rootMargin: "-40% 0px -40% 0px",
         threshold: 0.4,
-      }
+      },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -35,27 +34,20 @@ export default function page  () {
 
   return (
     <div className="flex mt-16 flex-col xl:flex-row w-full">
- 
       {/* LEFT CONTENT */}
       <div className="w-full xl:w-[76%] p-2 space-y-10">
-         <h1 className=" font-sans font-semibold text-2xl">{payoutDocs.title}</h1>
-         <HeadersAuth/>
+        <h1 className=" font-sans font-semibold text-2xl">
+          {payoutDocs.title}
+        </h1>
+        <HeadersAuth />
         {payoutDocs.Endpoints.map((endpoint, index) => (
-          <ApiEndpoint
-            key={index}
-            endpoint={endpoint}
-            index={index}
-          />
+          <ApiEndpoint key={index} endpoint={endpoint} index={index} />
         ))}
       </div>
 
       {/* RIGHT NAVIGATION */}
-      
-      <RightNavigation
-        endpoints={payoutDocs.Endpoints}
-        active={active}
-      />
 
+      <RightNavigation endpoints={payoutDocs.Endpoints} active={active} />
     </div>
   );
 }

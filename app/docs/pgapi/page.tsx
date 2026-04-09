@@ -1,9 +1,7 @@
 export default function Page() {
   return (
     <div className="flex items-center justify-center min-h-[80vh] px-6">
-
       <div className="max-w-xl w-full text-center  rounded-xl p-12  bg-white">
-
         {/* Icon */}
         <div className="flex items-center justify-center mb-6">
           <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-50">
@@ -14,7 +12,11 @@ export default function Page() {
               strokeWidth="2"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6v6l4 2"
+              />
               <circle cx="12" cy="12" r="9" />
             </svg>
           </div>
@@ -22,7 +24,7 @@ export default function Page() {
 
         {/* Title */}
         <h1 className="text-4xl font-semibold text-gray-900 mb-3">
-        Payment Gate API
+          Payment Gate API
         </h1>
 
         {/* Badge */}
@@ -32,12 +34,10 @@ export default function Page() {
 
         {/* Description */}
         <p className="text-gray-500 max-w-md mx-auto">
-          Documentation for the Payment Gate API  is currently under development.
+          Documentation for the Payment Gate API is currently under development.
           We're working hard to release it soon.
         </p>
-
       </div>
-
     </div>
   );
 }
