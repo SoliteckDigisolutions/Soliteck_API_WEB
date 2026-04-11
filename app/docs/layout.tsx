@@ -1,5 +1,5 @@
-import Navbar from "@/app/components/Navabr";
-import Sidebar from "@/app/components/SideNavigation";
+import Navbar from "@/app/components/navigationComp/Navabr";
+import Sidebar from "@/app/components/navigationComp/SideNavigation";
 
 export default function DocsLayout({
   children,

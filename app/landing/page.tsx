@@ -1,6 +1,7 @@
-import Navbar from "@/app/components/Navabr"
+import Navbar from "@/app/components/navigationComp/Navabr"
 import Link from "next/link"
-import StatsBar from "../components/StatsBar"
+import StatsBar from "../components/landingComp/StatsBar"
+import AnimatedCard from "@/app/components/landingComp/AimatedCard"
 
 const categories = [
   { label: "Payout API",          href: "",     color: "bg-blue-50 text-blue-700 border-blue-200",   dot: "bg-blue-500" },
@@ -122,7 +123,11 @@ before:bg-[length:60px_100%]" />
             </div>
           </div>
 <StatsBar/>
+
         </section>
+     <section>
+            
+     </section>
 
         {/* ═══════════════════════════ API CATEGORIES ═══════════════════════════ */}
         <section className="px-4 md:px-10 py-20 bg-slate-50">
@@ -148,6 +153,9 @@ before:bg-[length:60px_100%]" />
               ))}
             </div>
           </div>
+        </section>
+        <section>
+          <AnimatedCard />
         </section>
 
         {/* ═══════════════════════════ WHY SOLITECK ═══════════════════════════ */}

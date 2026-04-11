@@ -4,6 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -126,5 +134,32 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+
+
+@keyframes spin3d {
+  from {
+    transform: perspective(800px) rotateY(-360deg);
+  }
+  to {
+    transform: perspective(800px) rotateY(0deg);
+  }
+}
+
+.animate-spin3d {
+  animation: spin3d 20s linear infinite;
+}
+
+@keyframes brightness {
+  10% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(0.2);
+  }
+  90% {
+    filter: brightness(1);
   }
 }

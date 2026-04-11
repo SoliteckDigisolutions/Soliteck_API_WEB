@@ -1,85 +1,11 @@
-interface SucessResponseInterface {
-  responseCode: number;
-  responseMessage: string;
-  data?: string | null;
-  responseData: boolean | string | null;
-  signalR?: boolean | null;
-  TransactionMode?: string;
-}
-interface PendingResponseInterface {
-  responseCode: number;
-  responseMessage: string;
-  data: string | null;
-  responseData?: string | null;
-  TransactionMode?: string;
-}
+import { MainInterface } from "@/app/types/MainPage";
 
-interface ErrorResponseInterface {
-  responseCode: number;
-  responseMessage: string;
-  data: null | string;
-  responseData: null | string;
-  signalR?: boolean | null;
-}
-interface FailedResponseInterface {
-  responseCode: number;
-  responseMessage: string;
-  data: string | null;
-  responseData?: string | null;
-  signalR?: boolean | null;
-}
-
-interface ResponseInterface {
-  flag1?: string;
-  flag2?: string;
-  success1?: SucessResponseInterface;
-  success?: SucessResponseInterface;
-  success2?: SucessResponseInterface;
-  error1?: ErrorResponseInterface;
-  error?: ErrorResponseInterface;
-  error2?: ErrorResponseInterface;
-  Failed?: FailedResponseInterface;
-  Pending?: PendingResponseInterface;
-}
-
-interface EndpointInterface {
-  id?: number;
-  title: string;
-  topText?: string;
-  post: any;
-  request: string | object;
-  response: ResponseInterface;
-  Header?: string | null;
-  note?: string;
-}
-
-interface BaseUrlsInterface {
-  BBPSurl: string;
-  authentication: string;
-}
-
-interface Authenticationinterface {
-  Clientid: string;
-  ClientPass: string;
-  ClientTPin: string;
-  ClientSecret: string;
-  ClientToken: string;
-}
-
-interface BBPSinterface {
-  title: string;
-  BaseUrls: BaseUrlsInterface;
-  Endpoints: EndpointInterface[];
-  Authentication: Authenticationinterface;
-  note: string;
-}
-
-export const BbpsApiD: BBPSinterface = {
+export const BbpsApiD: MainInterface = {
   title: "SOLITECK PAYOUTS(BBPS)| Digital Transformation made easy",
 
   BaseUrls: {
-    BBPSurl: "https://api-uat.soliteck.in/uat/api/BBPSOfflineTxn/",
-    authentication: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+    link: "https://api-uat.soliteck.in/uat/api/BBPSOfflineTxn/",
+    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
   },
 
   note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
@@ -96,25 +22,31 @@ export const BbpsApiD: BBPSinterface = {
     {
       title: "Generate Token",
       topText: "/GenerateUATToken",
-      post: "/GenerateUATToken",
+      post: "TOKEN",
       request:
         "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
 
       response: {
         success1: {
-          responseCode: 200,
-          responseMessage: "Token Generated Success",
-          data: "Generated Token",
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Token Generated Success",
+            data: "Generated Token",
+            responseData: null,
+            signalR: null,
+          },
         },
 
         error1: {
-          responseCode: 400,
-          responseMessage: "Client_Id is not present",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Client_Id is not present",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
       },
       note: "The Token is valid for 20 mins after creation. To check Token validity always hit refresh token API",
@@ -122,25 +54,31 @@ export const BbpsApiD: BBPSinterface = {
 
     {
       title: "Verify Token",
-      post: "/VerifyUATToken",
+      post: "TOKEN",
       topText: "/VerifyUATToken",
       request: "All headers required",
 
       response: {
         success: {
-          responseCode: 200,
-          responseMessage: "Token Is Valid",
-          data: "Token",
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Token Is Valid",
+            data: "Token",
+            responseData: null,
+            signalR: null,
+          },
         },
 
         error1: {
-          responseCode: 400,
-          responseMessage: "Token Expired, Re-Generate Token",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Token Expired, Re-Generate Token",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
       },
       note: "-",
@@ -154,43 +92,54 @@ export const BbpsApiD: BBPSinterface = {
         Flag: 2,
         serviceName: "Electricity",
       },
-      Header: "",
+
       request: "ALL HEADERS MENTIONED ABOVE",
 
       response: {
-        flag1: "Flag 1: Services",
-        flag2: "Flag 2: Operators",
+        // flag1: "Flag 1: Services",
+        // flag2: "Flag 2: Operators",
         success1: {
-          responseCode: 200,
-          responseMessage: "Request Success",
-
-          responseData:
-            '[{"ServiceName":"MOBILE"},{"ServiceName":"ELECTRICITY"},{"ServiceName":"DTH"},{"ServiceName":"DATACARD"},{"ServiceName":"POSTPAID"},{"ServiceName":"TELEPHONE"},{"ServiceName":"WATER"},{"ServiceName":"LANDLINE"},{"ServiceName":"LPG GAS"},{"ServiceName":"FASTAG"},{"ServiceName":"Broadband"},{"ServiceName":"LOAN PAYMENT"}]',
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Request Success",
+            responseData:
+              '[{"ServiceName":"MOBILE"},{"ServiceName":"ELECTRICITY"},{"ServiceName":"DTH"},{"ServiceName":"DATACARD"},{"ServiceName":"POSTPAID"},{"ServiceName":"TELEPHONE"},{"ServiceName":"WATER"},{"ServiceName":"LANDLINE"},{"ServiceName":"LPG GAS"},{"ServiceName":"FASTAG"},{"ServiceName":"Broadband"},{"ServiceName":"LOAN PAYMENT"}]',
+          },
         },
         success: {
-          responseCode: 200,
-          responseMessage: "Request Success",
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Request Success",
 
-          responseData:
-            '{"OPId":22979,"OperatorName":"APIUser MSEDCL-Mahavitran","ProviderCode":"ELECTRICITY-70"},{"OPId":23012,"OperatorName":"APIUser BSES Yamuna DELHI","ProviderCode":"ELECTRICITY-42"}]',
+            responseData:
+              '{"OPId":22979,"OperatorName":"APIUser MSEDCL-Mahavitran","ProviderCode":"ELECTRICITY-70"},{"OPId":23012,"OperatorName":"APIUser BSES Yamuna DELHI","ProviderCode":"ELECTRICITY-42"}]',
+          },
         },
 
         error1: {
-          //401
-          responseCode: 401,
-          responseMessage: "Token Expired / Invalid, Please login again.",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            //401
+            responseCode: 401,
+            responseMessage: "Token Expired / Invalid, Please login again.",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
 
         error2: {
-          //400
-          responseCode: 400,
-          responseMessage: "Error Message.",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            //400
+            responseCode: 400,
+            responseMessage: "Error Message.",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
       },
       note: "You need to parse the responseData at your end. ",
@@ -208,35 +157,47 @@ export const BbpsApiD: BBPSinterface = {
 
       response: {
         success1: {
-          responseCode: 200,
-          responseMessage: "Biller Validation Success",
-          data: "Token",
-          responseData:
-            '{"status":"success","is_validation":0,"params":[{"name":"optional1","placeholder":"Number"}],"biller_payment_modes":[{"mode":"Wallet"}]}',
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Biller Validation Success",
+            data: "Token",
+            responseData:
+              '{"status":"success","is_validation":0,"params":[{"name":"optional1","placeholder":"Number"}],"biller_payment_modes":[{"mode":"Wallet"}]}',
+          },
         },
         error: {
-          responseCode: 400,
-          responseMessage: "Biller Validation Failed",
-          data: "Token",
-          responseData: null,
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Biller Validation Failed",
+            data: "Token",
+            responseData: null,
+          },
         },
 
         error1: {
-          //401
-          responseCode: 401,
-          responseMessage: "Token Expired / Invalid, Please login again.",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            //401
+            responseCode: 401,
+            responseMessage: "Token Expired / Invalid, Please login again.",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
 
         error2: {
-          //400
-          responseCode: 400,
-          responseMessage: "Error Message.",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            //400
+            responseCode: 400,
+            responseMessage: "Error Message.",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
       },
       note: "You need to parse the responseData at your end. ",
@@ -257,18 +218,24 @@ export const BbpsApiD: BBPSinterface = {
 
       response: {
         success1: {
-          responseCode: 200,
-          responseMessage: "Biller Verification Success",
-          data: "",
-          responseData:
-            '{"status":"success","provider_name":"MSEDC MAHARASHTRA","number":"123456789123","amount":"160.00","name":"username","duedate":"2026-04-06","provider_id":"70","optional1":"123456789123","optional2":null,"optional3":null,"optional4":""}',
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Biller Verification Success",
+            data: "",
+            responseData:
+              '{"status":"success","provider_name":"MSEDC MAHARASHTRA","number":"123456789123","amount":"160.00","name":"username","duedate":"2026-04-06","provider_id":"70","optional1":"123456789123","optional2":null,"optional3":null,"optional4":""}',
+          },
         },
         error1: {
-          responseCode: 400,
-          responseMessage: "Biller Validation Failed",
-          data: "Token",
-          responseData:
-            '{"status":"failure","provider_name":null,"number":null,"amount":null,"name":null,"duedate":null,"provider_id":null,"optional1":null,"optional2":null,"optional3":null,"optional4":null}',
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Biller Validation Failed",
+            data: "Token",
+            responseData:
+              '{"status":"failure","provider_name":null,"number":null,"amount":null,"name":null,"duedate":null,"provider_id":null,"optional1":null,"optional2":null,"optional3":null,"optional4":null}',
+          },
         },
       },
     },
@@ -290,65 +257,86 @@ export const BbpsApiD: BBPSinterface = {
 
       response: {
         success: {
-          responseCode: 201,
-          responseMessage: "Bill Payment Pending",
-          data: "",
-          responseData:
-            '{"MobileNumber":"9082090971","Amount":"250","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456"',
-          TransactionMode:
-            '"Wallet","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|1111111111|-|187000001964|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+          info: "",
+          code: {
+            responseCode: 201,
+            responseMessage: "Bill Payment Pending",
+            data: "",
+            responseData:
+              '{"MobileNumber":"9082090971","Amount":"250","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456"',
+            TransactionMode:
+              '"Wallet","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|1111111111|-|187000001964|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+          },
         },
         success2: {
-          responseCode: 204,
-          responseMessage: "Biller Validation Failed",
-          data: "",
-          responseData:
-            '{"MobileNumber":"9082090971","Amount":"299","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+          info: "",
+          code: {
+            responseCode: 204,
+            responseMessage: "Biller Validation Failed",
+            data: "",
+            responseData:
+              '{"MobileNumber":"9082090971","Amount":"299","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+          },
         },
         success1: {
-          responseCode: 200,
-          responseMessage: "Bill Payment Success",
-          data: "",
-          responseData:
-            '{"MobileNumber":"9082090971","Amount":"100","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"1","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Bill Payment Success",
+            data: "",
+            responseData:
+              '{"MobileNumber":"9082090971","Amount":"100","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"1","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+          },
         },
         error1: {
-          responseCode: 401,
-          responseMessage: "Token Expired / Invalid, Please login again.",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 401,
+            responseMessage: "Token Expired / Invalid, Please login again.",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
         error2: {
-          responseCode: 400,
-          responseMessage: "Error Message.",
-          data: null,
-          responseData: null,
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Error Message.",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
         },
       },
     },
     {
       id: 11,
       title: "Webhook",
-      post: "NA",
+      post: "-",
 
-      request: "NA",
+      request: "-",
 
       response: {
         success: {
-          responseCode: 200,
-          responseMessage: "Transaction Success",
-          data: "Client Order Id",
-          responseData: "UTR",
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Transaction Success",
+            data: "Client Order Id",
+            responseData: "UTR",
+            signalR: null,
+          },
         },
         success1: {
-          responseCode: 204,
-          responseMessage: "Transaction Failed",
-          data: "Client Order Id",
-          responseData: "UTR",
-          signalR: null,
+          info: "",
+          code: {
+            responseCode: 204,
+            responseMessage: "Transaction Failed",
+            data: "Client Order Id",
+            responseData: "UTR",
+            signalR: null,
+          },
         },
       },
     },
