@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function IntroInfoSection() {
 const pathname = usePathname();
 const currentRoute = pathname.split("/").pop() || "payoutapi";
-
+console.log(currentRoute)
 const info = IntroInfo[currentRoute];
 
 if (!info) return null;

@@ -15,7 +15,7 @@ export default function RightNavigation({ endpoints, active }: Props) {
       <div className="space-y-6">
         <div>
           <h3 className="text-xs gap-1 flex items-center  font-semibold text-gray-500 uppercase tracking-wider mb-3">
-            <RiPageSeparator size={18} /> On this page
+            <RiPageSeparator size={18} /> On this page Navigation
           </h3>
 
           <nav className="flex flex-col gap-1  pl-4">
