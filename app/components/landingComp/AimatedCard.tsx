@@ -7,31 +7,143 @@ import { useRef } from "react";
 ───────────────────────────────────────────── */
 
 const STATS = [
-  { value: "2,400+",     label: "Active businesses" },
+  { value: "2,400+", label: "Active businesses" },
   { value: "₹18,000 Cr", label: "Monthly volume" },
-  { value: "99.97%",     label: "API uptime" },
+  { value: "99.97%", label: "API uptime" },
 ];
 
 const FEATURED = [
-  { name: "PhonePe",    abbr: "PP", bg: "#E8F0FE", fg: "#185FA5", tag: "Payments",   tagBg: "#E8F0FE", tagFg: "#185FA5" },
-  { name: "Groww",      abbr: "GW", bg: "#EAF3DE", fg: "#3B6D11", tag: "Investing",  tagBg: "#EAF3DE", tagFg: "#3B6D11" },
-  { name: "CRED",       abbr: "CR", bg: "#EEEDFE", fg: "#534AB7", tag: "Credit",     tagBg: "#EEEDFE", tagFg: "#534AB7" },
-  { name: "Slice",      abbr: "SL", bg: "#FCEBEB", fg: "#A32D2D", tag: "Lending",    tagBg: "#FCEBEB", tagFg: "#A32D2D" },
-  { name: "Navi",       abbr: "NV", bg: "#EAF3DE", fg: "#3B6D11", tag: "Insurance",  tagBg: "#EAF3DE", tagFg: "#3B6D11" },
-  { name: "Jupiter",    abbr: "JP", bg: "#FAEEDA", fg: "#854F0B", tag: "Neo-bank",   tagBg: "#FAEEDA", tagFg: "#854F0B" },
-  { name: "Fi Money",   abbr: "FM", bg: "#E8F0FE", fg: "#185FA5", tag: "Banking",    tagBg: "#E8F0FE", tagFg: "#185FA5" },
-  { name: "Kreditbee",  abbr: "KB", bg: "#FCEBEB", fg: "#A32D2D", tag: "Lending",    tagBg: "#FCEBEB", tagFg: "#A32D2D" },
-  { name: "Uni Cards",  abbr: "UC", bg: "#EEEDFE", fg: "#534AB7", tag: "Cards",      tagBg: "#EEEDFE", tagFg: "#534AB7" },
-  { name: "mPokket",    abbr: "MP", bg: "#FAEEDA", fg: "#854F0B", tag: "Micro-loan", tagBg: "#FAEEDA", tagFg: "#854F0B" },
-  { name: "Stashfin",   abbr: "SF", bg: "#EAF3DE", fg: "#3B6D11", tag: "Credit",     tagBg: "#EAF3DE", tagFg: "#3B6D11" },
-  { name: "Freo",       abbr: "FR", bg: "#E8F0FE", fg: "#185FA5", tag: "Neo-bank",   tagBg: "#E8F0FE", tagFg: "#185FA5" },
+  {
+    name: "PhonePe",
+    abbr: "PP",
+    bg: "#E8F0FE",
+    fg: "#185FA5",
+    tag: "Payments",
+    tagBg: "#E8F0FE",
+    tagFg: "#185FA5",
+  },
+  {
+    name: "Groww",
+    abbr: "GW",
+    bg: "#EAF3DE",
+    fg: "#3B6D11",
+    tag: "Investing",
+    tagBg: "#EAF3DE",
+    tagFg: "#3B6D11",
+  },
+  {
+    name: "CRED",
+    abbr: "CR",
+    bg: "#EEEDFE",
+    fg: "#534AB7",
+    tag: "Credit",
+    tagBg: "#EEEDFE",
+    tagFg: "#534AB7",
+  },
+  {
+    name: "Slice",
+    abbr: "SL",
+    bg: "#FCEBEB",
+    fg: "#A32D2D",
+    tag: "Lending",
+    tagBg: "#FCEBEB",
+    tagFg: "#A32D2D",
+  },
+  {
+    name: "Navi",
+    abbr: "NV",
+    bg: "#EAF3DE",
+    fg: "#3B6D11",
+    tag: "Insurance",
+    tagBg: "#EAF3DE",
+    tagFg: "#3B6D11",
+  },
+  {
+    name: "Jupiter",
+    abbr: "JP",
+    bg: "#FAEEDA",
+    fg: "#854F0B",
+    tag: "Neo-bank",
+    tagBg: "#FAEEDA",
+    tagFg: "#854F0B",
+  },
+  {
+    name: "Fi Money",
+    abbr: "FM",
+    bg: "#E8F0FE",
+    fg: "#185FA5",
+    tag: "Banking",
+    tagBg: "#E8F0FE",
+    tagFg: "#185FA5",
+  },
+  {
+    name: "Kreditbee",
+    abbr: "KB",
+    bg: "#FCEBEB",
+    fg: "#A32D2D",
+    tag: "Lending",
+    tagBg: "#FCEBEB",
+    tagFg: "#A32D2D",
+  },
+  {
+    name: "Uni Cards",
+    abbr: "UC",
+    bg: "#EEEDFE",
+    fg: "#534AB7",
+    tag: "Cards",
+    tagBg: "#EEEDFE",
+    tagFg: "#534AB7",
+  },
+  {
+    name: "mPokket",
+    abbr: "MP",
+    bg: "#FAEEDA",
+    fg: "#854F0B",
+    tag: "Micro-loan",
+    tagBg: "#FAEEDA",
+    tagFg: "#854F0B",
+  },
+  {
+    name: "Stashfin",
+    abbr: "SF",
+    bg: "#EAF3DE",
+    fg: "#3B6D11",
+    tag: "Credit",
+    tagBg: "#EAF3DE",
+    tagFg: "#3B6D11",
+  },
+  {
+    name: "Freo",
+    abbr: "FR",
+    bg: "#E8F0FE",
+    fg: "#185FA5",
+    tag: "Neo-bank",
+    tagBg: "#E8F0FE",
+    tagFg: "#185FA5",
+  },
 ];
 
 const MARQUEE = [
-  "Paytm", "BharatPe", "MobiKwik", "Freecharge", "Jar", "Smallcase",
-  "Zerodha", "Upstox", "INDmoney", "EarlySalary", "MoneyView", "CashE",
-  "Rupeek", "Kissht", "Lendingkart", "Capital Float", "Progcap",
-  "OkCredit", "Khatabook", "RazorpayX",
+  "Paytm",
+  "BharatPe",
+  "MobiKwik",
+  "Freecharge",
+  "Jar",
+  "Smallcase",
+  "Zerodha",
+  "Upstox",
+  "INDmoney",
+  "EarlySalary",
+  "MoneyView",
+  "CashE",
+  "Rupeek",
+  "Kissht",
+  "Lendingkart",
+  "Capital Float",
+  "Progcap",
+  "OkCredit",
+  "Khatabook",
+  "RazorpayX",
 ];
 
 const DOT_COLORS = ["#185FA5", "#3B6D11", "#534AB7", "#A32D2D", "#854F0B"];
@@ -55,14 +167,22 @@ function Divider({ label }: { label: string }) {
 function StatCard({ value, label }: { value: string; label: string }) {
   return (
     <div className="bg-slate-50 rounded-xl p-5 text-center">
-      <span className="block text-2xl font-semibold text-slate-900 mb-0.5">{value}</span>
+      <span className="block text-2xl font-semibold text-slate-900 mb-0.5">
+        {value}
+      </span>
       <span className="text-xs text-slate-500">{label}</span>
     </div>
   );
 }
 
 function LogoCell({
-  name, abbr, bg, fg, tag, tagBg, tagFg,
+  name,
+  abbr,
+  bg,
+  fg,
+  tag,
+  tagBg,
+  tagFg,
 }: (typeof FEATURED)[0]) {
   return (
     <div className="group flex flex-col items-center justify-center gap-2.5 px-4 py-5 bg-white hover:bg-slate-50 transition-colors border-r border-b border-slate-100 cursor-default">
@@ -93,7 +213,10 @@ function LogoCell({
 function MarqueePill({ name, color }: { name: string; color: string }) {
   return (
     <div className="flex items-center gap-2 px-3.5 py-2 border border-slate-200 rounded-full bg-white shrink-0">
-      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color }} />
+      <span
+        className="w-1.5 h-1.5 rounded-full shrink-0"
+        style={{ background: color }}
+      />
       <span className="text-xs text-slate-500 whitespace-nowrap">{name}</span>
     </div>
   );
@@ -119,7 +242,6 @@ export default function TrustedBySection() {
   return (
     <section className="w-full bg-white px-4 md:px-10 py-20">
       <div className="max-w-5xl mx-auto">
-
         {/* ── Header ── */}
         <div className="text-center mb-10">
           <p className="text-[11px] font-medium tracking-[.18em] text-slate-400 uppercase mb-2">
@@ -129,8 +251,8 @@ export default function TrustedBySection() {
             Powering India's leading fintechs
           </h2>
           <p className="text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-            From early-stage startups to public enterprises — thousands of businesses
-            rely on our APIs every day.
+            From early-stage startups to public enterprises — thousands of
+            businesses rely on our APIs every day.
           </p>
         </div>
 

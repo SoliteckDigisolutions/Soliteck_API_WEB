@@ -7,7 +7,21 @@ import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
 
-export const sidebarMenu = [
+import { useServiceAccess } from "@/hooks/useServiceAccess";
+
+export interface MenuItem {
+  name: string;
+  href?: any;
+  serviceID?: any;
+  children?: MenuItem[];
+}
+
+export interface SidebarSection {
+  title: string;
+  items: MenuItem[];
+}
+
+export const sidebarMenu: SidebarSection[] = [
   {
     title: "Getting Started",
     items: [
@@ -33,14 +47,42 @@ export const sidebarMenu = [
   {
     title: "API Reference",
     items: [
-      { name: "Payout API", href: "/docs/api-reference/payoutapi" },
-      { name: "Mobile Recharge API", href: "/docs/api-reference/mobileapi" },
-      { name: "DTH API", href: "/docs/api-reference/dthRecharge" },
-      { name: "BBPS-API Offline", href: "/docs/api-reference/bbpsapi" },
-      { name: "BBPS API Online", href: "/docs/api-reference/bbpsapionline" },
-      { name: "CC BP API", href: "/docs/api-reference/ccbpapi" },
-      { name: "PG API", href: "/docs/api-reference/pgapi" },
-      { name: "AEPS", href: "/docs/api-reference/aepsapi" },
+      {
+        name: "Payout API",
+        href: "/docs/api-reference/payoutapi",
+        serviceID: 47,
+      },
+      {
+        name: "Mobile Recharge API",
+        href: "/docs/api-reference/mobileapi",
+        serviceID: 43,
+      },
+      {
+        name: "DTH API",
+        href: "/docs/api-reference/dthRecharge",
+        serviceID: 45,
+      },
+      {
+        name: "BBPS-API Offline",
+        href: "/docs/api-reference/bbpsapi",
+        serviceID: 63,
+      },
+      {
+        name: "BBPS API Online",
+        href: "/docs/api-reference/bbpsapionline",
+        serviceID: 62,
+      },
+      {
+        name: "CC BP API",
+        href: "/docs/api-reference/ccbpapi",
+        serviceID: 59,
+      },
+      {
+        name: "PG API",
+        href: "/docs/api-reference/pgapi",
+        serviceID: 54,
+      },
+      { name: "AEPS", href: "/docs/api-reference/aepsapi", serviceID: "AEPS" },
     ],
   },
   {
@@ -51,6 +93,34 @@ export const sidebarMenu = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const { hasService } = useServiceAccess();
+
+  const filteredSections = sidebarMenu
+    .map((section) => ({
+      ...section,
+      items: section.items
+        .map((item) => {
+          // allow items without service restriction
+          if (!item.serviceID) return item;
+
+          // check permission
+          if (!hasService(item.serviceID)) return null;
+
+          // check children if exist
+          if (item.children) {
+            const filteredChildren = item.children.filter(
+              (child) => !child.serviceID || hasService(child.serviceID),
+            );
+
+            return { ...item, children: filteredChildren };
+          }
+
+          return item;
+        })
+        .filter(Boolean),
+    }))
+    .filter((section) => section.items.length > 0);
+  console.log(filteredSections, "filltetredc data");
 
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [openItem, setOpenItem] = useState<string | null>(null);
@@ -61,7 +131,6 @@ export default function Sidebar() {
         if (item.href === pathname) {
           setOpenSection(section.title);
         }
-
 
         if (item.children) {
           item.children.forEach((child) => {
@@ -81,7 +150,7 @@ export default function Sidebar() {
         API Documentation
       </h2>
 
-      {sidebarMenu.map((section) => {
+      {filteredSections.map((section) => {
         const isOpen = openSection === section.title;
 
         return (
@@ -101,17 +170,17 @@ export default function Sidebar() {
             {isOpen && (
               <ul className="space-y-1">
                 {section.items.map((item) => {
-                  const hasChildren = !!item.children;
-                  const itemOpen = openItem === item.name;
+                  const hasChildren = !!item?.children;
+                  const itemOpen = openItem === item?.name;
 
                   const active =
                     // pathname === item.href || pathname.startsWith(item.href);
-                    pathname === item.href 
+                    pathname === item?.href;
 
-                    console.log(pathname , item, 'pathname')
+                  console.log(pathname, item, "pathname");
 
                   return (
-                    <li key={item.name}>
+                    <li key={item?.name}>
                       {/* Parent Item */}
                       <div className="flex flex-col">
                         {hasChildren ? (
@@ -139,7 +208,7 @@ export default function Sidebar() {
                           </button>
                         ) : (
                           <Link
-                            href={item.href}
+                            href={item?.href}
                             className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition
                             ${
                               active
@@ -148,14 +217,14 @@ export default function Sidebar() {
                             }`}
                           >
                             <HiArrowTurnDownRight />
-                            {item.name}
+                            {item?.name}
                           </Link>
                         )}
 
                         {/* Children */}
                         {hasChildren && itemOpen && (
                           <ul className="ml-6 mt-1 space-y-1 border-l pl-3">
-                            {item.children.map((child) => {
+                            {item.children?.map((child) => {
                               const childActive = pathname === child.href;
 
                               return (

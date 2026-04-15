@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import ReduxProvider from "./provider/ReduxProvider";
+import StoreProvider from "./store/provider";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -27,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${dmMono.variable} font-sans`}>
-        {children}
+           <StoreProvider>{children}</StoreProvider>
         <Toaster position="top-center" />
       </body>
     </html>

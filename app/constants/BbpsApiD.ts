@@ -10,13 +10,7 @@ export const BbpsApiD: MainInterface = {
 
   note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
 
-  Authentication: {
-    Clientid: "Provided by Soliteck",
-    ClientPass: "Provided by Soliteck",
-    ClientTPin: "Provided by Soliteck",
-    ClientSecret: "Provided by Soliteck",
-    ClientToken: "From GenerateUATToken API",
-  },
+
 
   Endpoints: [
     {
@@ -27,18 +21,34 @@ export const BbpsApiD: MainInterface = {
         "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
 
       response: {
-        success1: {
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Token Generated Success",
-            data: "Generated Token",
-            responseData: null,
-            signalR: null,
+        success: [
+          {
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Token Generated Success",
+              data: "Generated Token",
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
+          {
+            id: 2,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Token Generated Success",
+              data: "Generated Token",
+              responseData: null,
+              signalR: null,
+            },
+          },
+        ],
 
-        error1: {
+
+        error: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 400,
@@ -47,7 +57,7 @@ export const BbpsApiD: MainInterface = {
             responseData: null,
             signalR: null,
           },
-        },
+        },]
       },
       note: "The Token is valid for 20 mins after creation. To check Token validity always hit refresh token API",
     },
@@ -59,7 +69,8 @@ export const BbpsApiD: MainInterface = {
       request: "All headers required",
 
       response: {
-        success: {
+        success: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 200,
@@ -68,9 +79,10 @@ export const BbpsApiD: MainInterface = {
             responseData: null,
             signalR: null,
           },
-        },
+        },],
 
-        error1: {
+        error: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 400,
@@ -79,7 +91,7 @@ export const BbpsApiD: MainInterface = {
             responseData: null,
             signalR: null,
           },
-        },
+        },]
       },
       note: "-",
     },
@@ -98,27 +110,34 @@ export const BbpsApiD: MainInterface = {
       response: {
         // flag1: "Flag 1: Services",
         // flag2: "Flag 2: Operators",
-        success1: {
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Request Success",
-            responseData:
-              '[{"ServiceName":"MOBILE"},{"ServiceName":"ELECTRICITY"},{"ServiceName":"DTH"},{"ServiceName":"DATACARD"},{"ServiceName":"POSTPAID"},{"ServiceName":"TELEPHONE"},{"ServiceName":"WATER"},{"ServiceName":"LANDLINE"},{"ServiceName":"LPG GAS"},{"ServiceName":"FASTAG"},{"ServiceName":"Broadband"},{"ServiceName":"LOAN PAYMENT"}]',
-          },
-        },
-        success: {
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Request Success",
 
-            responseData:
-              '{"OPId":22979,"OperatorName":"APIUser MSEDCL-Mahavitran","ProviderCode":"ELECTRICITY-70"},{"OPId":23012,"OperatorName":"APIUser BSES Yamuna DELHI","ProviderCode":"ELECTRICITY-42"}]',
+        success: [
+          {
+            id: 0,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Request Success",
+              responseData:
+                '[{"ServiceName":"MOBILE"},{"ServiceName":"ELECTRICITY"},{"ServiceName":"DTH"},{"ServiceName":"DATACARD"},{"ServiceName":"POSTPAID"},{"ServiceName":"TELEPHONE"},{"ServiceName":"WATER"},{"ServiceName":"LANDLINE"},{"ServiceName":"LPG GAS"},{"ServiceName":"FASTAG"},{"ServiceName":"Broadband"},{"ServiceName":"LOAN PAYMENT"}]',
+            },
           },
-        },
 
-        error1: {
+          {
+
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Request Success",
+
+              responseData:
+                '{"OPId":22979,"OperatorName":"APIUser MSEDCL-Mahavitran","ProviderCode":"ELECTRICITY-70"},{"OPId":23012,"OperatorName":"APIUser BSES Yamuna DELHI","ProviderCode":"ELECTRICITY-42"}]',
+            },
+          },],
+
+        error: [{
+          id: 1,
           info: "",
           code: {
             //401
@@ -129,8 +148,8 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
-
-        error2: {
+        {
+          id: 2,
           info: "",
           code: {
             //400
@@ -141,7 +160,9 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
+        ],
       },
+
       note: "You need to parse the responseData at your end. ",
     },
     {
@@ -156,7 +177,8 @@ export const BbpsApiD: MainInterface = {
       request: "All headers reqiured",
 
       response: {
-        success1: {
+        success: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 200,
@@ -165,8 +187,9 @@ export const BbpsApiD: MainInterface = {
             responseData:
               '{"status":"success","is_validation":0,"params":[{"name":"optional1","placeholder":"Number"}],"biller_payment_modes":[{"mode":"Wallet"}]}',
           },
-        },
-        error: {
+        }],
+        error: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 400,
@@ -175,8 +198,8 @@ export const BbpsApiD: MainInterface = {
             responseData: null,
           },
         },
-
-        error1: {
+        {
+          id: 2,
           info: "",
           code: {
             //401
@@ -187,8 +210,8 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
-
-        error2: {
+        {
+          id: 3,
           info: "",
           code: {
             //400
@@ -199,6 +222,8 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
+
+        ]
       },
       note: "You need to parse the responseData at your end. ",
     },
@@ -217,7 +242,8 @@ export const BbpsApiD: MainInterface = {
       },
 
       response: {
-        success1: {
+        success: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 200,
@@ -226,8 +252,9 @@ export const BbpsApiD: MainInterface = {
             responseData:
               '{"status":"success","provider_name":"MSEDC MAHARASHTRA","number":"123456789123","amount":"160.00","name":"username","duedate":"2026-04-06","provider_id":"70","optional1":"123456789123","optional2":null,"optional3":null,"optional4":""}',
           },
-        },
-        error1: {
+        },],
+        error: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 400,
@@ -236,7 +263,7 @@ export const BbpsApiD: MainInterface = {
             responseData:
               '{"status":"failure","provider_name":null,"number":null,"amount":null,"name":null,"duedate":null,"provider_id":null,"optional1":null,"optional2":null,"optional3":null,"optional4":null}',
           },
-        },
+        },]
       },
     },
     {
@@ -256,7 +283,8 @@ export const BbpsApiD: MainInterface = {
       },
 
       response: {
-        success: {
+        success: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 201,
@@ -268,7 +296,8 @@ export const BbpsApiD: MainInterface = {
               '"Wallet","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|1111111111|-|187000001964|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
         },
-        success2: {
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 204,
@@ -277,8 +306,8 @@ export const BbpsApiD: MainInterface = {
             responseData:
               '{"MobileNumber":"9082090971","Amount":"299","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
-        },
-        success1: {
+        }, {
+          id: 3,
           info: "",
           code: {
             responseCode: 200,
@@ -287,8 +316,11 @@ export const BbpsApiD: MainInterface = {
             responseData:
               '{"MobileNumber":"9082090971","Amount":"100","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"1","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
-        },
-        error1: {
+        },],
+
+
+        error: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 401,
@@ -298,7 +330,8 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
-        error2: {
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 400,
@@ -307,7 +340,8 @@ export const BbpsApiD: MainInterface = {
             responseData: null,
             signalR: null,
           },
-        },
+        },]
+
       },
     },
     {
@@ -318,7 +352,8 @@ export const BbpsApiD: MainInterface = {
       request: "-",
 
       response: {
-        success: {
+        success: [{
+          id: 1,
           info: "",
           code: {
             responseCode: 200,
@@ -328,7 +363,8 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
-        success1: {
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 204,
@@ -337,7 +373,8 @@ export const BbpsApiD: MainInterface = {
             responseData: "UTR",
             signalR: null,
           },
-        },
+        },]
+
       },
     },
   ],

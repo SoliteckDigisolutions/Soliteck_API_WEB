@@ -4,9 +4,10 @@ import CopyButton from "@/app/components/component/CopyButton";
 
 interface Props {
   request: any;
+  title : string
 }
  
-export default function RequestBlock({ request }: Props) {
+export default function RequestBlock({ request, title }: Props) {
   const text = JSON.stringify(request, null, 2);
 
   return (
@@ -14,7 +15,7 @@ export default function RequestBlock({ request }: Props) {
       {/* Editor Header */}
       <div className="flex items-center justify-between  px-4 py-2">
         <span className="text-xs flex gap-1 items-center  text-gray-800  tracking-wider">
-          <RiGitPullRequestFill size={14} /> Request Header
+          <RiGitPullRequestFill size={14} /> {title}
         </span>
 
         <CopyButton text={text} />

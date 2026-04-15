@@ -10,12 +10,16 @@ import { TiLink } from "react-icons/ti";
 import { ChevronDown } from "lucide-react";
 import Search from "@/app/components/component/SearchGlobal";
 import { sidebarMenu } from "@/app/components/navigationComp/SideNavigation";
+import { useServiceAccess } from "@/hooks/useServiceAccess";
+import UserProfile from "@/app/components/component/UserProfile";
 
 export default function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropRef = useRef<HTMLDivElement>(null);
+
+  const { hasService } = useServiceAccess();
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -54,47 +58,10 @@ export default function Navbar() {
           >
             Documentation
           </Link>
-
-          {/* Dropdown */}
-          <div ref={dropRef} className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className={`flex items-center gap-1 text-[13px] font-medium px-3 py-1 rounded-md transition ${
-                dropdownOpen
-                  ? "bg-gray-100 text-gray-900"
-                  : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              }`}
-            >
-              API Reference
-              <ChevronDown
-                size={14}
-                className={`transition-transform ${
-                  dropdownOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-
-            {dropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden animate-in fade-in zoom-in-95">
-                {sidebarMenu[1].items.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => {
-                      router.push(item.href);
-                      setDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-4 py-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-t first:border-t-0"
-                  >
-                    {item.name}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
         </nav>
         <Search />
         {/* RIGHT SIDE */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex justify-between items-center align-middle gap-4">
           <a
             href="https://soliteck.com"
             target="blank"
@@ -103,6 +70,7 @@ export default function Navbar() {
             <Image src={logo} alt="Soliteck logo" className="w-24" />
             .com <TiLink size={12} />
           </a>
+          <UserProfile />
         </div>
 
         {/* MOBILE BUTTON */}

@@ -30,10 +30,14 @@ export default function ApiEndpoint({ endpoint, index }: Props) {
         </div>
 
         {/* Request */}
-        {endpoint.request && <RequestBlock request={endpoint.request} />}
+        {endpoint.request && (
+          <RequestBlock title={"Request Header"} request={endpoint.request} />
+        )}
 
         {/* Request Body */}
-        {endpoint.post && <RequestBlock request={endpoint.post} />}
+        {endpoint.post && (
+          <RequestBlock title={"Request Body"} request={endpoint.post} />
+        )}
 
         {/* Responses */}
         {endpoint.response && (

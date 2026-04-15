@@ -1,3 +1,6 @@
+'use client'
+
+
 import Navbar from "@/app/components/navigationComp/Navabr";
 import Sidebar from "@/app/components/navigationComp/SideNavigation";
 
@@ -6,6 +9,8 @@ export default function DocsLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
   return (
     <>
       <Navbar />
@@ -19,6 +24,8 @@ export default function DocsLayout({
         <main className="flex-1  p-2 w-100 font-sans">
           {children}
         </main>
+         
+
 
       </div>
     </>

@@ -5,48 +5,33 @@ import logo from "@/public/assets/Logo.svg";
 import { MdAddTask, MdOutlinePayments } from "react-icons/md";
 import { TbApi } from "react-icons/tb";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setPhone, setPassword } from "@/app/store/slices/authSlice";
-import { setResponse } from "@/app/store/slices/respSlice";
-import { useRouter } from "next/navigation";
-import { toast, Toaster } from "sonner";
-
+import axios from "axios";
 export default function LoginPage() {
-  const dispatch = useDispatch();
-
-  const phone = useSelector((state: any) => state.auth.phone);
-  const password = useSelector((state: any) => state.auth.password);
-  const router = useRouter();
+  const [phone, setPhone] = useState("");
+  console.log(phone);
+  const [password, setPassword] = useState("");
+  console.log(password);
 
   const loginUser = async () => {
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        MobileNumber: phone,
-        Password: password,
-      }),
-    });
+    try {
+      const response = await axios.post(
+        "https://mzwvxb2w-5185.inc1.devtunnels.ms/UAT/APIUserLogin",
+        {
+          MobileNumber: "8104488537",
+          Password: "09122024",
+        },
+        {
+          headers: {
+            " X-Soliteck2024API-KEY": "Soliteck_2024",
+          },
+        },
+      );
 
-    const data = await res.json();
-    dispatch(setResponse(data.responseData));
-    if (data.responseCode === 200) {
-      localStorage.setItem("AUTHACCESS", JSON.stringify(data?.responseData));
-      toast.success("Faaaaaah!", data);
-      // login success
-      router.push("/docs/getting-started/introduction"); // redirect page
-    } else {
-      toast.error("Login failed", data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
     }
   };
-
-  const data = useSelector((state) => state.responseData.respDatat);
-
-  const respData = data ? JSON.parse(data) : [];
-
-  console.log(respData);
 
   return (
     <div
@@ -164,7 +149,6 @@ bg-[-5px_-5px]  flex items-center justify-center"
                 <span className="font-semibold text-blue-900">
                   'Soliteck API DOCS'
                 </span>{" "}
-                <s>"Password :- 09122024 Mobile Number :- 8104488537"</s>
                 account
               </p>
             </div>
@@ -175,7 +159,7 @@ bg-[-5px_-5px]  flex items-center justify-center"
                 Phone Number
               </label>
               <input
-                onChange={(e) => dispatch(setPhone(e.target.value))}
+                onChange={(e) => setPhone(e.target.value)}
                 type="phone"
                 placeholder="Enter the Phone number"
                 className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
@@ -192,7 +176,7 @@ bg-[-5px_-5px]  flex items-center justify-center"
                 </div> */}
 
               <input
-                onChange={(e) => dispatch(setPassword(e.target.value))}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 placeholder="••••••••"
                 className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"

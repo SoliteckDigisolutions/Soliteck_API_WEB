@@ -118,6 +118,7 @@ export interface Infointerface {
 interface CommonSectionResponse {
   responseCode: number | any;
   responseMessage: string;
+  TransactionMode?: any;
   data?: string | null;
   responseData: boolean | string | null;
   signalR?: boolean | null;

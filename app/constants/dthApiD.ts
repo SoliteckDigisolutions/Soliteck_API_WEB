@@ -17,78 +17,122 @@ export const dthApiD: MainInterface = {
       title: "DTH Recharges",
       request: "All headers required",
 
+      headers: {
+        ClientId: "Provided by SOLITECK",
+        ClientPass: "Provided by SOLITECK",
+        ClientTPin: "Provided by SOLITECK",
+        ClientSecret: "Provided by SOLITECK",
+        ClientToken: "From Generate Token API",
+      },
+
       post: {
         CustomerDetails: "1234567890",
         Amount: "10",
         ClientOrderId: "MERCHANT ORDER ID (should be unique)",
         ExcecutionMode: "1 for Web And 2 for Android",
-        ApiCode: "",
+        key: "Use operator key",
       },
 
       response: {
         success: {
-          info: "",
           code: {
             responseCode: 200,
             responseMessage: "Success",
             data: "TOKEN",
-            responseData:
-              '{"Amount":"19","VendorRefNumber":"111111111-22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"1","SPTransactionRef":null,"CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
-            signalR: null,
+            responseData: {
+              Amount: "19",
+              VendorRefNumber: "111111111-22222222222",
+              TransactionMode: "0",
+              ExecutionMode: "1",
+              StatusId: "1",
+              SPTransactionRef: null,
+              CustomerDetails: "1234567890",
+              TransactionName: "Recharge",
+              TimeSeconds: "23454",
+            },
           },
         },
 
-        success1: {
-          info: "",
+        pending: {
           code: {
             responseCode: 201,
             responseMessage: "Pending",
             data: "TOKEN",
-            responseData:
-              '{"Amount":"19","VendorRefNumber":"22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"22222222222","CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
-            signalR: null,
+            responseData: {
+              Amount: "200",
+              VendorRefNumber: "22222222222",
+              TransactionMode: "0",
+              ExecutionMode: "1",
+              StatusId: "3",
+              SPTransactionRef: "22222222222",
+              CustomerDetails: "1234567890",
+              TransactionName: "Recharge",
+              TimeSeconds: "23454",
+            },
           },
         },
 
-        success2: {
-          info: "",
+        failed: {
           code: {
-            // text: "Failed Response",
             responseCode: 204,
             responseMessage: "Failed",
             data: "TOKEN",
-            responseData:
-              '{"Amount":"19","VendorRefNumber":"22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"22222222222","CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
-            signalR: null,
+            responseData: {
+              Amount: "19",
+              VendorRefNumber: "22222222222",
+              TransactionMode: "0",
+              ExecutionMode: "1",
+              StatusId: "0",
+              SPTransactionRef: "22222222222",
+              CustomerDetails: "1234567890",
+              TransactionName: "Recharge",
+              TimeSeconds: "23454",
+            },
           },
         },
 
-        error1: {
-          info: "",
+        tokenError: {
           code: {
             responseCode: 401,
-            responseMessage: "Token Expired / Invalid, Please login again.",
-            data: null,
-            responseData: null,
-            signalR: null,
-            // text: "For Token Expiry",
+            responseMessage: "Token Expired / Invalid",
           },
         },
 
-        error2: {
-          info: "",
+        commonError: {
           code: {
             responseCode: 400,
-            responseMessage: "Error Message.",
-            data: null,
-            responseData: null,
-            signalR: null,
-            // text: "In case of any error",
+            responseMessage: "Error Message",
           },
         },
       },
 
-      note: "Data in responseData field should be parsed, and below mentioned are all the keys with their following explanation.",
+      table: {
+        title: "ResponseData Keys Explanation",
+        columns: ["KEY", "Description"],
+        rows: [
+          { key: "Amount", description: "Recharge Amount" },
+          { key: "VendorRefNumber", desc: "UTR / Reference ID" },
+          { key: "TransactionMode", desc: "Transaction Mode" },
+          { key: "ExecutionMode", desc: "Execution Mode" },
+          { key: "StatusId", desc: "1=Success, 0=Failed, 3=Pending" },
+          { key: "SPTransactionRef", desc: "Soliteck Transaction Ref" },
+          { key: "CustomerDetails", desc: "Mobile Number" },
+          { key: "TimeSeconds", desc: "Transaction Time" },
+          { key: "TransactionName", desc: "Transaction Name" },
+        ],
+      },
+
+      operators: {
+        DTH: [
+          { key: "ApiCode : 1279", description: "Airtel Digital TV" },
+          { key: "ApiCode : 1280", description: "Dish TV" },
+          { key: "ApiCode : 1281", description: "SunDirect" },
+          { key: "ApiCode : 1282", description: "Tata Sky" },
+          { key: "ApiCode : 1283", description: "BIG TV" },
+          { key: "ApiCode : 1284", description: "Videocon" },
+        ],
+      },
     },
   ],
 };
+

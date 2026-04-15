@@ -1,9 +1,9 @@
 import { Infointerface } from "../types/MainPage";
 
 
-export  const Globalintroinfo: Infointerface = {
+export const Globalintroinfo: Infointerface = {
   payoutapi: {
-    id : 1,
+    id: 1,
     title: "SOLITECK PayOut API | Digital Transformation made easy",
 
     intro: {
@@ -196,8 +196,8 @@ export  const Globalintroinfo: Infointerface = {
       "Clear success, pending, and failed transaction responses",
     ],
   },
-  bbpsonline : {
-    title : "SOLITECK BBPS API Online | Digital Transformation made easy",
+  bbpsonline: {
+    title: "SOLITECK BBPS API Online | Digital Transformation made easy",
 
   }
 };

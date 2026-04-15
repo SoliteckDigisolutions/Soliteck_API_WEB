@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function RightNavigation({ endpoints, active }: Props) {
-  console.log(active)
+  console.log(active);
   return (
     <aside className="hidden xl:block xl:w-[260px] xl:sticky xl:top-24 h-fit pl-4">
       <div className="space-y-6">
@@ -36,13 +36,12 @@ export default function RightNavigation({ endpoints, active }: Props) {
                 </a>
               );
             })}
-           
           </nav>
           <div className="mx-0 m-4">
-           <ContactUs/>
+            <ContactUs />
           </div>
-          
-           {/* <button onClick={() => {<ContactUs/>}} className="shadow p-2 py-1 px-4 m-4 mx-0 rounded border font-sans text-sm bg-blue-200">Contact Us</button> */}
+
+          {/* <button onClick={() => {<ContactUs/>}} className="shadow p-2 py-1 px-4 m-4 mx-0 rounded border font-sans text-sm bg-blue-200">Contact Us</button> */}
         </div>
       </div>
     </aside>
