@@ -1,36 +1,48 @@
 "use client";
 
-import logo from "@/public/assets/Logo.svg";
+import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useRouter } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
 import { TiLink } from "react-icons/ti";
-import { ChevronDown } from "lucide-react";
-import Search from "@/app/components/component/SearchGlobal";
-import { sidebarMenu } from "@/app/components/navigationComp/SideNavigation";
+import logo from "@/public/assets/Logo.svg";
+import Search from "../component/SearchGlobal";
+import UserProfile from "../component/UserProfile";
 import { useServiceAccess } from "@/hooks/useServiceAccess";
-import UserProfile from "@/app/components/component/UserProfile";
+import { sidebarMenu } from "@/app/constants/GlobalConstants";
 
-export default function Navbar() {
+export default function Header() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropRef = useRef<HTMLDivElement>(null);
-
   const { hasService } = useServiceAccess();
 
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
+  const filteredSections = sidebarMenu
+    .map((section) => ({
+      ...section,
+      items: section.items
+        .map((item) => {
+          // allow items without service restriction
+          if (!item.serviceID) return item;
 
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+          // check permission
+          if (!hasService(item.serviceID)) return null;
+
+          // check children if exist
+          if (item.children) {
+            const filteredChildren = item.children.filter(
+              (child) => !child.serviceID || hasService(child.serviceID),
+            );
+
+            return { ...item, children: filteredChildren };
+          }
+
+          return item;
+        })
+        .filter(Boolean),
+    }))
+    .filter((section) => section.items.length > 0);
+  console.log(filteredSections, "filtered sections");
 
   return (
     <header className="w-full fixed top-0 left-0 z-[999] bg-white border-b border-gray-200 font-sans">
@@ -59,24 +71,30 @@ export default function Navbar() {
             Documentation
           </Link>
         </nav>
-        <Search />
+
+        {/* SEARCH */}
+        <div className="hidden md:block">
+          <Search />
+        </div>
+
         {/* RIGHT SIDE */}
-        <div className="hidden md:flex justify-between items-center align-middle gap-4">
+        <div className="hidden md:flex items-center gap-4">
           <a
             href="https://soliteck.com"
-            target="blank"
-            className="flex opacity-100 items-center  px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
+            target="_blank"
+            className="flex items-center gap-1 px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
           >
-            <Image src={logo} alt="Soliteck logo" className="w-24" />
+            <Image src={logo} alt="Soliteck logo" className="w-16" />
             .com <TiLink size={12} />
           </a>
+
           <UserProfile />
         </div>
 
         {/* MOBILE BUTTON */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100"
+          className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition"
         >
           {menuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
         </button>
@@ -84,39 +102,65 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-5 pb-5">
-          <Link
-            href="/docs/getting-started/introduction"
-            onClick={() => setMenuOpen(false)}
-            className="block py-3 text-sm font-medium text-gray-700 border-b border-gray-100"
-          >
-            Documentation
-          </Link>
+        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+          <div className="px-5 py-4 space-y-4">
+            {/* SEARCH */}
+            <Search />
 
-          <p className="text-[11px] uppercase tracking-wider text-gray-400 font-semibold mt-4 mb-2">
-            API Reference
-          </p>
-
-          {sidebarMenu[2].items.map((item) => (
-            <button
-              key={item.href}
-              onClick={() => {
-                router.push(item.href);
-                setMenuOpen(false);
-              }}
-              className="block w-full text-left py-3 text-sm font-medium text-gray-700 border-b border-gray-100"
+            {/* Documentation */}
+            <Link
+              href="/docs/getting-started/introduction"
+              onClick={() => setMenuOpen(false)}
+              className="block text-sm font-medium text-gray-700 hover:text-blue-600 transition"
             >
-              {item.name}
-            </button>
-          ))}
+              Documentation
+            </Link>
 
-          <div className="pt-4">
-            <a
-              href="https://soliteck.com"
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500"
+            {/* Divider */}
+            <div className="border-t border-gray-100" />
+
+            {/* API Reference */}
+            <p className="text-[11px] uppercase tracking-wider text-gray-400 font-semibold">
+              API Reference
+            </p>
+
+            <div className="flex flex-col rounded-lg border border-gray-100 overflow-hidden">
+              {filteredSections?.[1]?.items
+                ?.filter(Boolean)
+                .map((section: any, index: number) => (
+                  <button
+                    key={section?.name || index}
+                    onClick={() => {
+                      router.push(section?.href);
+                      setMenuOpen(false);
+                    }}
+                    className="flex items-center justify-between px-3 py-3 text-sm text-gray-700 hover:bg-gray-50 transition border-b last:border-none"
+                  >
+                    {section?.name}
+
+                    <span className="text-gray-400 text-xs">→</span>
+                  </button>
+                ))}
+            </div>
+
+            {/* User Profile */}
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="pt-3 relative z-10 border-t border-gray-100"
             >
-              soliteck.com <TiLink size={12} />
-            </a>
+              <UserProfile />
+            </div>
+
+            {/* Website Link */}
+            <div className="pt-2">
+              <a
+                href="https://soliteck.com"
+                target="_blank"
+                className="inline-flex items-center gap-1 px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50"
+              >
+                soliteck.com <TiLink size={12} />
+              </a>
+            </div>
           </div>
         </div>
       )}

@@ -116,11 +116,11 @@ export interface Infointerface {
 //You can see ? this every where, some data have key , some have not thats why i used the optional like optional channing
 
 interface CommonSectionResponse {
-  responseCode: number | any;
-  responseMessage: string;
+  responseCode?: number | any;
+  responseMessage?: string;
   TransactionMode?: any;
   data?: string | null;
-  responseData: boolean | string | null;
+  responseData?: boolean | string | null | any;
   signalR?: boolean | null;
 }
 

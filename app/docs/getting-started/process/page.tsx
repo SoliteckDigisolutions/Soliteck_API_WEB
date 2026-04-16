@@ -1,41 +1,11 @@
 "use client";
 
 import BaseUrls from "@/app/components/component/BaseUrl";
+import { processFlow } from "@/app/constants/GlobalConstants";
 
 export default function ProcessFlow() {
   // constants/processFlow.ts
-  const processFlow = [
-    {
-      step: "01",
-      title: "Get Endpoint",
-      desc: "Obtain the API endpoint from the documentation.",
-    },
-    {
-      step: "02",
-      title: "Authenticate",
-      desc: "Send API key or credentials in request headers.",
-    },
-    {
-      step: "03",
-      title: "Authorize",
-      desc: "Server validates the authentication credentials.",
-    },
-    {
-      step: "04",
-      title: "Generate Token",
-      desc: "A token is generated which is valid for 20 minutes.",
-    },
-    {
-      step: "05",
-      title: "Make Request",
-      desc: "Use the token to access protected APIs.",
-    },
-    {
-      step: "06",
-      title: "Receive Response",
-      desc: "Server processes request and returns JSON response.",
-    },
-  ];
+
   return (
     <div className="mt-20 m-2 overflow-x-auto">
       <table className="w-full border border-gray-200 rounded-xl overflow-hidden">
@@ -72,8 +42,8 @@ export default function ProcessFlow() {
           ))}
         </tbody>
       </table>
-      
-      <BaseUrls/>
+
+      <BaseUrls />
     </div>
   );
 }

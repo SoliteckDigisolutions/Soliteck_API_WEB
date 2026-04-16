@@ -17,13 +17,7 @@ export const dthApiD: MainInterface = {
       title: "DTH Recharges",
       request: "All headers required",
 
-      headers: {
-        ClientId: "Provided by SOLITECK",
-        ClientPass: "Provided by SOLITECK",
-        ClientTPin: "Provided by SOLITECK",
-        ClientSecret: "Provided by SOLITECK",
-        ClientToken: "From Generate Token API",
-      },
+
 
       post: {
         CustomerDetails: "1234567890",
@@ -34,7 +28,9 @@ export const dthApiD: MainInterface = {
       },
 
       response: {
-        success: {
+        success: [{
+          id: 1,
+          info: "",
           code: {
             responseCode: 200,
             responseMessage: "Success",
@@ -52,8 +48,9 @@ export const dthApiD: MainInterface = {
             },
           },
         },
-
-        pending: {
+        {
+          id: 2,
+          info: "",
           code: {
             responseCode: 201,
             responseMessage: "Pending",
@@ -72,7 +69,9 @@ export const dthApiD: MainInterface = {
           },
         },
 
-        failed: {
+        {
+          id: 3,
+          info: "",
           code: {
             responseCode: 204,
             responseMessage: "Failed",
@@ -91,48 +90,64 @@ export const dthApiD: MainInterface = {
           },
         },
 
-        tokenError: {
+        ],
+
+
+
+
+
+        error: [{
+          id: 1,
+          info: "",
           code: {
             responseCode: 401,
             responseMessage: "Token Expired / Invalid",
           },
         },
 
-        commonError: {
+        {
+          id: 2,
+          info: "",
           code: {
             responseCode: 400,
             responseMessage: "Error Message",
           },
         },
+        ],
       },
 
       table: {
-        title: "ResponseData Keys Explanation",
-        columns: ["KEY", "Description"],
-        rows: [
-          { key: "Amount", description: "Recharge Amount" },
-          { key: "VendorRefNumber", desc: "UTR / Reference ID" },
-          { key: "TransactionMode", desc: "Transaction Mode" },
-          { key: "ExecutionMode", desc: "Execution Mode" },
-          { key: "StatusId", desc: "1=Success, 0=Failed, 3=Pending" },
-          { key: "SPTransactionRef", desc: "Soliteck Transaction Ref" },
-          { key: "CustomerDetails", desc: "Mobile Number" },
-          { key: "TimeSeconds", desc: "Transaction Time" },
-          { key: "TransactionName", desc: "Transaction Name" },
-        ],
+        response: {
+          title: "ResponseData Keys Explanation",
+          tableData: [
+            { key: "Amount", description: "Recharge Amount" },
+            { key: "VendorRefNumber", desc: "UTR / Reference ID" },
+            { key: "TransactionMode", desc: "Transaction Mode" },
+            { key: "ExecutionMode", desc: "Execution Mode" },
+            { key: "StatusId", desc: "1=Success, 0=Failed, 3=Pending" },
+            { key: "SPTransactionRef", desc: "Soliteck Transaction Ref" },
+            { key: "CustomerDetails", desc: "Mobile Number" },
+            { key: "TimeSeconds", desc: "Transaction Time" },
+            { key: "TransactionName", desc: "Transaction Name" },
+          ],
+        },
+        operators: {
+          title: "DTH Operators",
+          tableData: [
+            { key: "ApiCode : 1279", description: "Airtel Digital TV" },
+            { key: "ApiCode : 1280", description: "Dish TV" },
+            { key: "ApiCode : 1281", description: "SunDirect" },
+            { key: "ApiCode : 1282", description: "Tata Sky" },
+            { key: "ApiCode : 1283", description: "BIG TV" },
+            { key: "ApiCode : 1284", description: "Videocon" },
+          ],
+        },
+
       },
 
-      operators: {
-        DTH: [
-          { key: "ApiCode : 1279", description: "Airtel Digital TV" },
-          { key: "ApiCode : 1280", description: "Dish TV" },
-          { key: "ApiCode : 1281", description: "SunDirect" },
-          { key: "ApiCode : 1282", description: "Tata Sky" },
-          { key: "ApiCode : 1283", description: "BIG TV" },
-          { key: "ApiCode : 1284", description: "Videocon" },
-        ],
-      },
+
     },
+
   ],
 };
 

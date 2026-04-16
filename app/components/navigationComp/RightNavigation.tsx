@@ -28,8 +28,8 @@ export default function RightNavigation({ endpoints, active }: Props) {
                   href={`#${id}`}
                   className={`text-sm transition-all ${
                     active === id
-                      ? "text-blue-600 border-t border-b bg-blue-50 p-1.5 pl-1 font-medium border-l-3  border-blue-600 -ml-[17px] pl-4"
-                      : "text-gray-600 border-t border-b bg-white p-1.5 pl-1 font-medium border-l-3  border-gray-10 -ml-[17px] pl-4"
+                      ? "text-blue-600 border-t border-b bg-blue-50 p-1.5  font-medium border-l-3  border-blue-600 -ml-[17px] pl-4"
+                      : "text-gray-600 border-t border-b bg-white p-1.5  font-medium border-l-3  border-gray-10 -ml-[17px] pl-4"
                   }`}
                 >
                   {endpoint.title}

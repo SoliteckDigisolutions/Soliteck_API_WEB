@@ -1,10 +1,6 @@
+import { stats } from "@/app/constants/GlobalConstants";
+
 export default function StatsBar() {
-  const stats = [
-    { value: "209K+", label: "Happy Clients", color: "text-blue-600" },
-    { value: "99.9%", label: "Uptime SLA", color: "text-emerald-600" },
-    { value: "100K+", label: "Daily Transactions", color: "text-violet-600" },
-    { value: "<200ms", label: "Avg. Response Time", color: "text-orange-500" },
-  ];
   return (
     <>
       {/* Stats bar */}

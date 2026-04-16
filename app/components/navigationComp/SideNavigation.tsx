@@ -3,93 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-
 import { FaChevronDown } from "react-icons/fa";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
-
 import { useServiceAccess } from "@/hooks/useServiceAccess";
+import { sidebarMenu } from "@/app/constants/GlobalConstants";
 
-export interface MenuItem {
-  name: string;
-  href?: any;
-  serviceID?: any;
-  children?: MenuItem[];
-}
-
-export interface SidebarSection {
-  title: string;
-  items: MenuItem[];
-}
-
-export const sidebarMenu: SidebarSection[] = [
-  {
-    title: "Getting Started",
-    items: [
-      { name: "Introduction", href: "/docs/getting-started/introduction" },
-      { name: "Error Codes", href: "/docs/getting-started/errorcodes" },
-      {
-        name: "Global API Process",
-        href: "#",
-        children: [
-          {
-            name: "Integration Process",
-            href: "/docs/getting-started/process",
-          },
-          {
-            name: "Authentication",
-            href: "/docs/getting-started/authentication",
-          },
-          // { name: "Generate Token", href: "/docs/getting-started/tokengen" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "API Reference",
-    items: [
-      {
-        name: "Payout API",
-        href: "/docs/api-reference/payoutapi",
-        serviceID: 47,
-      },
-      {
-        name: "Mobile Recharge API",
-        href: "/docs/api-reference/mobileapi",
-        serviceID: 43,
-      },
-      {
-        name: "DTH API",
-        href: "/docs/api-reference/dthRecharge",
-        serviceID: 45,
-      },
-      {
-        name: "BBPS-API Offline",
-        href: "/docs/api-reference/bbpsapi",
-        serviceID: 63,
-      },
-      {
-        name: "BBPS API Online",
-        href: "/docs/api-reference/bbpsapionline",
-        serviceID: 62,
-      },
-      {
-        name: "CC BP API",
-        href: "/docs/api-reference/ccbpapi",
-        serviceID: 59,
-      },
-      {
-        name: "PG API",
-        href: "/docs/api-reference/pgapi",
-        serviceID: 54,
-      },
-      { name: "AEPS", href: "/docs/api-reference/aepsapi", serviceID: "AEPS" },
-    ],
-  },
-  {
-    title: "Webhooks",
-    items: [{ name: "Webhook Events", href: "/docs/webhooks" }],
-  },
-];
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -120,7 +38,7 @@ export default function Sidebar() {
         .filter(Boolean),
     }))
     .filter((section) => section.items.length > 0);
-  console.log(filteredSections, "filltetredc data");
+  console.log(filteredSections, "filtered sections");
 
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [openItem, setOpenItem] = useState<string | null>(null);
@@ -176,8 +94,6 @@ export default function Sidebar() {
                   const active =
                     // pathname === item.href || pathname.startsWith(item.href);
                     pathname === item?.href;
-
-                  console.log(pathname, item, "pathname");
 
                   return (
                     <li key={item?.name}>

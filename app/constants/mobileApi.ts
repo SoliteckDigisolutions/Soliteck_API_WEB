@@ -172,21 +172,21 @@ export const MobileDocs: MainInterface = {
       },
 
       table: {
-  responseKeysTable: {
-    id: 4,
-    tableData: [
-      { key: "Amount", description: "Amount" },
-      { key: "VendorRefNumber", description: "UTR / Other Reference ID" },
-      { key: "TransactionMode", description: "Transaction Mode" },
-      { key: "ExecutionMode", description: "Execution Mode" },
-      { key: "StatusId", description: "1 = Success, 0 = Failed, 3 = Pending" },
-      { key: "SPTransactionRef", description: "Soliteck Transaction Reference" },
-      { key: "CustomerDetails", description: "Mobile Number" },
-      { key: "TimeSeconds", description: "Time of Transaction" },
-      { key: "TransactionName", description: "Transaction Name" },
-    ],
-  },
-},
+        responseKeysTable: {
+          id: 4,
+          tableData: [
+            { key: "Amount", description: "Amount" },
+            { key: "VendorRefNumber", description: "UTR / Other Reference ID" },
+            { key: "TransactionMode", description: "Transaction Mode" },
+            { key: "ExecutionMode", description: "Execution Mode" },
+            { key: "StatusId", description: "1 = Success, 0 = Failed, 3 = Pending" },
+            { key: "SPTransactionRef", description: "Soliteck Transaction Reference" },
+            { key: "CustomerDetails", description: "Mobile Number" },
+            { key: "TimeSeconds", description: "Time of Transaction" },
+            { key: "TransactionName", description: "Transaction Name" },
+          ],
+        },
+      },
       note: "Data in responseData field should be parsed, and below mentioned are all the keys with their following explanation..",
     },
   ],

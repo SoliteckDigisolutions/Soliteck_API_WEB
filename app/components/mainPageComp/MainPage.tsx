@@ -3,18 +3,15 @@ import { useEffect, useState } from "react";
 import RightNavigation from "@/app/components/navigationComp/RightNavigation";
 import ApiEndpoint from "@/app/components/mainPageComp/ApiEndpoint";
 import HeadersAuth from "@/app/components/component/HeadersAuth";
-import { IoCopyOutline } from "react-icons/io5";
-import { IoIosLink } from "react-icons/io";
 import { MainInterface } from "../../types/MainPage";
 import IntroInfo from "./IntroInfo";
 import BaseUrls from "../component/BaseUrl";
 
 interface Props {
   data: MainInterface;
-  
 }
 
-export default function MainPage({ data}: Props) {
+export default function MainPage({ data }: Props) {
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
@@ -52,11 +49,7 @@ export default function MainPage({ data}: Props) {
         <HeadersAuth />
 
         {data?.Endpoints?.map((endpoint, index) => (
-          <ApiEndpoint
-            key={index}
-            endpoint={endpoint}
-            index={index}
-          />
+          <ApiEndpoint key={index} endpoint={endpoint} index={index} />
         ))}
       </main>
 

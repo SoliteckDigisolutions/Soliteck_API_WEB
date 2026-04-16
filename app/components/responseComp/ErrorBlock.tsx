@@ -1,12 +1,9 @@
 import { ResponseDataInterface } from "@/app/types/MainPage";
 import CopyButton from "@/app/components/component/CopyButton";
 
-
-
 interface Props {
   data: ResponseDataInterface;
 }
-
 
 export default function ErrorBlock({ data }: Props) {
   if (!data) return null;

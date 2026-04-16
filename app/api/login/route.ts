@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
   try {
     const response = await axios.post(
-      "https://10gfvg52-5185.inc1.devtunnels.ms/UAT/APIUserLogin",
+      "https://jc4d2k06-5185.inc1.devtunnels.ms/UAT/APIUserLogin",
       body,
       {
         headers: {
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
         path: "/",
         maxAge: 60 * 60 * 24 * 7, // 1 week
       });
+
     }
 
     return NextResponse.json(response.data);

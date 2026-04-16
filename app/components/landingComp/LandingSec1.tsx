@@ -1,18 +1,8 @@
 import Image from "next/image";
 import homeImg from "@/public/assets/home.png";
+import { categories } from "@/app/constants/GlobalConstants";
 
 export default function LandingSec1() {
-  const categories = [
-    "Payout API",
-    "Mobile API",
-    "DTH API",
-    "Payment Gateway API",
-    "FASTag API",
-    "BBPS API",
-    "CC Bill Payment API",
-    "AEPS API",
-  ];
-
   return (
     <section className="relative -mt-24 px-4 pb-20 md:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 rounded-3xl border border-blue-100 bg-white/95 p-4 shadow-2xl backdrop-blur lg:flex-row">

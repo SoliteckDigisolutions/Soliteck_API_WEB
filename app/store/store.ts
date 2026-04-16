@@ -15,10 +15,18 @@ import {
   REGISTER,
 } from "redux-persist";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   auth: authReducer,
   responseData: respSlice,
 });
+
+const rootReducer = (state: any, action: any) => {
+  if (action.type === "RESET_APP") {
+    state = undefined; // clears all redux state
+  }
+
+  return appReducer(state, action);
+};
 
 const persistConfig = {
   key: "root",

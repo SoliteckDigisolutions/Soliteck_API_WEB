@@ -1,19 +1,17 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import logo from "@/public/assets/Logo.svg"
-import login from "@/public/login.png"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import logo from "@/public/assets/Logo.svg";
+import login from "@/public/login.png";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import Image from "next/image"
-
-
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 export function LoginForm({
   className,
@@ -26,8 +24,8 @@ export function LoginForm({
           <form className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <Image className="w-30 font-bold" src ={logo} />
-               
+                <Image alt="logo" className="w-30 font-bold" src={logo} />
+
                 <p className="text-balance text-muted-foreground">
                   Login & Make Digital Transformation Made Easy
                 </p>
@@ -59,14 +57,14 @@ export function LoginForm({
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                 Or continue with
               </FieldSeparator>
-             
-              
             </FieldGroup>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <Image className="absolute inset-0 h-100 w-180 object-fit dark:brightness-[0.2] dark:grayscale" src={login}  />
-
-            
+            <Image
+              alt="login"
+              className="absolute inset-0 h-100 w-180 object-fit dark:brightness-[0.2] dark:grayscale"
+              src={login}
+            />
           </div>
         </CardContent>
       </Card>
@@ -75,5 +73,5 @@ export function LoginForm({
         and <a href="#">Privacy Policy</a>.
       </FieldDescription> */}
     </div>
-  )
+  );
 }

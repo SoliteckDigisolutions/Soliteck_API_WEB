@@ -19,30 +19,31 @@ export const payoutDocs: MainInterface = {
         "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
 
       response: {
-        success: 
-          [ {
-            id : 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Token Generated Success",
-            data: "“Generated TOKEN e.g edgfuedieodjieojfweifiuejeijfief",
-            responseData: null,
-            signalR: null,
-          }}],
+        success:
+          [{
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Token Generated Success",
+              data: "“Generated TOKEN e.g edgfuedieodjieojfweifiuejeijfief",
+              responseData: null,
+              signalR: null,
+            }
+          }],
 
         error: [
           {
-          id: 1,  
-          info: "",
-          code: {
-            responseCode: 400,
-            responseMessage: "Client_Id is not present",
-            data: null,
-            responseData: null,
-            signalR: null,
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 400,
+              responseMessage: "Client_Id is not present",
+              data: null,
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
         ]
       },
       note: " The Token is valid for 20 mins after creation. To check Token validity always hit refresh token API.",
@@ -58,29 +59,29 @@ export const payoutDocs: MainInterface = {
         success: [
           {
             id: 1,
-          info: "Add the othe info  if needed",
-          code: {
-            responseCode: 200,
-            responseMessage: "Token Is Valid",
-            data: "Token",
-            responseData: null,
-            signalR: null,
-          },
-        }
+            info: "Add the othe info  if needed",
+            code: {
+              responseCode: 200,
+              responseMessage: "Token Is Valid",
+              data: "Token",
+              responseData: null,
+              signalR: null,
+            },
+          }
         ],
 
         error: [
           {
             id: 1,
-          info: "",
-          code: {
-            responseCode: 400,
-            responseMessage: "Token Expired, Re-Generate Token",
-            data: null,
-            responseData: null,
-            signalR: null,
+            info: "",
+            code: {
+              responseCode: 400,
+              responseMessage: "Token Expired, Re-Generate Token",
+              data: null,
+              responseData: null,
+              signalR: null,
+            }
           }
-        }
         ]
       },
       note: "NA",
@@ -95,52 +96,52 @@ export const payoutDocs: MainInterface = {
 
       response: {
         success: [
-           {
+          {
             id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Bank Details Fetched Success",
-            data: "TOKEN",
-            responseData: `[{\"id\":\"1\",\"AccountVerificationAllowed\":\"yes\",\"BankCode\":\"BCBL\"
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Bank Details Fetched Success",
+              data: "TOKEN",
+              responseData: `[{\"id\":\"1\",\"AccountVerificationAllowed\":\"yes\",\"BankCode\":\"BCBL\"
 ,\"BankName\":\"Bijnor Urban Co-Op 
 Bank\",\"ImpsAllowed\":\"yes\",\"NeftAllowed\":\"yes\",\"IsActive\":\"1\",\" 
 IsDeleted\":\"0\"},{\"id\":\"2\",\"AccountVerificationAllowed\":\"yes\",\"Ba 
 nkCode\":\"MODE\",\"BankName\":\"Model Co Op Bank 
 Ltd\",\"ImpsAllowed\":\"yes\",\"NeftAllowed\":\"yes\",\"IsActive\":\"1\",\"I 
 sDeleted\":\"0\"}]`,
-            signalR: null,
-          },
-        }
+              signalR: null,
+            },
+          }
         ],
 
         error: [
           {
-          id: 1,
-          info: "",
-          code: {
-            responseCode: 401,
-            // text : "For Token Expiry or Invalid Token",
-            responseMessage: "Token Expired / Invalid, Please login again.",
-            data: null,
-            responseData: null,
-            signalR: null,
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 401,
+              // text : "For Token Expiry or Invalid Token",
+              responseMessage: "Token Expired / Invalid, Please login again.",
+              data: null,
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
-        {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 400,
-            // text : "In case of any error other than token expiry",
-            responseMessage: "Error Message.",
-            data: null,
-            responseData: null,
-            signalR: null,
+          {
+            id: 2,
+            info: "",
+            code: {
+              responseCode: 400,
+              // text : "In case of any error other than token expiry",
+              responseMessage: "Error Message.",
+              data: null,
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
         ]
-    
+
       },
       note: "You need to parse the responseData at your end.",
     },
@@ -155,43 +156,43 @@ sDeleted\":\"0\"}]`,
         success: [
           {
             id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Ifsc Fetched Success",
-            data: "TOKEN",
-            responseData: "HDFC0CBUCBL",
-            signalR: null,
-          },
-        }
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Ifsc Fetched Success",
+              data: "TOKEN",
+              responseData: "HDFC0CBUCBL",
+              signalR: null,
+            },
+          }
         ],
 
         error: [
           {
             id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Ifsc Fetched Success",
-            data: "TOKEN",
-            responseData: "HDFC0CBUCBL",
-            signalR: null,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Ifsc Fetched Success",
+              data: "TOKEN",
+              responseData: "HDFC0CBUCBL",
+              signalR: null,
+            },
           },
-        },
-         {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 400,
-            // text : " In case of any error",
-            responseMessage: "Error Message",
-            data: null,
-            responseData: null,
-            signalR: null,
-          },
-        }
+          {
+            id: 2,
+            info: "",
+            code: {
+              responseCode: 400,
+              // text : " In case of any error",
+              responseMessage: "Error Message",
+              data: null,
+              responseData: null,
+              signalR: null,
+            },
+          }
         ]
-        
+
       },
     },
 
@@ -206,13 +207,13 @@ sDeleted\":\"0\"}]`,
       response: {
         success: [
           {
-          id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Login Success",
-            data: "TOKEN",
-            responseData: `"{\"RemitterName\":\"Amit\",\"RemitterMobile\":\"9999999999\",\"AvailableLim 
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Login Success",
+              data: "TOKEN",
+              responseData: `"{\"RemitterName\":\"Amit\",\"RemitterMobile\":\"9999999999\",\"AvailableLim 
 it\":\"25000\",\"MonthlyLimit\":\"25000\",\"BeneficiaryList\":[{\"BeneId\":\
 "11111\",\"BeneName\":\"Alice 
 Smith\",\"BeneAccount\":\"1234567890\",\"BeneIFSC\":\"IFSC0001\",\"BeneBank\
@@ -240,59 +241,59 @@ Brown\",\"BeneAccount\":\"1029384756\",\"BeneIFSC\":\"IFSC0003\",\"BeneBank\
 XYZ\",\"IsValidate\":\"true\",\"IsActive\":\"false\",\"BeneBankCode\":\"BBC0 
 03\",\"BeneVendorStatus\":\"false\",\"Pincode\":\"110003\",\"IMPS\":\"1\",\"
 NEFT\":\"0\"}]}"`,
-            signalR: null,
+              signalR: null,
+            },
           },
-        },
-         {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 201,
-            responseMessage: "Otp send to Registered Mobile",
-            data: "TOKEN",
-            responseData: `"{\"VendorId\":\"6\",\"DBStatus\":1}"`,
-            signalR: null,
+          {
+            id: 2,
+            info: "",
+            code: {
+              responseCode: 201,
+              responseMessage: "Otp send to Registered Mobile",
+              data: "TOKEN",
+              responseData: `"{\"VendorId\":\"6\",\"DBStatus\":1}"`,
+              signalR: null,
+            },
           },
-        },
-        {
-          id: 3,
-          info: "",
-          code: {
-            responseCode: 201,
-            responseMessage: "Otp send to Registered Mobile",
-            data: "TOKEN",
-            responseData: `"{\"VendorId\":\"6\",\"DBStatus\":0}"`,
-            signalR: null,
+          {
+            id: 3,
+            info: "",
+            code: {
+              responseCode: 201,
+              responseMessage: "Otp send to Registered Mobile",
+              data: "TOKEN",
+              responseData: `"{\"VendorId\":\"6\",\"DBStatus\":0}"`,
+              signalR: null,
+            },
           },
-        },
         ],
-        
+
 
         error: [
           {
-          id: 1,
-          info: "",
-          code: {
-            responseCode: 401,
-            responseMessage: "Token Expired / Invalid",
-            data: null,
-            responseData: null,
-            signalR: null,
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 401,
+              responseMessage: "Token Expired / Invalid",
+              data: null,
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
-        {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 400,
-            responseMessage: "Error Message",
-            data: null,
-            responseData: null,
-            signalR: null,
+          {
+            id: 2,
+            info: "",
+            code: {
+              responseCode: 400,
+              responseMessage: "Error Message",
+              data: null,
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
         ]
-      
+
       },
       note: ` You need to parse the responseData at your end.
               RESPONSE PARAMETERS IN responseData
@@ -417,15 +418,15 @@ new remitter
         success: [
           {
             id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "OTP Verified Successfully, Remitter Registered",
-            data: "TOKEN",
-            responseData: null,
-            signalR: null,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "OTP Verified Successfully, Remitter Registered",
+              data: "TOKEN",
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
         ],
 
         error: [{
@@ -439,7 +440,7 @@ new remitter
             signalR: null,
           },
         },
-         {
+        {
           id: 2,
           info: "",
           code: {
@@ -450,8 +451,8 @@ new remitter
             signalR: null,
           },
         },
-      ]
-        
+        ]
+
       },
     },
 
@@ -472,18 +473,18 @@ new remitter
         success: [
           {
             id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Beneficiary Added Successfully",
-            data: "TOKEN",
-            responseData: null,
-            signalR: null,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Beneficiary Added Successfully",
+              data: "TOKEN",
+              responseData: null,
+              signalR: null,
+            },
           },
-        },
         ],
 
-        error:[ {
+        error: [{
           id: 1,
           info: "",
           code: {
@@ -494,8 +495,8 @@ new remitter
             signalR: null,
           },
         },
-      {
-        id: 2,
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 401,
@@ -505,7 +506,7 @@ new remitter
             signalR: null,
           },
         },]
-       
+
       },
       note: `Beneficiary list and AllBeneficiaryList are separate 
 bene’s received in logi response to access bene’s from all 
@@ -579,7 +580,7 @@ API.`,
         ClientOrderId: "8768267686723647",
       },
       response: {
-        success:[ {
+        success: [{
           id: 1,
           info: "",
           code: {
@@ -653,8 +654,8 @@ Transfer Pending\"}]}]`,
             signalR: null,
           },
         },
-       {
-        id: 2,
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 204,
@@ -706,8 +707,8 @@ completed successfully\"}]}]`,
             signalR: null,
           },
         },
-       {
-        id: 2,
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 401,
@@ -717,7 +718,7 @@ completed successfully\"}]}]`,
             signalR: null,
           },
         },
-      ]
+        ]
       },
 
       table: {
@@ -785,7 +786,7 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
           },
         },],
 
-      error: [ {
+        error: [{
           id: 1,
           info: "",
           code: {
@@ -796,8 +797,8 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
             signalR: null,
           },
         },
-       {
-        id: 2,
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 400,
@@ -853,7 +854,7 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
       // post: "-",
       // request: "-",
       response: {
-        success:[ {
+        success: [{
           id: 1,
           info: "",
           code: {
@@ -865,8 +866,8 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
           },
         },
 
-      {
-        id: 2,
+        {
+          id: 2,
           info: "",
           code: {
             responseCode: 204,

@@ -1,12 +1,11 @@
 import { RiGitPullRequestFill } from "react-icons/ri";
 import CopyButton from "@/app/components/component/CopyButton";
 
-
 interface Props {
   request: any;
-  title : string
+  title: string;
 }
- 
+
 export default function RequestBlock({ request, title }: Props) {
   const text = JSON.stringify(request, null, 2);
 

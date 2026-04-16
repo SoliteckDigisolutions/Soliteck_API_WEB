@@ -1,18 +1,12 @@
 "use client";
 
 import { IoIosLink } from "react-icons/io";
-import { IoCopyOutline } from "react-icons/io5";
+import CopyButton from "./CopyButton";
 
-
-// interface 
-
+// interface
 
 export default function BaseUrls({ urls }: any) {
-  if (!urls) return null
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    alert(`From Solitech Copied to clipboard : ${text}`);
-  };
+  if (!urls) return null;
 
   return (
     <div className="bg-white flex flex-col gap-3 p-1 rounded-lg shadow">
@@ -27,12 +21,10 @@ export default function BaseUrls({ urls }: any) {
           {urls.link}
         </p>
 
-        <button
-          onClick={() => copyToClipboard(urls.link)}
-          className="ml-3 text-gray-300 hover:text-white cursor-pointer"
-        >
-          <IoCopyOutline />
-        </button>
+        <CopyButton 
+          text={urls.link} 
+          className="ml-3 text-gray-300 hover:text-white hover:bg-mist-800 rounded p-1.5" 
+        />
       </div>
 
       {/* Authentication URL */}
@@ -42,12 +34,10 @@ export default function BaseUrls({ urls }: any) {
           {urls.auth}
         </p>
 
-        <button
-          onClick={() => copyToClipboard(urls.auth)}
-          className="ml-3 text-gray-300 hover:text-white cursor-pointer"
-        >
-          <IoCopyOutline />
-        </button>
+        <CopyButton 
+          text={urls.auth} 
+          className="ml-3 text-gray-300 hover:text-white hover:bg-mist-800 rounded p-1.5" 
+        />
       </div>
     </div>
   );
