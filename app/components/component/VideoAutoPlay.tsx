@@ -13,13 +13,13 @@ export default function SlowVideo() {
   return (
     <video
       ref={videoRef}
-      className="w-full h-50 rounded-sm object-cover"
+      className="w-full border-6 border-white   h-50 rounded-sm object-cover"
       autoPlay
       loop
       muted
       playsInline
     >
-      <source src="/assets/304598.mp4" type="video/mp4" />
+      <source className="rounded-xl" src="/assets/304598.mp4" type="video/mp4" />
     </video>
   );
 }

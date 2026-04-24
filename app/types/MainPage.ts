@@ -146,6 +146,8 @@ export interface ResponseDataInterface {
 interface EndpointInterface extends CommonSection {
   // Page data interface
   id?: number;
+  extraInfo?: any;
+  intro?: string;
   topText?: string;
   post?: string | Record<string, unknown>; //only accepts object, string
   request?: string | object;

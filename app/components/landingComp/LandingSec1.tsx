@@ -4,7 +4,7 @@ import { categories } from "@/app/constants/GlobalConstants";
 
 export default function LandingSec1() {
   return (
-    <section className="relative -mt-24 px-4 pb-20 md:px-10">
+    <section className="relative -mt-26 px-4 pb-20 md:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 rounded-3xl border border-blue-100 bg-white/95 p-4 shadow-2xl backdrop-blur lg:flex-row">
         {/* Sidebar */}
         <aside className="w-full rounded-2xl bg-[#2a2a72] p-6 text-white lg:w-[32%]">

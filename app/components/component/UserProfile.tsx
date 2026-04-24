@@ -1,5 +1,5 @@
 "use client";
-
+import profileGif from "@/public/assets/download (4).gif";
 import { User, LogOut } from "lucide-react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -45,14 +45,10 @@ export default function UserDropdown() {
       {/* Avatar */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 rounded-full cursor-pointer overflow-hidden border hover:ring-2 hover:ring-blue-500 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-11 h-11 flex items-center justify-center rounded-full cursor-pointer overflow-hidden border hover:ring-2 hover:ring-gray-400 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-expanded={isOpen}
       >
-        <img
-          src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-5.png"
-          alt="user avatar"
-          className="w-full h-full object-cover"
-        />
+        <img src={profileGif.src} alt="User Avatar" className="w-full h-full object-cover" />
       </button>
 
       {/* Dropdown */}

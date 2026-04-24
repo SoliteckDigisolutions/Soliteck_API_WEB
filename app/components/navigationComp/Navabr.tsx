@@ -55,7 +55,7 @@ export default function Header() {
           onClick={() => router.push("/")}
           className="flex items-center gap-2.5 cursor-pointer select-none"
         >
-          <Image src={logo} alt="Soliteck logo" className="w-24" />
+          <Image src={logo} alt="Soliteck logo" className="w-26" />
 
           <span className="text-[10px] font-mono text-gray-500 bg-gray-100 border border-gray-200 px-1.5 py-[1px] rounded">
             API
@@ -63,7 +63,7 @@ export default function Header() {
         </div>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden md:flex items-center align-middle gap-1">
           <Link
             href="/docs/getting-started/introduction"
             className="text-[13px] font-medium text-gray-700 px-3 py-1 rounded-md hover:bg-gray-100 hover:text-gray-900 transition"

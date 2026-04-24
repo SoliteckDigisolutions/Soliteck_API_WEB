@@ -7,6 +7,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { HiArrowTurnDownRight } from "react-icons/hi2";
 import { useServiceAccess } from "@/hooks/useServiceAccess";
 import { sidebarMenu } from "@/app/constants/GlobalConstants";
+import ContactCard from "../component/ContactCard";
 
 
 export default function Sidebar() {
@@ -171,6 +172,8 @@ export default function Sidebar() {
           </div>
         );
       })}
+      <ContactCard />
+      
     </aside>
   );
 }

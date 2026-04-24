@@ -27,11 +27,6 @@ export function middleware(request: NextRequest) {
 
   // 3. Handle authenticated users
   if (sessionValue) {
-    // Prevent access to login page if already logged in
-    if (isLoginRoute) {
-      return NextResponse.redirect(new URL("/docs/getting-started/introduction", request.url));
-    }
-
     // Check for service-based access on specific routes
     if (isDocsRoute) {
       try {

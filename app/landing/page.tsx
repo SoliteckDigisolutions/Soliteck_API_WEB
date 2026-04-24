@@ -72,7 +72,7 @@ export default function LandingPage() {
     <>
       <Navbar />
 
-      <main className="font-sans">
+      <main className="font-sans mt-4">
         {/* ═══════════════════════════ HERO ═══════════════════════════ */}
         <section className="relative min-h-screen flex flex-col items-center justify-center px-4 text-center overflow-hidden">
           {/* Gradient background */}
@@ -211,7 +211,7 @@ before:bg-[length:60px_100%]"
               required.
             </p>
             <Link
-              href="/docs/getting-started/introduction"
+              href="/login"
               className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-white text-blue-700 font-semibold text-sm hover:bg-blue-50 transition-all shadow-sm"
             >
               Start Reading →

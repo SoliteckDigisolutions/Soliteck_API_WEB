@@ -39,9 +39,9 @@ export default function MainPage({ data }: Props) {
   }, []);
 
   return (
-    <div className="flex w-full flex-col xl:flex-row mt-16">
+    <div className="flex w-full flex-col xl:flex-row mt-18">
       {/* LEFT CONTENT */}
-      <main className="w-full xl:w-[76%] p-4 space-y-12">
+      <main className="w-full xl:w-[76%]  space-y-12">
         <IntroInfo />
 
         <BaseUrls urls={data?.BaseUrls} />

@@ -14,6 +14,7 @@ export const dthApiD: MainInterface = {
     {
       id: 4,
       topText: "/DTHRecharge",
+      intro: "For Success : ApiCode - 1280 with recharge amounts ₹200. For Pending : ApiCode - 1282 with any recharge amount",
       title: "DTH Recharges",
       request: "All headers required",
 
@@ -24,7 +25,7 @@ export const dthApiD: MainInterface = {
         Amount: "10",
         ClientOrderId: "MERCHANT ORDER ID (should be unique)",
         ExcecutionMode: "1 for Web And 2 for Android",
-        key: "Use operator key",
+        ApiCode: "Use operator key",
       },
 
       response: {

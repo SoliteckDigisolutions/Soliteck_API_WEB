@@ -36,7 +36,7 @@ export const IntroInfo: GlobalIntroInfo = {
               "Create a secure access token required to call payout APIs",
           },
           {
-            title: "GenerateToken",
+            title: "Verify  Token",
             content:
               "Validate the generated token before performing operations.",
           },
@@ -244,19 +244,19 @@ export const IntroInfo: GlobalIntroInfo = {
           "For testing purposes, specific operator codes and recharge amounts can be used to simulate different transaction responses.",
         data: [
           {
-            title: "Success Response",
+            title: "Success Response (200)",
             content:
-              "Use the Jio Operator ApiCode with recharge amounts like 19, 29, or 119 to simulate a successful recharge.",
+              "Use the Jio Operator ApiCode - 1272 with recharge amounts like 19, 29, or 119 to simulate a successful recharge.",
           },
           {
-            title: "Pending Response",
+            title: "Pending Response (201)",
             content:
-              "Use the Airtel Operator ApiCode with any recharge amount to simulate a pending transaction.",
+              "Use the Airtel Operator ApiCode - 1273 with any recharge amount to simulate a pending transaction.",
           },
           {
-            title: "Failed Response",
+            title: "Failed Response (204)",
             content:
-              "Use any remaining Operator ApiCode with any recharge amount to simulate a failed transaction.",
+              "Use any remaining Operator ApiCode - 1274 with any recharge amount to simulate a failed transaction.",
           },
         ],
       },

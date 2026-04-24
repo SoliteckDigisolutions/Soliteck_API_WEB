@@ -101,31 +101,31 @@ export const sidebarMenu: SidebarSection[] = [
                 serviceID: 43,
             },
             {
-                name: "DTH API",
+                name: "DTH Recharge API",
                 href: "/docs/api-reference/dthRecharge",
                 serviceID: 45,
             },
             {
-                name: "BBPS-API Offline",
+                name: "BBPS Offline API",
                 href: "/docs/api-reference/bbpsapi",
                 serviceID: 63,
             },
             {
-                name: "BBPS API Online",
+                name: "BBPS Online API",
                 href: "/docs/api-reference/bbpsapionline",
                 serviceID: 44,
             },
             {
-                name: "CC BP API",
+                name: "Credit Card Bill Payment API",
                 href: "/docs/api-reference/ccbpapi",
                 serviceID: 59,
             },
             {
-                name: "PG API",
+                name: "Payment Gateway API",
                 href: "/docs/api-reference/pgapi",
                 serviceID: 54,
             },
-            { name: "AEPS", href: "/docs/api-reference/aepsapi", serviceID: "AEPS" },
+            { name: "AEPS API", href: "/docs/api-reference/aepsapi", serviceID: "AEPS" },
         ],
     },
     {

@@ -198,6 +198,10 @@ sDeleted\":\"0\"}]`,
 
     {
       title: "Remitter Login",
+      intro : `RemitterMobile Values (for testing):
+9999999999 → Verified remitter
+8888888888 → Unverified but existing remitter
+7777777777 → Unverified and new remitter`,
       post: {
         RemitterMobile: "9999999999",
         Token: "ClientToken",
@@ -213,7 +217,7 @@ sDeleted\":\"0\"}]`,
               responseCode: 200,
               responseMessage: "Login Success",
               data: "TOKEN",
-              responseData: `"{\"RemitterName\":\"Amit\",\"RemitterMobile\":\"9999999999\",\"AvailableLim 
+              responseData: `{\"RemitterName\":\"Amit\",\"RemitterMobile\":\"9999999999\",\"AvailableLim 
 it\":\"25000\",\"MonthlyLimit\":\"25000\",\"BeneficiaryList\":[{\"BeneId\":\
 "11111\",\"BeneName\":\"Alice 
 Smith\",\"BeneAccount\":\"1234567890\",\"BeneIFSC\":\"IFSC0001\",\"BeneBank\
@@ -240,7 +244,7 @@ Brown\",\"BeneAccount\":\"1029384756\",\"BeneIFSC\":\"IFSC0003\",\"BeneBank\
 ":\"Bank of 
 XYZ\",\"IsValidate\":\"true\",\"IsActive\":\"false\",\"BeneBankCode\":\"BBC0 
 03\",\"BeneVendorStatus\":\"false\",\"Pincode\":\"110003\",\"IMPS\":\"1\",\"
-NEFT\":\"0\"}]}"`,
+NEFT\":\"0\"}]}`,
               signalR: null,
             },
           },
@@ -295,13 +299,7 @@ NEFT\":\"0\"}]}"`,
         ]
 
       },
-      note: ` You need to parse the responseData at your end.
-              RESPONSE PARAMETERS IN responseData
-USE: 9999999999 For Verified Remitter 8888888888 For 
-Unverified but existing data and 7777777777 for Unverified and 
-new remitter
-
-      `,
+      note: ` You need to parse the responseData at your end.`,
 
       table: {
         remitter: {
@@ -478,7 +476,7 @@ new remitter
               responseCode: 200,
               responseMessage: "Beneficiary Added Successfully",
               data: "TOKEN",
-              responseData: null,
+              responseData: 11117,
               signalR: null,
             },
           },
@@ -509,7 +507,7 @@ new remitter
 
       },
       note: `Beneficiary list and AllBeneficiaryList are separate 
-bene’s received in logi response to access bene’s from all 
+bene’s received in login response to access bene’s from all 
 list they need to be added in Beneficiary list with Add bene 
 API.`,
     },
@@ -587,9 +585,7 @@ API.`,
             responseCode: 200,
             responseMessage: "Beneficiary Verified Successfully",
             data: "TOKEN",
-            responseData: `"{\"beneName\":\"Johnson\",\"beneId\":\"11119\",\"refId\":\"5761253761237969 
-89\"}"
-`,
+           responseData: `"{\"beneName\":\"Johnson\",\"beneId\":\"11119\",\"refId\":\"576125376123796989\"}"`,
             signalR: null,
           },
         },],
@@ -622,6 +618,7 @@ API.`,
 
     {
       title: "Payout Transfer",
+      intro: "200 for Success, 201 for Pending and 204 for Failed Transaction",
 
       topText: "/Transfer",
       post: {
@@ -707,18 +704,18 @@ completed successfully\"}]}]`,
             signalR: null,
           },
         },
-        {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 401,
-            responseMessage: "Token Expired / Invalid, Please login again.",
-            data: null,
-            responseData: null,
-            signalR: null,
-          },
-        },
-        ]
+        // {
+        //   id: 2,
+        //   info: "",
+        //   code: {
+        //     responseCode: 401,
+        //     responseMessage: "Token Expired / Invalid, Please login again.",
+        //     data: null,
+        //     responseData: null,
+        //     signalR: null,
+        //   },
+        // },
+        ] 
       },
 
       table: {
@@ -762,7 +759,9 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
           ],
         },
       },
+       note:"BeneID -> from the Remitterlogin Respose BeneficiaryList or AddBeneficiaryList Response, ClientOrderId -> Should be Unique transaction number",
     },
+   
 
     {
       title: "Check Transaction Status",

@@ -98,7 +98,21 @@ export const BbpsApiD: MainInterface = {
 
     {
       id: 3,
-      title: "Get Service for BBPS Offline",
+      title: "Get Service/Operator",
+      extraInfo: {
+        flag1: {
+          name: "Flag 1: Services",
+          desc: "Use this request to get the list of services available in BBPS Offline API.",
+          code: "{\"Flag\":1, serviceName: \"\"}",
+
+        },
+        flag2: {
+          name: "Flag 2: Operators",
+          desc: "Use this request to get the list of operators available in BBPS Offline API.",
+          code: "{\"Flag\":2, serviceName: \"Electricity\"}",
+        },
+        note:"In request body, use Flag 1 to get list of services and use Flag 2 along with service name to get list of operators for that service.",
+      },
       topText: "{BBPS Base URL} /GetOfflineServices",
       post: {
         Flag: 2,
@@ -114,7 +128,7 @@ export const BbpsApiD: MainInterface = {
         success: [
           {
             id: 0,
-            info: "",
+            info: "Flag 1: Services - responseData will contain list of services.",
             code: {
               responseCode: 200,
               responseMessage: "Request Success",
@@ -126,7 +140,7 @@ export const BbpsApiD: MainInterface = {
           {
 
             id: 1,
-            info: "",
+            info: "Flag 2: Operators - responseData will contain list of operators for the requested service.",
             code: {
               responseCode: 200,
               responseMessage: "Request Success",
@@ -170,8 +184,8 @@ export const BbpsApiD: MainInterface = {
       title: "Get BBPS Bill Validations",
       topText: " {BBPS Base URL}/OFBillValidation ",
       post: {
-        MobileNumber: "9373935250",
-        providerCode: 70,
+        MobileNumber: "87X57X48X7",
+        providerCode: "70",
       },
 
       request: "All headers reqiured",
@@ -210,18 +224,7 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
-        {
-          id: 3,
-          info: "",
-          code: {
-            //400
-            responseCode: 400,
-            responseMessage: "Error Message.",
-            data: null,
-            responseData: null,
-            signalR: null,
-          },
-        },
+        
 
         ]
       },
@@ -234,10 +237,10 @@ export const BbpsApiD: MainInterface = {
       request: "All headers required",
 
       post: {
-        ProviderCode: 70,
+        ProviderCode: "70",
         CustomerNumber: "1111111111",
         params: {
-          optional1: "187000001964",
+          optional1: "187X4X6X1964",
         },
       },
 
@@ -247,7 +250,7 @@ export const BbpsApiD: MainInterface = {
           info: "",
           code: {
             responseCode: 200,
-            responseMessage: "Biller Verification Success",
+            responseMessage: "Biller Validation Success",
             data: "",
             responseData:
               '{"status":"success","provider_name":"MSEDC MAHARASHTRA","number":"123456789123","amount":"160.00","name":"username","duedate":"2026-04-06","provider_id":"70","optional1":"123456789123","optional2":null,"optional3":null,"optional4":""}',
@@ -258,7 +261,7 @@ export const BbpsApiD: MainInterface = {
           info: "",
           code: {
             responseCode: 400,
-            responseMessage: "Biller Validation Failed",
+            responseMessage: "Biller Verification Failed",
             data: "Token",
             responseData:
               '{"status":"failure","provider_name":null,"number":null,"amount":null,"name":null,"duedate":null,"provider_id":null,"optional1":null,"optional2":null,"optional3":null,"optional4":null}',
@@ -278,7 +281,7 @@ export const BbpsApiD: MainInterface = {
         Mode: "Wallet",
         ClientOrderId: "HNUZ3YA86SJFWK1ZITYF2B57479", // should be unique transaction "CustomerMobile": "1111111111",
         Params: {
-          optional1: "187000001964",
+          optional1: "1873X4X31964",
         },
       },
 
@@ -291,7 +294,7 @@ export const BbpsApiD: MainInterface = {
             responseMessage: "Bill Payment Pending",
             data: "",
             responseData:
-              '{"MobileNumber":"9082090971","Amount":"250","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456"',
+              '{"MobileNumber":"9467XXXX71","Amount":"250","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456"',
             TransactionMode:
               '"Wallet","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|1111111111|-|187000001964|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
@@ -301,10 +304,10 @@ export const BbpsApiD: MainInterface = {
           info: "",
           code: {
             responseCode: 204,
-            responseMessage: "Biller Validation Failed",
+            responseMessage: "Biller Verification Failed",
             data: "",
             responseData:
-              '{"MobileNumber":"9082090971","Amount":"299","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+              '{"MobileNumber":"90XX89XX98","Amount":"299","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
         }, {
           id: 3,
@@ -314,7 +317,7 @@ export const BbpsApiD: MainInterface = {
             responseMessage: "Bill Payment Success",
             data: "",
             responseData:
-              '{"MobileNumber":"9082090971","Amount":"100","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"1","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
+              '{"MobileNumber":"90XX89XX98","Amount":"100","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"1","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
         },],
 

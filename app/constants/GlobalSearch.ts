@@ -10,5 +10,21 @@ export const data = [
   { title: "Remitter Registration", path: "/docs/api-reference/payoutapi#endpoint-3" },
   { title: "Add Beneficiary", path: "/docs/api-reference/payoutapi#endpoint-4" },
   { title: "Delete Beneficiary", path: "/docs/api-reference/payoutapi#endpoint-5" },
-  { title: "Verify Beneficiary", path: "/docs/api-reference/payoutapi#endpoint-6" }
+  { title: "Verify Beneficiary", path: "/docs/api-reference/payoutapi#endpoint-6" },
+  { title: "Mobile Recharge", path: "/docs/api-reference/mobileapi#endpoint-2" },
+  { title: "Get Service for BBPS Offline", path: "/docs/api-reference/bbpsapi#endpoint-2" },
+  { title: "Get BBPS Bill Validations", path: "/docs/api-reference/bbpsapi#endpoint-3" },
+  { title: "Bill Fetch BBPS Offline", path: "/docs/api-reference/bbpsapi#endpoint-4" },
+  { title: "Bill Pay BBPS Offline", path: "/docs/api-reference/bbpsapi#endpoint-5" },
+  { title: "BBPS Offline Webhook", path: "/docs/api-reference/bbpsapi#endpoint-6" },
+  { title: "Get Services BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-2" },
+  { title: "Get Billers for BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-3" },
+  { title: "Bill Fetch BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-4" },
+  { title: "Bill Pay BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-5" },
+  { title: "BBPS Online Webhook", path: "/docs/api-reference/bbpsapionline#endpoint-6" }, 
+  { title: "Get Operators for Creadit Card BP API", path: "/docs/api-reference/ccbpapi#endpoint-2" },
+  { title: " CC Bill Pay", path: "/docs/api-reference/ccbpapi#endpoint-3" },
+  
+
+
 ]

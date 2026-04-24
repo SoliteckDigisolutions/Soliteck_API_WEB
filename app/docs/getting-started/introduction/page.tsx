@@ -2,7 +2,7 @@ import FlowInegartion from "../../../components/component/FlowInegartion";
 import { LuWaypoints } from "react-icons/lu";
 export default function IntroductionPage() {
   return (
-    <div className="max-w-6xl mx-auto mt-12 px-6 py-10 bg-white">
+    <div className="max-w-6xl mx-auto mt-12 px-2  py-3 bg-white">
       {/* Page Header */}
       <div className="mb-10 border-b pb-6">
         <h1 className="text-2xl font-semibold text-gray-900 mb-3">
