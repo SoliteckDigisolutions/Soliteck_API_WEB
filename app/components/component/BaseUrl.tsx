@@ -9,7 +9,7 @@ export default function BaseUrls({ urls }: any) {
   if (!urls) return null;
 
   return (
-    <div className="bg-white flex flex-col gap-3 p-1 rounded-lg shadow">
+    <div className="bg-white flex flex-col  gap-3 p-1 rounded-lg">
       <h2 className="flex gap-1 items-center text-xl font-extralight mb-3">
         <IoIosLink />
         Base URLs

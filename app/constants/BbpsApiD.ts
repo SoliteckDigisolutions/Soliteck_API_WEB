@@ -33,17 +33,6 @@ export const BbpsApiD: MainInterface = {
               signalR: null,
             },
           },
-          {
-            id: 2,
-            info: "",
-            code: {
-              responseCode: 200,
-              responseMessage: "Token Generated Success",
-              data: "Generated Token",
-              responseData: null,
-              signalR: null,
-            },
-          },
         ],
 
 
@@ -111,7 +100,7 @@ export const BbpsApiD: MainInterface = {
           desc: "Use this request to get the list of operators available in BBPS Offline API.",
           code: "{\"Flag\":2, serviceName: \"Electricity\"}",
         },
-        note:"In request body, use Flag 1 to get list of services and use Flag 2 along with service name to get list of operators for that service.",
+        note: "In request body, use Flag 1 to get list of services and use Flag 2 along with service name to get list of operators for that service.",
       },
       topText: "{BBPS Base URL} /GetOfflineServices",
       post: {
@@ -187,6 +176,7 @@ export const BbpsApiD: MainInterface = {
         MobileNumber: "87X57X48X7",
         providerCode: "70",
       },
+      intro: ["ProviderCode must be taken from the GetOfflineServices response.", `Split the ProviderCode string by -, take the last element (e.g., "ELECTRICITY-70" → "70"), and use that as the value here.`],
 
       request: "All headers reqiured",
 
@@ -224,7 +214,7 @@ export const BbpsApiD: MainInterface = {
             signalR: null,
           },
         },
-        
+
 
         ]
       },
@@ -233,7 +223,8 @@ export const BbpsApiD: MainInterface = {
     {
       id: 5,
       title: "Bill Fetch",
-      topText: "{BBPS Base URL} /OFBillVerification ",
+      topText: "{BBPS Base URL} /OFBillVerification",
+      intro: ["For Uat Testing:", "Use provider code 70 for success"],
       request: "All headers required",
 
       post: {
@@ -250,7 +241,7 @@ export const BbpsApiD: MainInterface = {
           info: "",
           code: {
             responseCode: 200,
-            responseMessage: "Biller Validation Success",
+            responseMessage: "Biller Verification Success",
             data: "",
             responseData:
               '{"status":"success","provider_name":"MSEDC MAHARASHTRA","number":"123456789123","amount":"160.00","name":"username","duedate":"2026-04-06","provider_id":"70","optional1":"123456789123","optional2":null,"optional3":null,"optional4":""}',
@@ -272,6 +263,7 @@ export const BbpsApiD: MainInterface = {
     {
       id: 9,
       title: "Bill Pay",
+      intro: ["For UAT Testing", "Success:", "• ProviderCode: 70", "• Amount: 100", "• ClientOrderId: HNUZ3YA86SJFWK1ZITYF2B57479", " Failed:", "• ProviderCode: 50", "• Amount: 299", "• ClientOrderId: HNUZ3YA86SJFWK1ZITYF2B57479", "Pending:", "• ProviderCode: 40", "• Amount: 250", "• ClientOrderId: HNUZ3YA86SJFWK1ZITYF2B57479"],
       topText: "{BBPS Base URL}/OFBillPay",
       request: "All headers required",
 
@@ -304,14 +296,14 @@ export const BbpsApiD: MainInterface = {
           info: "",
           code: {
             responseCode: 204,
-            responseMessage: "Biller Verification Failed",
+            responseMessage: "Bill Payment Failed",
             data: "",
             responseData:
               '{"MobileNumber":"90XX89XX98","Amount":"299","ProductId":null,"OperatorId":null,"VendorRefNumber":"123456789123456","TransactionMode":"Wallet","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"HNUZ3YA86SJFWK1ZITYF2B57479","CustomerDetails":"-|9152396448|-|9372879094|-","TransactionName":"BillPayments-OFF","TimeSeconds":"345456","TPin":"NA","Reason":"","VendorId":null,"ClientOrderId":null,"Process":null,"VendorCharges":null,"VendorGST":null}',
           },
         }, {
           id: 3,
-          info: "",
+          info: "Use Soliteck Unique Transaction ID",
           code: {
             responseCode: 200,
             responseMessage: "Bill Payment Success",
@@ -345,14 +337,100 @@ export const BbpsApiD: MainInterface = {
           },
         },]
 
+
+
+      },
+
+      table: {
+        responses: {
+          id: 3,
+          title: "Bill Pay Transaction Response",
+          tableData: [
+            {
+              "key": "Amount",
+              "description": "Amount"
+            },
+            {
+              "key": "VendorRefNumber",
+              "description": "UTR / Other reference ID"
+            },
+            {
+              "key": "TransactionMode",
+              "description": "Transaction Mode"
+            },
+            {
+              "key": "ExecutionMode",
+              "description": "Execution Mode"
+            },
+            {
+              "key": "StatusId",
+              "description": "Status (1 = Success, 0 = Failed, 3 = Pending)"
+            },
+            {
+              "key": "SPTransactionRef",
+              "description": "Soliteck Transaction Reference"
+            },
+            {
+              "key": "CustomerDetails",
+              "description": "Customer Mobile Numbers (Primary and Secondary)"
+            },
+            {
+              "key": "TimeSeconds",
+              "description": "Time of Transaction (in seconds)"
+            },
+            {
+              "key": "TransactionName",
+              "description": "Transaction Name"
+            },
+            {
+              "key": "MobileNumber",
+              "description": "Mobile Number"
+            },
+            {
+              "key": "ProductId",
+              "description": "Product Identifier (if applicable)"
+            },
+            {
+              "key": "OperatorId",
+              "description": "Operator Identifier (if applicable)"
+            },
+            {
+              "key": "TPin",
+              "description": "Transaction PIN or security flag"
+            },
+            {
+              "key": "Reason",
+              "description": "Failure or status reason"
+            },
+            {
+              "key": "VendorId",
+              "description": "Vendor Identifier"
+            },
+            {
+              "key": "ClientOrderId",
+              "description": "Client Order Reference"
+            },
+            {
+              "key": "Process",
+              "description": "Processing Status"
+            },
+            {
+              "key": "VendorCharges",
+              "description": "Charges applied by vendor"
+            },
+            {
+              "key": "VendorGST",
+              "description": "GST applied by vendor"
+            }
+          ],
+        },
+
       },
     },
     {
       id: 11,
       title: "Webhook",
-      post: "-",
 
-      request: "-",
 
       response: {
         success: [{

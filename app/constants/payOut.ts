@@ -59,7 +59,7 @@ export const payoutDocs: MainInterface = {
         success: [
           {
             id: 1,
-            info: "Add the othe info  if needed",
+            info: "",
             code: {
               responseCode: 200,
               responseMessage: "Token Is Valid",
@@ -150,7 +150,7 @@ sDeleted\":\"0\"}]`,
       title: "Get Master IFSC For Payout",
       post: "BCBL",
       topText: "/MasterIfscByBankCode",
-      request: "All headers requirede",
+      request: "All headers required",
 
       response: {
         success: [
@@ -198,10 +198,13 @@ sDeleted\":\"0\"}]`,
 
     {
       title: "Remitter Login",
-      intro : `RemitterMobile Values (for testing):
-9999999999 → Verified remitter
-8888888888 → Unverified but existing remitter
-7777777777 → Unverified and new remitter`,
+      intro: [
+        "For Uat Testing:",
+        "RemitterMobile Values (for testing) :",
+        "9999999999 → Verified remitter",
+        "8888888888 → Unverified but existing remitter",
+        "7777777777 → Unverified and new remitter"
+      ],
       post: {
         RemitterMobile: "9999999999",
         Token: "ClientToken",
@@ -304,7 +307,7 @@ NEFT\":\"0\"}]}`,
       table: {
         remitter: {
           id: 1,
-          title: "Remitter Information List",
+          title: "Remitter Logi Response",
           tableData: [
             { id: 1, key: "RemitterName", description: "Remitter Name" },
             {
@@ -458,13 +461,19 @@ NEFT\":\"0\"}]}`,
       title: "Add Beneficiary",
       post: {
         RemitterNumber: "9999999999",
-        BeneId: "11113 / 11112 / 11116",
+        BeneId: "11113",
+      },
+      post2: {
+        RemitterNumber: "9999999999",
         BeneName: "Alice Smith",
         BeneAccount: "1234567890",
         BeneIFSC: "IFSC0001",
         BankCode: "BBC001",
         BenePincode: "110001",
+
       },
+      intro: ["For Uat Testing:", "If you are adding from all Allbeneficiarylist For Success use RemitterNumber 9999999999", "BeneID 11113 / 11112 / 11116"],
+      intro2: ["If you are adding new Beneficiary"],
       topText: "/AddBeneficiary",
       request: "All headers required",
       response: {
@@ -520,6 +529,7 @@ API.`,
         Token: "SAME VALUE AS IN HEADER 'ClientToken' KEY",
         BeneId: "11114 / 11111",
       },
+      intro: ["For Uat Testing:", "During UAT, the delete beneficiary API will return a success response when the RemitterNumber is 9999999999 and the BeneId is either 11114 or 11111. This behavior is intended for testing purposes only."],
       request: "All headers Required",
       response: {
         success: [{
@@ -562,14 +572,19 @@ API.`,
     {
       title: "Verify Beneficiary",
       topText: "/VerifyBeneficiary",
+      intro: ["For Uat Testing: If already in active list and need to verify", "Success when RemitterNumber is 9999999999 and BeneId is 11114", "Failed when BeneId is 11111"],
+      intro2: ["If you are verifying new Beneficiary use below request body"],
       post: {
         RemitterNumber: "9999999999", //Common
         BeneId: "11114", // if already in active list and need to verify
-        OR: "/",
+      },
+      post2: {
+        RemitterNumber: "9999999999", //Common
         BeneAccount: "27346789213649",
         BeneIFSC: "IFSC0000123",
         ClientOrderId: "8768267686723647", // It Should be Unique numeric
         BankCode: "ABCD",
+
       },
       request: {
         RemitterNumber: "9999999999",
@@ -585,7 +600,7 @@ API.`,
             responseCode: 200,
             responseMessage: "Beneficiary Verified Successfully",
             data: "TOKEN",
-           responseData: `"{\"beneName\":\"Johnson\",\"beneId\":\"11119\",\"refId\":\"576125376123796989\"}"`,
+            responseData: `"{\"beneName\":\"Johnson\",\"beneId\":\"11119\",\"refId\":\"576125376123796989\"}"`,
             signalR: null,
           },
         },],
@@ -618,12 +633,13 @@ API.`,
 
     {
       title: "Payout Transfer",
-      intro: "200 for Success, 201 for Pending and 204 for Failed Transaction",
+      intro: ["For UAT testing: use the BeneId in the request body to get the following responses","BeneId = 11111 → Success (200)","BeneId = 11114 → Failed (204)","BeneId = 11113 → Pending (201)"],
+      intro2: ["200 for Success, 201 for Pending and 204 for Failed Transaction"],
 
       topText: "/Transfer",
       post: {
         RemitterNumber: "9999999999",
-        BeneId: "11113 / 11111 / 11114",
+        BeneId: "11114",
         Amount: "1400",
         ClientOrderId: "6698676234872634", // It Should be Unique numeric
         Mode: "IMPS",
@@ -637,17 +653,7 @@ API.`,
             responseCode: 201,
             responseMessage: "Money Transfer Pending",
             data: "TOKEN",
-            responseData: `[{\"RetailerNumber\":\"1234567898\",\"ShopName\":\"ABC 
-Shop\",\"RetailerName\":\"Ansh\",\"RemitterName\":\"Amit\",\"RemitterNumber\
-":\"9999999999\",\"TransactionMode\":\"Immediate\",\"TransferMode\":\"NEFT\"
-,\"BeneAccount\":\"76723728234\",\"BeneIfsc\":\"HDFC0000001\",\"BeneName\":\
-"Kumar\",\"BeneBank\":\"HDFC 
-BANK\",\"ProductName\":\"Eco\",\"Transfers\":[{\"OperatorName\":\"Soliteck 
-Payout\",\"TransactionNumber\":\"67364727423712912\",\"TransactionAmount\":\
-"1400\",\"BankTxnId\":\null\,\"OrderId\":\"ORD123456\",\"TransactionDate\":\
-"07-04-2025 01:07:54
-P\",\"ServiceCharge\":\"10\",\"Status\":\"Pending\",\"Message\":\"Money 
-Transfer Pending\"}]}]`,
+            responseData: "[{\"RetailerNumber\":\"1234567898\",\"ShopName\":\"ABC Shop\",\"RetailerName\":\"Ansh\",\"RemitterName\":\"Amit\",\"RemitterNumber\":\"9999999999\",\"TransactionMode\":\"Immediate\",\"TransferMode\":\"NEFT\",\"BeneAccount\":\"76723728234\",\"BeneIfsc\":\"HDFC0000001\",\"BeneName\":\"Kumar\",\"BeneBank\":\"HDFC BANK\",\"ProductName\":\"Eco\",\"Transfers\":[{\"OperatorName\":\"Soliteck Payout\",\"TransactionNumber\":\"67364727423712912\",\"TransactionAmount\":\"1400\",\"BankTxnId\":\null\,\"OrderId\":\"ORD123456\",\"TransactionDate\":\"07-04-2025 01:07:54P\",\"ServiceCharge\":\"10\",\"Status\":\"Pending\",\"Message\":\"Money Transfer Pending\"}]}]",
             signalR: null,
           },
         },
@@ -658,16 +664,7 @@ Transfer Pending\"}]}]`,
             responseCode: 204,
             responseMessage: "Money Transfer Failed",
             data: "TOKEN",
-            responseData: `[{\"RetailerNumber\":\"1234567898\",\"ShopName\":\"ABC 
-Shop\",\"RetailerName\":\"Ansh\",\"RemitterName\":\"Amit\",\"RemitterNumber\
-":\"9999999999\",\"TransactionMode\":\"Immediate\",\"TransferMode\":\"NEFT\",\"BeneAccount\":\"76723728234\",\"BeneIfsc\":\"HDFC0000001\",\"BeneName\":\
-"Kumar\",\"BeneBank\":\"HDFC 
-BANK\",\"ProductName\":\"Eco\",\"Transfers\":[{\"OperatorName\":\"Soliteck 
-Payout\",\"TransactionNumber\":\"67364727423712912\",\"TransactionAmount\":\
-"1400\",\"BankTxnId\":\null\,\"OrderId\":\null\,\"TransactionDate\":\"07-04-
-2025 01:13:07
-P\",\"ServiceCharge\":\"10\",\"Status\":\"Failed\",\"Message\":\"Money 
-Transfer Failed\"}]}]`,
+            responseData: `[{\"RetailerNumber\":\"1234567898\",\"ShopName\":\"ABC Shop\",\"RetailerName\":\"Ansh\",\"RemitterName\":\"Amit\",\"RemitterNumber\":\"9999999999\",\"TransactionMode\":\"Immediate\",\"TransferMode\":\"NEFT\",\"BeneAccount\":\"76723728234\",\"BeneIfsc\":\"HDFC0000001\",\"BeneName\":\"Kumar\",\"BeneBank\":\"HDFC BANK\",\"ProductName\":\"Eco\",\"Transfers\":[{\"OperatorName\":\"Soliteck Payout\",\"TransactionNumber\":\"67364727423712912\",\"TransactionAmount\":\"1400\",\"BankTxnId\":\null\,\"OrderId\":\null\,\"TransactionDate\":\"07-04-2025 01:13:07P\",\"ServiceCharge\":\"10\",\"Status\":\"Failed\",\"Message\":\"Money Transfer Failed\"}]}]`,
             signalR: null,
           },
         },
@@ -678,17 +675,7 @@ Transfer Failed\"}]}]`,
             responseCode: 200,
             responseMessage: "Money Transfer Success",
             data: "TOKEN",
-            responseData: `[{\"RetailerNumber\":\"1234567898\",\"ShopName\":\"ABC 
-Shop\",\"RetailerName\":\"Ansh\",\"RemitterName\":\"Amit\",\"RemitterNumber\
-":\"9999999999\",\"TransactionMode\":\"UAT\",\"TransferMode\":\"NEFT\",\"Ben 
-eAccount\":\"1234567890\",\"BeneIfsc\":\"IFSC0000001\",\"BeneName\":\"Alice 
-Smith\",\"BeneBank\":\"Bank of 
-ABC\",\"ProductName\":\"Eco\",\"Transfers\":[{\"OperatorName\":\"Soliteck 
-Payout\",\"TransactionNumber\":\"67364727423712912\",\"TransactionAmount\":\
-"1400\",\"BankTxnId\":\"2345345456\",\"OrderId\":\"ORD123456\",\"Transaction 
-Date\":\"07-04-2025 01:13:46
-P\",\"ServiceCharge\":\"10\",\"Status\":\"Success\",\"Message\":\"Transfer 
-completed successfully\"}]}]`,
+            responseData: `[{\"RetailerNumber\":\"1234567898\",\"ShopName\":\"ABC Shop\",\"RetailerName\":\"Ansh\",\"RemitterName\":\"Amit\",\"RemitterNumber\":\"9999999999\",\"TransactionMode\":\"UAT\",\"TransferMode\":\"NEFT\",\"Ben eAccount\":\"1234567890\",\"BeneIfsc\":\"IFSC0000001\",\"BeneName\":\"Alice Smith\",\"BeneBank\":\"Bank of ABC\",\"ProductName\":\"Eco\",\"Transfers\":[{\"OperatorName\":\"Soliteck Payout\",\"TransactionNumber\":\"67364727423712912\",\"TransactionAmount\":\"1400\",\"BankTxnId\":\"2345345456\",\"OrderId\":\"ORD123456\",\"Transaction Date\":\"07-04-2025 01:13:46P\",\"ServiceCharge\":\"10\",\"Status\":\"Success\",\"Message\":\"Transfer completed successfully\"}]}]`,
             signalR: null,
           },
         },],
@@ -704,25 +691,24 @@ completed successfully\"}]}]`,
             signalR: null,
           },
         },
-        // {
-        //   id: 2,
-        //   info: "",
-        //   code: {
-        //     responseCode: 401,
-        //     responseMessage: "Token Expired / Invalid, Please login again.",
-        //     data: null,
-        //     responseData: null,
-        //     signalR: null,
-        //   },
-        // },
-        ] 
+          // {
+          //   id: 2,
+          //   info: "",
+          //   code: {
+          //     responseCode: 401,
+          //     responseMessage: "Token Expired / Invalid, Please login again.",
+          //     data: null,
+          //     responseData: null,
+          //     signalR: null,
+          //   },
+          // },
+        ]
       },
 
       table: {
         transaction: {
           id: 1,
-          title: `RESPONSE PARAMETERS IN responseData
-USE: 11111 For Success 11113 For Pending and 11114 for Failed
+          title: `Payout Transfer Response
 `,
           tableData: [
             { key: "RetailerNumber", description: "Agent Number" },
@@ -742,7 +728,7 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
 
         UnderTransfer: {
           id: 2,
-          title: "Under Transfer",
+          title: "Payout Under Transfer",
           tableData: [
             { key: "OperatorName", description: "Soliteck Operator Name" },
             { key: "TransactionNumber", description: "Soliteck Reference Id" },
@@ -759,140 +745,7 @@ USE: 11111 For Success 11113 For Pending and 11114 for Failed
           ],
         },
       },
-       note:"BeneID -> from the Remitterlogin Respose BeneficiaryList or AddBeneficiaryList Response, ClientOrderId -> Should be Unique transaction number",
-    },
-   
-
-    {
-      title: "Check Transaction Status",
-
-      topText: "/Transfer",
-      post: "67364727423712912",
-      request: "All header Required",
-      response: {
-        success: [{
-          id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Transaction Fetched",
-            data: "TOKEN",
-            responseData: `[{\"Amount\":\"1000\",\"VendorRefNumber\":\"29974465\",\"TransactionMode\":
-\"Wallet\",\"ExecutionMode\":1,\"StatusId\":1,\"SPTransactionRef\":\"6736472 
-7423712912\",\"CustomerDetail\":\"28934709239\",\"TransactionName\":\"Payout
-\",\"TimeSeconds\":\"16218013\"}]`,
-            signalR: null,
-          },
-        },],
-
-        error: [{
-          id: 1,
-          info: "",
-          code: {
-            responseCode: 401,
-            responseMessage: "Token Expired / Invalid, Please login again.",
-            data: null,
-            responseData: null,
-            signalR: null,
-          },
-        },
-        {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 400,
-            responseMessage: "Error Message",
-            data: null,
-            responseData: null,
-            signalR: null,
-          },
-        },]
-      },
-
-      table: {
-        transaction: {
-          id: 1,
-          title: `Under ResponseData
-`,
-
-          tableData: [
-            { key: "Amount", description: "Amount" },
-            { key: "VendorRefNumber", description: "UTR / Other Reference ID" },
-            { key: "TransactionMode", description: "Transaction Mode" },
-            { key: "ExecutionMode", description: "Execution Mode" },
-            {
-              key: "StatusId",
-              description: "Status (1 = Success, 0 = Failed, 3 = Pending)",
-            },
-            {
-              key: "SPTransactionRef",
-              description: "Soliteck Transaction Reference",
-            },
-            {
-              key: "ServiceCharge",
-              description: "Service Charge for Transaction",
-            },
-            {
-              key: "TimeSeconds",
-              description: "Time of Transaction",
-            },
-            {
-              key: "TransactionName",
-              description: "Transaction Name",
-            },
-          ],
-        },
-      },
-      note: " Final Transaction Status Should be verified from StatusId Parameter in responseData.",
-    },
-
-    {
-      title: "Webhook",
-
-      // topText: "-",
-      // post: "-",
-      // request: "-",
-      response: {
-        success: [{
-          id: 1,
-          info: "",
-          code: {
-            responseCode: 200,
-            responseMessage: "Transaction Success",
-            data: "Client Order Id",
-            responseData: `UTR`,
-            signalR: null,
-          },
-        },
-
-        {
-          id: 2,
-          info: "",
-          code: {
-            responseCode: 204,
-            responseMessage: "Transaction Failed",
-            data: "Client Order Id",
-            responseData: `UTR`,
-            signalR: null,
-          },
-        },],
-      },
-
-      table: {
-        transaction: {
-          id: 1,
-          title: `Response Structure
-`,
-
-          tableData: [
-            { key: "responseCode", description: "Status of transaction" },
-            { key: "responseMessage", description: "Message of transaction" },
-            { key: "Data", description: "Client Order ID" },
-            { key: "responseData", description: "UTR" },
-          ],
-        },
-      },
-      note: "-",
-    },
+      note: "BeneID -> from the Remitterlogin Respose BeneficiaryList or AddBeneficiaryList Response, ClientOrderId -> Should be Unique transaction number",
+    }
   ],
 };

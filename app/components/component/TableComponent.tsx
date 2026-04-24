@@ -1,7 +1,10 @@
+import { CiViewTable } from "react-icons/ci";
+import { SiAirtable } from "react-icons/si";
+
 export default function TableComponent({ data }: any) {
   return (
     <section id="authentication" className="mb-10">
-      <h2 className="mb-4 text-gray-600">{data?.title}</h2>
+      <h2 className="mb-4 flex gap-1 items-center  font-bold text-gray-600"><SiAirtable />{data?.title}</h2>
 
       <div className="overflow-x-auto border border-gray-200 rounded-lg">
         <table className="w-full text-sm text-left border-collapse">

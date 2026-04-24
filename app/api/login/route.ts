@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
   try {
     const response = await axios.post(
-      "https://rvlj2d19-5185.inc1.devtunnels.ms/UAT/APIUserLogin",
+      "https://gateway-uat.soliteck.in/UAT/APIUserLogin",
       body,
       {
         headers: {

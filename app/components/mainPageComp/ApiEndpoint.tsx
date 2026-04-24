@@ -2,6 +2,8 @@ import RequestBlock from "@/app/components/responseComp/RequestBlock";
 import ResponseBlock from "@/app/components/responseComp/ResponseBlock";
 import ErrorBlock from "@/app/components/responseComp/ErrorBlock";
 import TableComponent from "../component/TableComponent";
+import { FaNotesMedical } from "react-icons/fa";
+// import SubApiEndpoint from "./SubApiEndpoint";
 interface Props {
   endpoint: any;
   index: number;
@@ -37,9 +39,13 @@ export default function ApiEndpoint({ endpoint, index }: Props) {
 
         {
           endpoint.intro && (
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 text-sm">
-              <span className="font-semibold text-blue-700">Note:</span>{" "}
-              {endpoint.intro}
+            <div className="bg-blue-50 border-l-4 border-blue-400  p-4 text-sm">
+              <span className="font-semibold text-blue-700">Note:</span>
+              {endpoint?.intro?.map((line: string, index: number) => (
+                <p key={index} className="mt-1 text-gray-700">
+                  {line}
+                </p>
+              ))}
             </div>
           )
         }
@@ -92,6 +98,26 @@ export default function ApiEndpoint({ endpoint, index }: Props) {
           <RequestBlock title={"Request Body"} request={endpoint.post} />
         )}
 
+        {
+          endpoint.intro2 && (
+            <div className="bg-blue-50 border-l-4 border-blue-400  p-4 text-sm">
+              <span className="font-semibold text-blue-700">Note:</span>
+              {endpoint?.intro2?.map((line: string, index: number) => (
+                <p key={index} className="mt-1 text-gray-700">
+                  {line}
+                </p>
+              ))}
+            </div>
+          )
+        }
+
+        {endpoint.post2 && (
+          <RequestBlock title={"Request Body"} request={endpoint.post2} />
+        )}
+
+
+
+
         {/* Responses */}
         {endpoint.response && (
           <>
@@ -104,6 +130,11 @@ export default function ApiEndpoint({ endpoint, index }: Props) {
             ))}
           </>
         )}
+
+        {/* {endpoint.subData && (
+          <SubApiEndpoint subData={endpoint.subData} />
+        )} */}
+
         {/* Table */}
         {endpoint.table &&
           Object.entries(endpoint.table).map(([key, value], index) => (

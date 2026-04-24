@@ -4,7 +4,7 @@ interface Section {
   title?: string | undefined;
   content?: string | undefined;
 }
-interface introinterface extends Section {}
+interface introinterface extends Section { }
 interface authenticationinterface extends Section {
   GenerateToken: string;
   VerifyToken: string;
@@ -59,7 +59,7 @@ interface RechargeService extends Section {
 interface pendingresponse extends Section {
   content: string;
 }
-interface FailedResponse extends Section {}
+interface FailedResponse extends Section { }
 
 export interface MobileRechargeapi extends Section {
   intro: introinterface;
@@ -110,6 +110,7 @@ export interface Infointerface {
   MobileRechargeAPI: MobileRechargeapi;
   DTHAPI: DTHRechargeinterface;
   bbpsonline: BBPSonlineinterface;
+  ccbpapi: any;
 }
 
 // ******************************** MainPage ***************************************
@@ -131,14 +132,15 @@ interface CommonSection {
 
 
 interface ResponseInterface {
-  success:  ResponseDataInterface[];
-  error?:  ResponseDataInterface[];
+  success?: ResponseDataInterface[];
+  error?: ResponseDataInterface[];
 }
 
 export interface ResponseDataInterface {
   id: number;
   info?: string;
-  code : CommonSectionResponse;
+  data?: any;
+  code: CommonSectionResponse;
 }
 
 
@@ -147,9 +149,12 @@ interface EndpointInterface extends CommonSection {
   // Page data interface
   id?: number;
   extraInfo?: any;
-  intro?: string;
+  intro?: string[] | string;
+  intro2?: string[] | string;
+  subData?: any;
   topText?: string;
   post?: string | Record<string, unknown>; //only accepts object, string
+  post2?: string | Record<string, unknown>;
   request?: string | object;
   response?: ResponseInterface;
   note?: any;
@@ -165,7 +170,7 @@ interface BaseUrlsInterface {
 
 export interface MainInterface extends CommonSection {
   // This is the all page interface
-  BaseUrls: BaseUrlsInterface;
+  BaseUrls?: BaseUrlsInterface;
   Endpoints: EndpointInterface[];
   note: string;
 }

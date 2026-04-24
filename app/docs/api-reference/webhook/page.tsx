@@ -1,8 +1,8 @@
 "use client";
 
 import MainPage from "@/app/components/mainPageComp/MainPage";
-import {aepsApiD} from "@/app/constants/aepsApiD";
+import { WebHook } from "@/app/constants/WebHook";
 
 export default function Page() {
-  return <MainPage data={aepsApiD} />;
+  return <MainPage data={WebHook} />;
 }

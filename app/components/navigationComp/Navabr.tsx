@@ -73,7 +73,7 @@ export default function Header() {
         </nav>
 
         {/* SEARCH */}
-        <div className="hidden md:block">
+        <div className="">
           <Search />
         </div>
 
@@ -102,7 +102,7 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div className=" bg-white border-t border-gray-200 shadow-lg">
           <div className="px-5 py-4 space-y-4">
             {/* SEARCH */}
             <Search />

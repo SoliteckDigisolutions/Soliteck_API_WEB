@@ -26,4 +26,5 @@ export default function RequestBlock({ request, title }: Props) {
       </pre>
     </div>
   );
+
 }

@@ -16,7 +16,7 @@ export const CcBpApiD: MainInterface = {
       topText: "/GenerateUATToken",
       request: "All headers required",
 
-      post: {},
+      post: "TOKEN",
 
       response: {
         success: [
@@ -53,7 +53,7 @@ export const CcBpApiD: MainInterface = {
       topText: "/VerifyUATToken",
       request: "All headers required",
 
-      post: {},
+      post: "TOKEN",
 
       response: {
         success: [
@@ -90,7 +90,7 @@ export const CcBpApiD: MainInterface = {
       topText: "/NGG_CCBillPayGetOperators",
       request: "All headers required",
 
-      post: {},
+      post: "TOKEN",
 
       response: {
         success: [
@@ -145,20 +145,25 @@ export const CcBpApiD: MainInterface = {
         },
       },
 
-      note: "Parse responseData to get operators list",
+      note: "Data in responseData field should be parsed, and below mentioned are all the keys with their following explanation.",
     },
 
     {
       title: "CC Bill Pay",
+      intro : [
+  "For Failed, use the Card Number = '3333333333333333'",
+  "For Success, use the Card Number = '1111111111111111'",
+  "For Pending, use the Card Number = '2222222222222222'"
+],
       topText: "/NGG_CCBillPay",
       request: "All headers required",
 
       post: {
         Name: "Card Holder Name",
-        CardNumber: "1111111111111111",
-        Amount: "10",
-        Network: "VISA",
-        PayeeName: "ADARSH",
+        CardNumber: "Card Number",
+        Amount: "Amount to be paid",
+        Network: "VISA|Mastercard|AMEX|RUPAY",
+        PayeeName: "Payee Name",
         ApiCode: "Operator Id",
         ClientOrderId: "Unique ID",
       },
@@ -183,7 +188,7 @@ export const CcBpApiD: MainInterface = {
             info: "Pending",
             code: {
               responseCode: 201,
-              responseMessage: "Dynamic Message",
+              responseMessage: "Transaction Pending",
               data: "Token",
               responseData:
                 '{"MobileNumber":"9920601290","Amount":"11","ProductId":"SP_GenBill","OperatorId":"GEN_CC_VISA","VendorRefNumber":"177636364578070011","TransactionMode":"WALLET","ExecutionMode":"1","SPTransactionRef":"1638992332529576","CardNumber":"XXXX-XXXX-XXXX-9297","PayeeName":"ADARSH","TransactionName":"CCBillPay","TimeSeconds":"41185853"}',
@@ -195,7 +200,7 @@ export const CcBpApiD: MainInterface = {
             info: "Failed",
             code: {
               responseCode: 204,
-              responseMessage: "Dynamic Message",
+              responseMessage: "Transaction Failed",
               data: "Token",
               responseData:
                 '{"MobileNumber":"9920601290","Amount":"11","ProductId":"SP_GenBill","OperatorId":"GEN_CC_VISA","VendorRefNumber":"177636364578070011","TransactionMode":"WALLET","ExecutionMode":"1","SPTransactionRef":"1638992332529576","CardNumber":"XXXX-XXXX-XXXX-9297","PayeeName":"ADARSH","TransactionName":"CCBillPay","TimeSeconds":"41185853"}',
@@ -234,7 +239,7 @@ export const CcBpApiD: MainInterface = {
         responseKeys: {
           id: 1,
           title: `RESPONSE PARAMETERS IN responseData
-USE: 11111 For Success 11113 For Pending and 11114 for Failed
+
 `,
 
           tableData: [

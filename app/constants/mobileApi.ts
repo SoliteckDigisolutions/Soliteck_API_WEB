@@ -59,7 +59,7 @@ export const MobileDocs: MainInterface = {
         success: [
           {
             id: 1,
-            info: "Hi",
+            info: "",
             code: {
               responseCode: 200,
               responseMessage: "Token Is Valid",
@@ -89,6 +89,7 @@ export const MobileDocs: MainInterface = {
     {
       id: 4,
       title: "Mobile Recharges",
+      intro: ["For Uat Testing:", "For Success, use the Jio Operator ApiCode with amounts 19, 29, or 119", "For Pending, use the Airtel ApiCode", "For Failed, use any remaining ApiCode"],
       topText: "{Recharge Base URL}/MobileRecharge",
       request: "All headers Required",
       post: {
@@ -106,7 +107,7 @@ export const MobileDocs: MainInterface = {
             info: "",
             code: {
               responseCode: 200,
-              responseMessage: " Success",
+              responseMessage: "Recharge Success",
               data: "TOKEN",
               responseData:
                 '{"Amount":"19","VendorRefNumber":"111111111-22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"1","SPTransactionRef":null,"CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
@@ -118,7 +119,7 @@ export const MobileDocs: MainInterface = {
             info: "",
             code: {
               responseCode: 201,
-              responseMessage: "pending",
+              responseMessage: "Recharge pending",
               data: "TOKEN",
               responseData:
                 '{"Amount":"19","VendorRefNumber":"22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"3","SPTransactionRef":"22222222222","CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
@@ -130,7 +131,7 @@ export const MobileDocs: MainInterface = {
             info: "",
             code: {
               responseCode: 204,
-              responseMessage: "Failed",
+              responseMessage: "Recharge Failed",
               data: "TOKEN",
               responseData:
                 '{"Amount":"19","VendorRefNumber":"22222222222","TransactionMode":"0","ExecutionMode":"1","StatusId":"0","SPTransactionRef":"22222222222","CustomerDetails":"1234567890","TransactionName":"Recharge","TimeSeconds":"23454"}',
@@ -154,7 +155,7 @@ export const MobileDocs: MainInterface = {
           },
           {
             id: 2,
-            info: "Add Siome extarc info",
+            info: "",
             code: {
               //402
               responseCode: 400,
@@ -174,16 +175,29 @@ export const MobileDocs: MainInterface = {
       table: {
         responseKeysTable: {
           id: 4,
+          title: "Mobile Recharge Response",
           tableData: [
             { key: "Amount", description: "Amount" },
             { key: "VendorRefNumber", description: "UTR / Other Reference ID" },
             { key: "TransactionMode", description: "Transaction Mode" },
             { key: "ExecutionMode", description: "Execution Mode" },
             { key: "StatusId", description: "1 = Success, 0 = Failed, 3 = Pending" },
-            { key: "SPTransactionRef", description: "Soliteck Transaction Reference" },
+            { key: "SPTransactionRef", description: "Unique Transaction Ref" },
             { key: "CustomerDetails", description: "Mobile Number" },
             { key: "TimeSeconds", description: "Time of Transaction" },
             { key: "TransactionName", description: "Transaction Name" },
+          ],
+        },
+        operators: {
+          title: "Mobile Operators",
+          tableData: [
+            { key: "  1272", description: "Jio" },
+            { key: "  1273", description: "Airel" },
+            { key: "  1274", description: "Vodafone" },
+            { key: "  1275", description: "MTNL" },
+            { key: "  1276", description: "BSNL Top-Up" },
+            { key: "  1277", description: "BSNL Special" },
+            { key: "  1278", description: "Idea" },
           ],
         },
       },

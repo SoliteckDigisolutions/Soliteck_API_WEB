@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 export default function IntroInfoSection() {
   const pathname = usePathname();
   const currentRoute = pathname.split("/").pop() || "payoutapi";
-  console.log(currentRoute);
   const info = IntroInfo[currentRoute];
 
   if (!info) return null;
@@ -30,7 +29,7 @@ export default function IntroInfoSection() {
         </div>
 
         {/* Sections */}
-        {info.subContent.map((section, index) => (
+        {info?.subContent?.map((section, index) => (
           <div key={index} className=" rounded-xl bg-white ">
             {/* Section Header */}
             <div className="mb-4">

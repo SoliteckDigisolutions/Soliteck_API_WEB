@@ -46,7 +46,11 @@ export default function MainPage({ data }: Props) {
 
         <BaseUrls urls={data?.BaseUrls} />
 
-        <HeadersAuth />
+        {
+          data.BaseUrls?.auth && <HeadersAuth />
+        }
+
+
 
         {data?.Endpoints?.map((endpoint, index) => (
           <ApiEndpoint key={index} endpoint={endpoint} index={index} />
@@ -54,7 +58,7 @@ export default function MainPage({ data }: Props) {
       </main>
 
       {/* RIGHT NAVIGATION */}
-      <aside className="w-full xl:w-[24%]">
+      <aside className="w-full xl:w-[24%] flex justify-center">
         <RightNavigation endpoints={data?.Endpoints} active={active} />
       </aside>
     </div>

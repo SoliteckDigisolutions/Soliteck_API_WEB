@@ -9,7 +9,7 @@ const serviceRoutes: Record<string, number | string> = {
   "/docs/api-reference/bbpsapionline": 44,
   "/docs/api-reference/ccbpapi": 59,
   "/docs/api-reference/pgapi": 54,
-  "/docs/api-reference/aepsapi": "AEPS",
+  "/docs/api-reference/aepsapi": 64,
 };
 
 export function middleware(request: NextRequest) {

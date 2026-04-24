@@ -24,7 +24,17 @@ export const data = [
   { title: "BBPS Online Webhook", path: "/docs/api-reference/bbpsapionline#endpoint-6" }, 
   { title: "Get Operators for Creadit Card BP API", path: "/docs/api-reference/ccbpapi#endpoint-2" },
   { title: " CC Bill Pay", path: "/docs/api-reference/ccbpapi#endpoint-3" },
-  
-
-
+  { title: "Merchant LogIn", path: "/docs/api-reference/aepsapi#endpoint-2" },
+  { title: "State List", path: "/docs/api-reference/aepsapi#endpoint-3" },
+  { title: "Company List", path: "/docs/api-reference/aepsapi#endpoint-4" },
+  { title: "Bank List", path: "/docs/api-reference/aepsapi#endpoint-5" },
+  { title: "Merchant On Boarding", path: "/docs/api-reference/aepsapi#endpoint-6" },
+  { title: "Verify OTP", path: "/docs/api-reference/aepsapi#endpoint-7" },
+  { title: "Generate Otp", path: "/docs/api-reference/aepsapi#endpoint-8" },
+  { title: "Resend OTP", path: "/docs/api-reference/aepsapi#endpoint-9" },
+  { title: "Merchant Ekyc", path: "/docs/api-reference/aepsapi#endpoint-10" },
+  { title: "Merchant 2FA", path: "/docs/api-reference/aepsapi#endpoint-11" },
+  { title: "Cash withdrawal", path: "/docs/api-reference/aepsapi#endpoint-12" },
+  { title: " Balance Enquiry", path: "/docs/api-reference/aepsapi#endpoint-13" },
+  { title: "Mini Statement", path: "/docs/api-reference/aepsapi#endpoint-14" },
 ]
