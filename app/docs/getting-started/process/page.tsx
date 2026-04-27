@@ -1,6 +1,6 @@
 "use client";
 
-import BaseUrls from "@/app/components/component/BaseUrl";
+import BaseUrls from "@/components/common-components/BaseUrl";
 import { processFlow } from "@/app/constants/GlobalConstants";
 
 export default function ProcessFlow() {

@@ -5,84 +5,53 @@ import logo from "@/public/assets/Logo.svg";
 import { MdAddTask, MdOutlinePayments } from "react-icons/md";
 import { TbApi } from "react-icons/tb";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setPhone,
-  setPassword,
-  loginSuccess,
-} from "@/app/store/slices/authSlice";
-import { setResponse } from "@/app/store/slices/respSlice";
-import { useRouter } from "next/navigation";
-import { toast, Toaster } from "sonner";
-import VideoAutoPlay from "../../components/common-components/VideoAutoPlay";
-
+import axios from "axios";
 export default function LoginPage() {
-  const dispatch = useDispatch();
-  const [rememberMe, setRememberMe] = useState(false);
-
-
-  const phone = useSelector((state: any) => state.auth.phone);
-  const password = useSelector((state: any) => state.auth.password);
-  const router = useRouter();
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
 
   const loginUser = async () => {
     try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        "https://mzwvxb2w-5185.inc1.devtunnels.ms/UAT/APIUserLogin",
+        {
+          MobileNumber: "8104488537",
+          Password: "09122024",
         },
-        body: JSON.stringify({
-          MobileNumber: phone,
-          Password: password,
-        }),
-      });
+        {
+          headers: {
+            " X-Soliteck2024API-KEY": "Soliteck_2024",
+          },
+        },
+      );
 
-      const data = await res.json();
-
-      if (data.responseCode === 200) {
-        dispatch(setResponse(data.responseData));
-
-        // store auth
-        localStorage.setItem("AUTHACCESS", JSON.stringify(data.responseData));
-
-        // update redux login state
-        dispatch(loginSuccess());
-
-        toast.success("Login successful");
-
-        router.push("/docs/getting-started/introduction");
-      } else {
-        toast.error(data?.responseMessage || "Login failed");
-      }
+      
     } catch (error) {
       console.error(error);
-      toast.error("Something went wrong");
     }
   };
 
-  const data = useSelector((state: any) => state.responseData.respDatat);
-
-  const respData = data ? JSON.parse(data) : [];
-
   return (
     <div
-      className=" min-h-screen bg-white flex items-center justify-center"
+      className="min-h-screen  bg-[radial-gradient(rgba(12,12,12,0.17)_2px,transparent_0)] 
+bg-[size:30px_30px] 
+bg-[-5px_-5px]  flex items-center justify-center"
     >
-      <div className="w-full  border m-4 lg:m-0 md:m-0 max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
+      <div className="w-full border  max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
         {/* LEFT SECTION */}
         <div
-          className="hidden lg:flex flex-col justify-between relative p-4"
+          className="hidden   lg:flex flex-col justify-between relative p-4
+  bg-[linear-gradient(to_bottom_right,#ffffff,#e5e7eb),radial-gradient(rgba(12,12,12,0.17)_2px,transparent_0)]
+  bg-[size:100%_100%,30px_30px]
+  bg-[position:0_0,-5px_-5px]"
         >
           {/* decorative circles */}
           {/* <div className="absolute w-52 h-52 z-100 bg-white rounded-full -top-16 -right-16"></div> */}
-          {/* <div className="absolute w-4 h-50 bg-[#0f2654] rounded-xl -top-3 -right-0"></div> */}
-          <div className="absolute w-50 h-50 bg-[#0f2654] rounded-full -left-24 -top-24"></div>
+          <div className="absolute w-40 h-40 bg-blue-400/20 rounded-full -bottom-10 -left-10"></div>
 
-
-          <div className="relative z-10   rounded-lg ">
+          <div className="relative z-10  p-4 rounded-lg ">
             {/* logo */}
-            <div className="flex items-center gap-0 bg-white w-fit p-1 px-2 rounded-sm mb-3">
+            <div className="flex items-center gap-0 bg-white w-fit p-1 px-2 rounded-xl mb-10">
               <div>
                 <Link
                   href="https://soliteck.com/"
@@ -94,23 +63,22 @@ export default function LoginPage() {
               </div>
               <span className="text-lg w-fit text-black font-medium">.com</span>
             </div>
-            <VideoAutoPlay />
 
             {/* headline */}
-            <div className="mb-4 mt-4">
+            <div className="mb-10">
               <h2 className="text-3xl font-semibold leading-snug">
                 Digital transformation <br /> made simple.
               </h2>
 
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-gray-600 mt-4">
                 Secure payouts, seamless integrations and powerful APIs — all in
                 one place.
               </p>
             </div>
 
-            <div className=" flex flex-wrap gap-4">
+            <div className="space-y-4">
               {/* Card 1 */}
-              <div className="flex fexl-col gap-3 bg-white/20 backdrop-blur-md p-2   border border-white/20 rounded-lg  hover:bg-white/30 transition">
+              <div className="flex gap-3 bg-white/20 backdrop-blur-md  border border-white/20 rounded-lg p-3 hover:bg-white/30 transition">
                 <div className="w-8 h-8 bg-[#0f2654] rounded flex items-center justify-center text-white">
                   <MdOutlinePayments size={18} />
                 </div>
@@ -124,7 +92,7 @@ export default function LoginPage() {
               </div>
 
               {/* Card 2 */}
-              <div className="flex gap-3 bg-white/20 backdrop-blur-md border p-2  border-white/20 rounded-lg  hover:bg-white/30 transition">
+              <div className="flex gap-3 bg-white/20 backdrop-blur-md border border-white/20 rounded-lg p-3 hover:bg-white/30 transition">
                 <div className="w-8 h-8 bg-[#0f2654] rounded flex items-center justify-center text-white">
                   <MdAddTask size={18} />
                 </div>
@@ -138,7 +106,7 @@ export default function LoginPage() {
               </div>
 
               {/* Card 3 */}
-              <div className="flex gap-3 bg-white/20 backdrop-blur-md border p-2 border-white/20 rounded-lg  hover:bg-white/30 transition">
+              <div className="flex gap-3 bg-white/20 backdrop-blur-md border border-white/20 rounded-lg p-3 hover:bg-white/30 transition">
                 <div className="w-8 h-8 bg-[#0f2654] rounded flex items-center justify-center text-white">
                   <TbApi size={18} />
                 </div>
@@ -154,41 +122,29 @@ export default function LoginPage() {
           </div>
 
           {/* bottom tags */}
-          <div className="flex flex-wrap gap-2 mt-2 relative z-10">
+          <div className="flex flex-wrap gap-2 mt-10 relative z-10">
             <span className="text-xs bg-white/10 border border-white/20 px-3 py-1 rounded-full">
               99.9% uptime
             </span>
-            {/* <span className="text-xs bg-white/10 border border-white/20 px-3 py-1 rounded-full">
+            <span className="text-xs bg-white/10 border border-white/20 px-3 py-1 rounded-full">
               Add Data
             </span>
             <span className="text-xs bg-white/10 border border-white/20 px-3 py-1 rounded-full">
               Add Data
-            </span> */}
+            </span>
           </div>
         </div>
 
         {/* RIGHT LOGIN FORM */}
-        <div
-          className="p-10 flex  bg-blue-200/20
-animate-[twinkle_4s_infinite_alternate_ease-in-out] items-center justify-center"
-        >
-          <div className="w-full   max-w-sm">
-            <div className="md:hidden lg:hidden mb-6">
-              <Link
-                href="https://soliteck.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image alt="logo" className="w-28" src={logo} />
-              </Link>
-            </div>
+        <div className="p-10  flex items-center justify-center">
+          <div className="w-full max-w-sm">
             <div className="mb-8">
-              <h2 className="text-4xl font-semibold text-gray-800">
+              <h2 className="text-2xl font-semibold text-gray-800">
                 Welcome back
               </h2>
-              <p className="text-lg text-gray-500">
+              <p className="text-sm text-gray-500">
                 Sign in to your{" "}
-                <span className="font-semibold text-[#1a3d80] bg-white px-1 rounded">
+                <span className="font-semibold text-blue-900">
                   'Soliteck API DOCS'
                 </span>{" "}
                 account
@@ -201,44 +157,40 @@ animate-[twinkle_4s_infinite_alternate_ease-in-out] items-center justify-center"
                 Phone Number
               </label>
               <input
-                onChange={(e) => dispatch(setPhone(e.target.value))}
+                onChange={(e) => setPhone(e.target.value)}
                 type="phone"
                 placeholder="Enter the Phone number"
-                className="mt-1 w-full border  border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-blue-500"
+                className="mt-1 w-full border m-4 lg:m-0 md:m-0 border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
               />
             </div>
 
             {/* password */}
             <div className="mb-3">
-              <div className="flex justify-between text-xs text-gray-600">
-                <label>Password</label>
-              </div>
+              {/* <div className="flex justify-between text-xs text-gray-600">
+                  <label>Password</label>
+                  <button className="text-blue-600 hover:underline">
+                    Forgot?
+                  </button>
+                </div> */}
 
               <input
-                onChange={(e) => dispatch(setPassword(e.target.value))}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 placeholder="••••••••"
-                className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-3 text-sm focus:outline-none focus:border-blue-500"
+                className="mt-1 w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500"
               />
             </div>
 
+            {/* remember */}
             <div className="flex items-center gap-2 text-sm text-gray-600 mb-5">
-              <input
-                type="checkbox"
-                id="rememberMe"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 accent-blue-500 cursor-pointer"
-              />
-              <label htmlFor="rememberMe" className="cursor-pointer select-none">
-                Remember me
-              </label>
+              <input type="checkbox" />
+              Remember me
             </div>
 
             {/* login */}
             <button
               onClick={loginUser}
-              className="w-full bg-[#0f2654] text-white py-2.5 rounded-lg text-sm font-medium hover:bg-[#163270] transition"
+              className="w-full bg-[#1a3d80] text-white py-2.5 rounded-lg text-sm font-medium hover:bg-[#163270] transition"
             >
               Login in
             </button>

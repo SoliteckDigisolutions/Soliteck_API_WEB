@@ -16,9 +16,9 @@ interface InfoType {
   subContent?: SubContent[];
 }
 
-type GlobalIntroInfo = Record<string, InfoType>;
+type GlobalnotesInfo = Record<string, InfoType>;
 
-export const IntroInfo: GlobalIntroInfo = {
+export const IntroInfo: GlobalnotesInfo = {
   payoutapi: {
     mainHeading: "SOLITECK PayOut API | Digital Transformation made easy",
     subTitle: "Payout API Documentation",
@@ -640,19 +640,7 @@ export const IntroInfo: GlobalIntroInfo = {
         ],
       },
 
-      {
-        title: "Navigation",
-        content: "Available API endpoints in this module.",
-        data: [
-          { title: "Generate Token", content: "/GenerateUATToken" },
-          { title: "Verify Token", content: "/VerifyUATToken" },
-          { title: "Sender Login", content: "/SenderLogin" },
-          { title: "Create Sender", content: "/CreateSender" },
-          { title: "Add Card Details", content: "/AddCardDetails" },
-          { title: "Create Beneficiary", content: "/CreateBeneficiary" },
-          { title: "Card Collection URL", content: "/CardCollectionUrl" },
-        ],
-      },
+
     ],
   },
   webhook: {

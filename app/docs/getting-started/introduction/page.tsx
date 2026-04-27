@@ -1,4 +1,4 @@
-import FlowInegartion from "../../../components/component/FlowInegartion";
+import FlowInegartion from "../../../../components/common-components/FlowInegartion";
 import { LuWaypoints } from "react-icons/lu";
 export default function IntroductionPage() {
   return (

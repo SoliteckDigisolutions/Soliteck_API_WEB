@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
   const body = await req.json();
+  const { rememberMe = false } = body;
 
   try {
     const response = await axios.post(
@@ -17,15 +18,23 @@ export async function POST(req: Request) {
     );
 
     if (response.data.responseCode === 200) {
-      const cookieStore = await cookies();
-      cookieStore.set("AUTH_SESSION", JSON.stringify(response.data.responseData), {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-        maxAge: 60 * 60 * 24 * 7, // 1 week
-      });
+      const cookieStore = cookies();
 
+      const maxAge = rememberMe
+        ? 60 * 60 * 24 * 1 // 1 days
+        : undefined; // session cookie
+
+      (await cookieStore).set(
+        "AUTH_SESSION",
+        JSON.stringify(response.data.responseData),
+        {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          sameSite: "lax",
+          path: "/",
+          maxAge,
+        }
+      );
     }
 
     return NextResponse.json(response.data);

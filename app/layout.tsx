@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${dmMono.variable} font-sans`}>
-           <StoreProvider>{children}</StoreProvider>
+        <StoreProvider>{children}</StoreProvider>
         <Toaster position="top-center" />
       </body>
     </html>

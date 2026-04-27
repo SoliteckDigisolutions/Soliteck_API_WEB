@@ -1,7 +1,7 @@
 "use client";
 
-import MainPage from "@/app/components/mainPageComp/MainPage";
-import { pgApiD } from "@/app/constants/pgApiD";
+import MainPage from "@/components/common-components/MainPage";
+import { pgApiD } from "@/app/docs/api-reference/pgapi/pgApiD";
 
 export default function Page() {
   return <MainPage data={pgApiD} />;

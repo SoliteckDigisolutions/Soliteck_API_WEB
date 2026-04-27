@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "@/app/components/navigationComp/Navabr";
-import Sidebar from "@/app/components/navigationComp/SideNavigation";
+import Navbar from "@/components/common-components/Navabr";
+import Sidebar from "@/components/common-components/SideNavigation";
 
 export default function DocsLayout({
   children,

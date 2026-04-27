@@ -12,6 +12,18 @@ section {
   scroll-margin-top: 90px;
 }
 
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE & Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari */
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -129,9 +141,11 @@ section {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground antialiased;
   }
+
   html {
     @apply font-sans;
   }
@@ -195,6 +209,7 @@ section {
   from {
     transform: perspective(800px) rotateY(-360deg);
   }
+
   to {
     transform: perspective(800px) rotateY(0deg);
   }
@@ -208,9 +223,11 @@ section {
   10% {
     filter: brightness(1);
   }
+
   50% {
     filter: brightness(0.2);
   }
+
   90% {
     filter: brightness(1);
   }

@@ -1,7 +1,7 @@
 "use client";
 
-import MainPage from "@/app/components/mainPageComp/MainPage";
-import { BbpsApiD } from "@/app/constants/BbpsApiD";
+import MainPage from "@/components/common-components/MainPage";
+import { BbpsApiD } from "@/app/docs/api-reference/bbpsapi/BbpsApiD";
 
 export default function Page() {
   return <MainPage data={BbpsApiD} />;

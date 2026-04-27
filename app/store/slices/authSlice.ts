@@ -4,6 +4,7 @@ const initialState = {
   phone: "",
   password: "",
   isLoggedIn: false,
+  rememberMe: false,
 };
 
 const authSlice = createSlice({
@@ -16,6 +17,9 @@ const authSlice = createSlice({
     setPassword: (state, action) => {
       state.password = action.payload;
     },
+    setRememberMe: (state, action) => {
+      state.rememberMe = action.payload;
+    },
     loginSuccess: (state) => {
       state.isLoggedIn = true;
     },
@@ -23,11 +27,12 @@ const authSlice = createSlice({
       state.phone = "";
       state.password = "";
       state.isLoggedIn = false;
+      state.rememberMe = false;
     },
   },
 });
 
-export const { setPhone, setPassword, loginSuccess, logoutUser } =
+export const { setPhone, setPassword, setRememberMe, loginSuccess, logoutUser } =
   authSlice.actions;
 
 export default authSlice.reducer;

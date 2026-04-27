@@ -21,7 +21,7 @@ export const data = [
   { title: "Get Billers for BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-3" },
   { title: "Bill Fetch BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-4" },
   { title: "Bill Pay BBPS Online", path: "/docs/api-reference/bbpsapionline#endpoint-5" },
-  { title: "BBPS Online Webhook", path: "/docs/api-reference/bbpsapionline#endpoint-6" }, 
+  { title: "BBPS Online Webhook", path: "/docs/api-reference/bbpsapionline#endpoint-6" },
   { title: "Get Operators for Creadit Card BP API", path: "/docs/api-reference/ccbpapi#endpoint-2" },
   { title: " CC Bill Pay", path: "/docs/api-reference/ccbpapi#endpoint-3" },
   { title: "Merchant LogIn", path: "/docs/api-reference/aepsapi#endpoint-2" },

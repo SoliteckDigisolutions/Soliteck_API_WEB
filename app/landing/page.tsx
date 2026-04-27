@@ -1,8 +1,8 @@
-import Navbar from "@/app/components/navigationComp/Navabr";
+import Navbar from "@/components/common-components/Navabr";
 import Link from "next/link";
-import StatsBar from "../components/landingComp/StatsBar";
+import StatsBar from "../../components/common-components/StatsBar";
 // import AnimatedCard from "@/app/components/landingComp/AimatedCard";
-import FancyButton from "@/app/components/component/buttonLogin";
+import FancyButton from "@/components/common-components/buttonLogin";
 import { categorieses } from "@/app/constants/GlobalConstants";
 
 const whyCards = [

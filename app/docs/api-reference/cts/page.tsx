@@ -1,7 +1,7 @@
 "use client";
 
-import MainPage from "@/app/components/mainPageComp/MainPage";
-import { CheckTransacStatus } from "@/app/constants/CheckTransacStatus";
+import MainPage from "@/components/common-components/MainPage";
+import { CheckTransacStatus } from "@/app/docs/api-reference/cts/CheckTransacStatus";
 
 export default function Page() {
   return <MainPage data={CheckTransacStatus} />;

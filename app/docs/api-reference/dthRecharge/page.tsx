@@ -1,7 +1,6 @@
 "use client";
-
-import MainPage from "@/app/components/mainPageComp/MainPage";
-import { dthApiD } from "@/app/constants/dthApiD";
+import MainPage from "@/components/common-components/MainPage";
+import { dthApiD } from "@/app/docs/api-reference/dthRecharge/dthApiD";
 
 export default function Page() {
    return <MainPage data={dthApiD} />;
