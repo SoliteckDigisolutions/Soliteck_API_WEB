@@ -1,17 +1,8 @@
-import BaseUrls from "@/app/components/component/BaseUrl";
-import FlowInegartion from "../../../components/component/FlowInegartion";
+import FlowInegartion from "../../../../components/common-components/FlowInegartion";
 import { LuWaypoints } from "react-icons/lu";
-import { IoBuildOutline } from "react-icons/io5";
 export default function IntroductionPage() {
-  // const stats = [
-  //   { title: "API Endpoints", value: "35+" },
-  //   { title: "Supported Services", value: "8+" },
-  //   { title: "Daily Transactions", value: "1M+" },
-  //   { title: "Uptime", value: "99.99%" },
-  // ];
-
   return (
-    <div className="max-w-6xl mx-auto mt-12 px-6 py-10 bg-white">
+    <div className="max-w-7xl p-4 mx-auto mt-12   py-5 bg-white">
       {/* Page Header */}
       <div className="mb-10 border-b pb-6">
         <h1 className="text-2xl font-semibold text-gray-900 mb-3">
@@ -28,24 +19,6 @@ export default function IntroductionPage() {
           applications quickly and reliably.
         </p>
       </div>
-
-      {/* Statistics
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
-        {stats.map((stat) => (
-          <div
-            key={stat.title}
-            className="border rounded-xl p-6 bg-gray-50 hover:shadow-md transition"
-          >
-            <p className="text-3xl font-bold text-blue-600 mb-1">
-              {stat.value}
-            </p>
-
-            <p className="text-sm text-gray-500">
-              {stat.title}
-            </p>
-          </div>
-        ))}
-      </div> */}
 
       {/* Content Sections */}
       <div className="space-y-12">
@@ -107,8 +80,6 @@ export default function IntroductionPage() {
           </div>
         </section>
         <FlowInegartion />
-
-      
       </div>
     </div>
   );

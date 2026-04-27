@@ -1,14 +1,7 @@
-import MainPage from "@/app/components/mainPageComp/MainPage";
-import { Globalintroinfo } from "@/app/constants/GlobalApiInfo";
-import { payoutDocs } from "@/app/constants/payOut";
-
+"use client";
+import MainPage from "@/components/common-components/MainPage";
+import { payoutDocs } from "@/app/docs/api-reference/payoutapi/payOut";
 
 export default function Page() {
-  return (
-    <MainPage
-      data={payoutDocs}
-     
-      
-    />
-  );
+  return <MainPage data={payoutDocs} />;
 }

@@ -4,7 +4,7 @@ interface Section {
   title?: string | undefined;
   content?: string | undefined;
 }
-interface introinterface extends Section {}
+interface notesinterface extends Section { }
 interface authenticationinterface extends Section {
   GenerateToken: string;
   VerifyToken: string;
@@ -38,7 +38,7 @@ interface DTHRechargeService extends Section {
 }
 
 interface DTHRechargeinterface extends Section {
-  intro: introinterface;
+  notes: notesinterface;
   Authentication: authenticationinterface;
   DTHRechargeService: DTHRechargeService;
   keyfeatures: string[];
@@ -59,10 +59,10 @@ interface RechargeService extends Section {
 interface pendingresponse extends Section {
   content: string;
 }
-interface FailedResponse extends Section {}
+interface FailedResponse extends Section { }
 
 export interface MobileRechargeapi extends Section {
-  intro: introinterface;
+  notes: notesinterface;
   Authentication: authenticationinterface;
   RechargeService: RechargeService;
   Apitesting: Apitesting;
@@ -72,7 +72,7 @@ export interface MobileRechargeapi extends Section {
 }
 
 interface BBPSAPIinterface extends Section {
-  intro: introinterface;
+  notes: notesinterface;
   Authentication: authenticationinterface;
   BillValidation: {
     GetBBPSBillValidations: string;
@@ -94,7 +94,7 @@ interface BBPSonlineinterface extends Section {
 
 interface payoutapiinterface extends Section {
   id: number;
-  intro: introinterface;
+  notes: notesinterface;
   Authentication: authenticationinterface;
   BankandifscInfo: BankandifscInfo;
   RemitterManagement: RemitterManag;
@@ -110,16 +110,18 @@ export interface Infointerface {
   MobileRechargeAPI: MobileRechargeapi;
   DTHAPI: DTHRechargeinterface;
   bbpsonline: BBPSonlineinterface;
+  ccbpapi: any;
 }
 
 // ******************************** MainPage ***************************************
 //You can see ? this every where, some data have key , some have not thats why i used the optional like optional channing
 
 interface CommonSectionResponse {
-  responseCode: number | any;
-  responseMessage: string;
+  responseCode?: number | any;
+  responseMessage?: string;
+  TransactionMode?: any;
   data?: string | null;
-  responseData: boolean | string | null;
+  responseData?: boolean | string | null | any;
   signalR?: boolean | null;
 }
 
@@ -130,14 +132,15 @@ interface CommonSection {
 
 
 interface ResponseInterface {
-  success:  ResponseDataInterface[];
-  error?:  ResponseDataInterface[];
+  success?: ResponseDataInterface[];
+  error?: ResponseDataInterface[];
 }
 
 export interface ResponseDataInterface {
   id: number;
   info?: string;
-  code : CommonSectionResponse;
+  data?: any;
+  code: CommonSectionResponse;
 }
 
 
@@ -145,8 +148,14 @@ export interface ResponseDataInterface {
 interface EndpointInterface extends CommonSection {
   // Page data interface
   id?: number;
+  subInforamtion?: string;
+  extraInfo?: any;
+  notes?: string[] | string;
+  notes2?: string[] | string;
+  subData?: any;
   topText?: string;
   post?: string | Record<string, unknown>; //only accepts object, string
+  post2?: string | Record<string, unknown>;
   request?: string | object;
   response?: ResponseInterface;
   note?: any;
@@ -162,7 +171,7 @@ interface BaseUrlsInterface {
 
 export interface MainInterface extends CommonSection {
   // This is the all page interface
-  BaseUrls: BaseUrlsInterface;
+  BaseUrls?: BaseUrlsInterface;
   Endpoints: EndpointInterface[];
   note: string;
 }

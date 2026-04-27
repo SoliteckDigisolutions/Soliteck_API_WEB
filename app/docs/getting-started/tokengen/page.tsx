@@ -1,4 +1,4 @@
-import BaseUrls from "@/app/components/component/BaseUrl";
+import BaseUrls from "@/components/common-components/BaseUrl";
 import { RiTokenSwapLine } from "react-icons/ri";
 
 export default function page() {
