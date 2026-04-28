@@ -7,9 +7,9 @@ export const aepsApiD: MainInterface = {
     title: "SOLITECK MOBILE REG API | Digital Transformation made easy",
 
     BaseUrls: {
-        link: " https://api-uat.soliteck.in/uat/api/RechargeTxn/",
+        link: "https://api-uat.soliteck.in/uat/api/FingPayAEPS/",
         auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
-    },
+    },          
 
     note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
 
@@ -114,6 +114,7 @@ export const aepsApiD: MainInterface = {
         {
             id: 4,
             title: "Merchant LogIn",
+            subInforamtion : "This API authenticates the merchant using their registered mobile number. Upon successful login, it returns merchant profile details including personal, business, KYC, and bank information.",
             topText: "{AEPS Base URL}/FP_MerchantLogIn",
             post: {
                 MerchantPhoneNumber: "9999999999",
@@ -305,6 +306,7 @@ export const aepsApiD: MainInterface = {
         {
             title: "State List ",
             topText: "{AEPS Base URL}/GetFPStateList",
+            subInforamtion : "This API fetches the list of all available states using the provided token. It returns state details such as state name, state code, and status.",
             request: "All headers Required",
             response: {
                 success: [
@@ -351,6 +353,7 @@ export const aepsApiD: MainInterface = {
         {
             title: "Company List",
             topText: " {AEPS Base URL}/GetCompanyTypeList",
+            subInforamtion: "This API fetches the list of available company/business types along with their MCC codes and descriptions. It helps classify merchant business categories during onboarding and KYC.",
             request: "All headers Required",
             response: {
                 success: [
@@ -394,7 +397,8 @@ export const aepsApiD: MainInterface = {
         },
         {
             title: "Bank List",
-            topText: " {AEPS Base URL}/GetBankList",
+            topText: " {AEPS Base URL}/GetFPBankList",
+            subInforamtion: "This API retrieves the list of all supported banks for AEPS transactions using the provided token. It returns bank details such as bank name, IIN number, active status, and identifiers required for bank selection during transactions.",
             request: "All headers Required",
             response: {
                 success: [
@@ -444,9 +448,21 @@ export const aepsApiD: MainInterface = {
         },
         {
             title: "Merchant On Boarding",
-            topText: "{AEPS Base URL}/MerchantOnBoarding",
+            topText: "{AEPS Base URL}/MerchantOnBoardingApiUser",
+            biometric: `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<PidOptions ver="1.0">
+  <Opts env="P" fCount="1" fType="2" format="0" iCount="0" iType="0"
+    indicatorforUID="0" otp="" pCount="0" pType="0"
+    pidVer="2.0" posh="UNKNOWN" timeout="10000"
+    wadh="E0jzJ/P8UopUHAieZn8CKqS4WPMi5ZSYXgfnlfkWjrc=" />
+  <Demo/>
+  <CustOpts>
+    <Param name="" value=""/>
+  </CustOpts>
+</PidOptions>`,
+            subInforamtion: "This API is used to onboard a new merchant into the system by capturing personal, business, KYC, banking, and device details.",
             request: "All headers Required",
-            notes: ["For testing purpose use MerchantPhoneNumber:", "9999999999 (Success Case)"],
+            notes: ["For testing purpose use MerchantPhoneNumber:",`For Success MerchantPhoneNumber = "9999999999" & AadhaarNumber = "123412341234" `],
             post: {
 
                 "MerchantPhoneNumber": "9999999999",
@@ -535,64 +551,60 @@ export const aepsApiD: MainInterface = {
             },
 
             table: {
-                responses: {
-                    id: 1,
-                    title: "Validations",
-                    tableData: [
+  responseKeysTable: {
+    id: 6,
+    title: "Merchant Onboarding Parameters",
+    tableData: [
+      { key: "MerchantPhoneNumber", description: "Merchant contact number" },
+      { key: "FirstName", description: "Merchant first name" },
+      { key: "LastName", description: "Merchant last name" },
+      { key: "MiddleName", description: "Merchant middle name" },
+      { key: "MerchantAddress1", description: "Primary merchant address" },
+      { key: "MerchantAddress2", description: "Secondary merchant address" },
+      { key: "MerchantState", description: "Merchant state name" },
+      { key: "MerchantStateId", description: "obtained from the GetFPStateList API response" },
+      { key: "CompanyTypeId", description: "obtained from the GetCompanyTypeList API response" },
+      { key: "MerchantCityName", description: "Merchant city name" },
+      { key: "MerchantDistrictName", description: "Merchant district name" },
+      { key: "MerchantPinCode", description: "Merchant area pincode" },
+      { key: "CompanyLegalName", description: "Registered company/shop name" },
+      { key: "CompanyType", description: "Type of company/business (obtained from the GetCompanyTypeList API response)" },
+      { key: "EmailId", description: "Merchant email ID" },
+      { key: "UserPan", description: "Merchant PAN number" },
+      { key: "AadhaarNumber", description: "Merchant Aadhaar number" },
+      { key: "MerchantAadharFrontImage", description: "Aadhaar front image (base64)" },
+      { key: "MerchantAadharBackImage", description: "Aadhaar back image (base64)" },
+      { key: "BackgroundImageOfShop", description: "Shop background image (base64)" },
+      { key: "MerchanrGstinNumber", description: "GST number" },
+      { key: "MerchantPanImage", description: "PAN card image (base64)" },
+      { key: "BankProofImage", description: "Bank proof (passbook/cheque) (base64)" },
+      { key: "CompanyBankAccountNumber", description: "Bank account number" },
+      { key: "CompanyBankName", description: "Bank name" },
+      { key: "CompanyIfscCode", description: "Bank IFSC code" },
+      { key: "AccountHolderName", description: "Account holder name" },
+      { key: "ShopAddress", description: "Shop address" },
+      { key: "ShopCity", description: "Shop city" },
+      { key: "ShopDistrict", description: "Shop district" },
+      { key: "ShopState", description: "Shop state name" },
+      { key: "ShopPincode", description: "Shop area pincode" },
+      { key: "ShopLatitude", description: "Shop latitude location" },
+      { key: "ShopLongitude", description: "Shop longitude location" },
+      { key: "ClientOrderId", description: "Unique transaction Number" },
+      { key: "DeviceIMEI", description: "IMEI number of the biometric/mATM device used for the transaction." },
+      { key: "MatmSerialNumber", description: "Serial number of the mATM hardware device." },
+      { key: "IpAddress", description: "User IP address" },
+      { key: "NationalBankIdentificationNumber", description: "Bank identification number (obtained from the GetFPBankList API response field iinno)" },
+      { key: "MerchantMaskedAadharImage", description: "base64_masked_aadhar" },
+      { key: "ShopStateId", description: "obtained from the GetFPStateList API response" },
 
-                        { key: "MerchantPhoneNumber", description: "Merchant Aadhaar number (Must be 12-digit numeric, not empty)" },
-                        { key: "FirstName", description: "Merchant contact number (Must be 10-digit numeric, not empty)" },
-                        { key: "LastName", description: "Merchant email ID (Must be valid email format)" },
-                        { key: "MiddleName", description: "Merchant full name (Required, alphabets only recommended)" },
-
-                        { key: "merchantAddress1", description: "Merchant PAN number (Must follow format ABCDE1234F)" },
-                        { key: "MerchantAddress2", description: "Name as per PAN (Required, must match PAN)" },
-                        { key: "MerchantStateId", description: "DOB as per PAN (Required, valid date)" },
-
-                        { key: "MerchantState", description: "Aadhaar number (12-digit numeric, required)" },
-                        { key: "MerchantCityName", description: "Name as per Aadhaar (Required)" },
-                        { key: "MerchantDistrictName", description: "DOB as per Aadhaar (Required, valid date)" },
-
-                        { key: "MerchantPinCode", description: "Merchant state (Required, valid state name)" },
-                        { key: "CompanyLegalName", description: "Merchant district (Required)" },
-                        { key: "CompanyType", description: "Merchant city (Required)" },
-                        { key: "CompanyTypeId", description: "Area pincode (Must be 6-digit numeric)" },
-
-                        { key: "EmailId", description: "Registered company/shop name (Required)" },
-
-                        { key: "UserPan", description: "Bank account number (Numeric, 9–18 digits)" },
-                        { key: "MerchanrGstinNumber", description: "Bank IFSC code (Format: HDFC0001234)" },
-                        { key: "MerchantAadharFrontImage", description: "Bank name (Required)" },
-
-                        { key: "MerchantAadharBackImage", description: "Shop image proof (Required, base64/string)" },
-                        { key: "MerchantMaskedAadharImage", description: "PAN card image (Required, base64/string)" },
-                        { key: "MerchantPanImage", description: "Aadhaar front image (Required, base64/string)" },
-                        { key: "BankProofImage", description: "Aadhaar back image (Required, base64/string)" },
-                        { key: "CompanyBankAccountNumber", description: "Bank proof image (passbook/cheque, required, base64/string)" },
-
-                        { key: "BankIfscCode", description: "Shop latitude (Must be valid decimal, not empty)" },
-                        { key: "CompanyBankName", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "BankAccountName", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopAddress", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopCity", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopDistrict", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopState", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopPincode", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopLatitude", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ShopLongitude", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "DeviceIMEI", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "MatmSerialNumber", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "NationalBankIdentificationNumber", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "ClientOrderId", description: "Shop longitude (Must be valid decimal, not empty)" },
-
-
-
-                    ],
-                },
-            }
+    ]
+  }
+}
         },
         {
             title: " Verify OTP",
+            notes: ["For testing purpose use:",`For Success use Otp = "123456" `],
+            subInforamtion: "This API verifies the OTP sent during merchant onboarding for eKYC validation. Upon successful verification, it confirms the merchant registration process using the provided transaction identifiers.",
             topText: "{AEPS Base URL}/MerchantEkycVerifyOTPApiUser",
             request: "All headers Required",
             post: {
@@ -645,6 +657,8 @@ export const aepsApiD: MainInterface = {
         },
         {
             title: "Generate Otp",
+            notes: ["For testing purpose use :",`For Success use MerchantPhoneNumber = "9999999999" `],
+            subInforamtion: "This API generates and sends an OTP to the merchant’s registered mobile number for eKYC verification. It validates the device and location details before initiating the OTP generation process.",
             topText: " {AEPS Base URL}/MerchantEkycGenOTPApiUser",
             request: "All headers Required",
             post: {
@@ -701,6 +715,8 @@ export const aepsApiD: MainInterface = {
         },
         {
             title: "Resend OTP",
+            notes: ["For testing purpose use :",`For Success use MerchantPhoneNumber = "9999999999" `],
+            subInforamtion: "This API is used to resend the OTP to the merchant’s registered mobile number during the eKYC process. It validates the existing onboarding transaction and device details before triggering a new OTP.",
             topText: "{AEPS Base URL}/MerchantEkyResendOTPApiUser",
             request: "All headers Required",
             post: {
@@ -761,6 +777,7 @@ export const aepsApiD: MainInterface = {
         },
         {
             title: "Merchant Ekyc",
+            subInforamtion: "This API performs biometric-based merchant eKYC authentication using device, fingerprint, and encryption data. Upon successful validation, it completes the merchant KYC process and activates the merchant profile.",
             topText: "{AEPS Base URL}/FP_MerchantEKYCApiUser",
             request: "All headers Required",
             post: {
@@ -834,54 +851,49 @@ export const aepsApiD: MainInterface = {
 
             },
             table: {
-                responses: {
-                    id: 1,
-                    title: "Validations",
-                    tableData: [
-
-                        { key: "MerchantPhoneNumber", description: "Merchant Aadhaar number (Must be 12-digit numeric, not empty)" },
-                        { key: "Ci", description: "Merchant contact number (Must be 10-digit numeric, not empty)" },
-                        { key: "Dc", description: "Merchant email ID (Must be valid email format)" },
-                        { key: "DeviceIMEI", description: "Merchant full name (Required, alphabets only recommended)" },
-
-                        { key: "MatmSerialNumber", description: "Merchant PAN number (Must follow format ABCDE1234F)" },
-                        { key: "DpID", description: "Name as per PAN (Required, must match PAN)" },
-                        { key: "ErrCode", description: "DOB as per PAN (Required, valid date)" },
-
-                        { key: "ErrInfo", description: "Aadhaar number (12-digit numeric, required)" },
-                        { key: "FCount", description: "Name as per Aadhaar (Required)" },
-                        { key: "FType", description: "DOB as per Aadhaar (Required, valid date)" },
-
-                        { key: "Hmac", description: "Merchant state (Required, valid state name)" },
-                        { key: "ICount", description: "Merchant district (Required)" },
-                        { key: "IType", description: "Merchant city (Required)" },
-                        { key: "Mc", description: "Area pincode (Must be 6-digit numeric)" },
-
-                        { key: "Mi", description: "Registered company/shop name (Required)" },
-
-                        { key: "NmPoints", description: "Bank account number (Numeric, 9–18 digits)" },
-                        { key: "PCount", description: "Bank IFSC code (Format: HDFC0001234)" },
-                        { key: "PType", description: "Bank name (Required)" },
-
-                        { key: "PidDatatype", description: "Shop image proof (Required, base64/string)" },
-                        { key: "Piddata", description: "PAN card image (Required, base64/string)" },
-                        { key: "QScore", description: "Aadhaar front image (Required, base64/string)" },
-                        { key: "RdsID", description: "Aadhaar back image (Required, base64/string)" },
-                        { key: "RdsVer", description: "Bank proof image (passbook/cheque, required, base64/string)" },
-
-                        { key: "SessionKey", description: "Shop latitude (Must be valid decimal, not empty)" },
-                        { key: "EncodeFPTxnId", description: "Shop longitude (Must be valid decimal, not empty)" },
-                        { key: "PrimaryKeyId", description: "Shop longitude (Must be valid decimal, not empty)" },
-
-
-
-
-                    ],
-                },
-            }
+  responseKeysTable: {
+    id: 5,
+    title: "Merchant KYC Parameters",
+    tableData: [
+      { key: "MerchantPhoneNumber", description: "Registered mobile number of the merchant initiating the transaction." },
+      { key: "DeviceIMEI", description: "IMEI number of the biometric/mATM device used for the transaction." },
+      { key: "MatmSerialNumber", description: "Serial number of the mATM hardware device." },
+      { key: "DpID", description: "Device Provider ID (e.g., MANTRA.MSIPL)." },
+      { key: "Mi", description: "Device model identifier (e.g., MFS110)." },
+      { key: "RdsID", description: "Registered Device Service (RDS) provider ID." },
+      { key: "RdsVer", description: "Version of RD service used for biometric authentication." },
+      { key: "Dc", description: "Device certificate identifier." },
+      { 
+        key: "Ci", 
+        description: "Returned by RD Service when using biometric authentication. Public key certificate identifier of UIDAI using which Skey was encrypted."
+      },
+      { 
+        key: "SessionKey", 
+        description: "Returned by RD Service when using biometric authentication. AES session key generated dynamically for every txn."
+      },
+      { key: "Hmac", description: "Hash-based Message Authentication Code for data integrity." },
+      { key: "Mc", description: "Manufacturer certificate for device authentication." },
+      { key: "Piddata", description: "Encrypted biometric PID data (fingerprint/iris)." },
+      { key: "PidDatatype", description: "Encoding type of PID data (e.g., X = encrypted XML)." },
+      { key: "FCount", description: "Total number of FIR records which was part of input." },
+      { key: "FType", description: "When connecting the Device to RD service send ftype 2 in the request." },
+      { key: "ICount", description: "Total number of IIR records which was part of input." },
+      { key: "IType", description: "ISO format (0 for IIR), 0 (IIR) is default." },
+      { key: "PCount", description: "Number of face photo records to be captured (0 to 1)." },
+      { key: "PType", description: "Face format." },
+      { key: "NmPoints", description: "Number of minutiae points captured (fingerprint quality metric)." },
+      { key: "QScore", description: "Quality score of biometric capture." },
+      { key: "ErrCode", description: "Error code from device/system (0 = success)." },
+      { key: "ErrInfo", description: "Error message or status description." },
+      { key: "EncodeFPTxnId", description: "Encoded fingerprint transaction ID (unique reference)." },
+      { key: "PrimaryKeyId", description: "Internal database primary key for transaction tracking." }
+    ]
+  }
+}
         }, {
             title: "Merchant 2FA",
-            topText: " {AEPS Base URL}/FP_MerchantEKYCApiUser",
+            subInforamtion:"This API performs biometric-based merchant authentication as part of the eKYC process using device, fingerprint, and session encryption data. Upon successful validation, it completes the merchant 2FA (two-factor authentication) verification.",
+            topText: " {AEPS Base URL}/FP_MerchantTwoFAApiUser",
             request: "All headers Required",
             post: {
 
@@ -952,10 +964,58 @@ export const aepsApiD: MainInterface = {
                         },
                     },
                 ],
-            }
+            },
+             table: {
+  responseKeysTable: {
+    id: 5,
+    title: "Merchant 2FA Parameters",
+    tableData: [
+      { key: "MerchantPhoneNumber", description: "Registered mobile number of the merchant initiating the transaction." },
+      { key: "DeviceIMEI", description: "IMEI number of the biometric/mATM device used for the transaction." },
+      { key: "MatmSerialNumber", description: "Serial number of the mATM hardware device." },
+      { key: "DpID", description: "Device Provider ID (e.g., MANTRA.MSIPL)." },
+      { key: "Mi", description: "Device model identifier (e.g., MFS110)." },
+      { key: "RdsID", description: "Registered Device Service (RDS) provider ID." },
+      { key: "RdsVer", description: "Version of RD service used for biometric authentication." },
+      { key: "Dc", description: "Device certificate identifier." },
+      {
+       key : "Latitude", description: "Merchant/device geographic latitude (used for location verification)."
+      },
+      {
+       key : "Longitude", description: "Merchant/device geographic longitude (used for location verification)."
+      },
+      { 
+        key: "Ci", 
+        description: "Returned by RD Service when using biometric authentication. Public key certificate identifier of UIDAI using which Skey was encrypted."
+      },
+      { 
+        key: "SessionKey", 
+        description: "Returned by RD Service when using biometric authentication. AES session key generated dynamically for every txn."
+      },
+      { key: "Hmac", description: "Hash-based Message Authentication Code for data integrity." },
+      { key: "Mc", description: "Manufacturer certificate for device authentication." },
+      { key: "Piddata", description: "Encrypted biometric PID data (fingerprint/iris)." },
+      { key: "PidDatatype", description: "Encoding type of PID data (e.g., X = encrypted XML)." },
+      { key: "FCount", description: "Total number of FIR records which was part of input." },
+      { key: "FType", description: "When connecting the Device to RD service send ftype 2 in the request." },
+      { key: "ICount", description: "Total number of IIR records which was part of input." },
+      { key: "IType", description: "ISO format (0 for IIR), 0 (IIR) is default." },
+      { key: "PCount", description: "Number of face photo records to be captured (0 to 1)." },
+      { key: "PType", description: "Face format." },
+      { key: "NmPoints", description: "Number of minutiae points captured (fingerprint quality metric)." },
+      { key: "QScore", description: "Quality score of biometric capture." },
+      { key: "ErrCode", description: "Error code from device/system (0 = success)." },
+      { key: "ErrInfo", description: "Error message or status description." },
+      { key: "EncodeFPTxnId", description: "Encoded fingerprint transaction ID (unique reference)." },
+      { key: "PrimaryKeyId", description: "Internal database primary key for transaction tracking." }
+    ]
+  }
+}
         },
         {
             title: "Cash withdrawal",
+            notes: ["Cash withdrawal For Uat Testing;", `For Pending Use  TransactionAmount = 100 & AdhaarNumber = "123412341234" `,`For Failed  Use  TransactionAmount < 99.0 & AdhaarNumber = "123412341234`],
+            subInforamtion: "This API is used to perform AEPS cash withdrawal transactions using customer Aadhaar and biometric authentication. Upon successful verification, it debits the requested amount from the customer’s bank account and returns transaction details including RRN and balance information.",
             request: "All headers Required",
             topText: "{AEPS Base URL}/FP_CashWithdrawalApiUser",
             post: {
@@ -1006,7 +1066,22 @@ export const aepsApiD: MainInterface = {
                             responseData: "{\"MobileNumber\":null,\"Amount\":100,\"ProductId\":null,\"OperatorId\":null,\"VendorRefNumber\":167767512325250012,\"TransactionMode\":null,\"ExecutionMode\":1,\"StatusId\":1,\"SPTransactionRef\":\"sdklfjeoiruouroerldfd\",\"CustomerDetails\":\"670816060105-5555555555-608314-9999999999\",\"TransactionName\":\"AEPS\",\"TimeSeconds\":54300633,\"TPin\":null,\"Reason\":null,\"VendorId\":null,\"ClientOrderId\":null,\"Process\":null,\"VendorCharges\":null,\"VendorGST\":null,\"balanceAmount\":100.0,\"bankRRN\":4384729847923}"
 
                         }
-                    }, {
+                    }, 
+                    
+                     {
+                        id: 1,
+                        info: "",
+                        code: {
+
+  responseCode: 201,
+  responseMessage: "Transaction Pending",
+  data: "Token",
+  responseData: "{\"MobileNumber\":\"\",\"Amount\":1000,\"ProductId\":\"\",\"OperatorId\":\"\",\"VendorRefNumber\":\"167766779645810042\",\"TransactionMode\":\"\",\"ExecutionMode\":\"1\",\"StatusId\":\"3\",\"SPTransactionRef\":\"ORD123456DFDSFSADFGDh\",\"CustomerDetails\":\"123412341234-5555555555-608314-9999999999\",\"TransactionName\":\"AEPS\",\"TimeSeconds\":\"54227365\",\"TPin\":\"\",\"Reason\":\"\",\"VendorId\":\"\",\"ClientOrderId\":\"\",\"Process\":\"\",\"VendorCharges\":\"\",\"VendorGST\":\"\"}"
+
+}
+ 
+                    },
+                    {
                         id: 2,
                         info: "",
                         code: {
@@ -1043,9 +1118,37 @@ export const aepsApiD: MainInterface = {
                         },
                     },
                 ],
-            }
+            },
+            table: {
+  responseKeysTable: {
+    id: 7,
+    title: "Cash withdrawal Response Parameters",
+    tableData: [
+      { key: "MobileNumber", description: "Customer mobile number" },
+      { key: "Amount", description: "Transaction amount" },
+      { key: "VendorRefNumber", description: "Vendor reference number" },
+      { key: "TransactionMode", description: "Mode of transaction" },
+      { key: "ExecutionMode", description: "Execution type/mode" },
+      { key: "StatusId", description: "Transaction status ID" },
+      { key: "SPTransactionRef", description: "Service provider transaction reference" },
+      { key: "CustomerDetails", description: "Combined customer transaction details" },
+      { key: "TransactionName", description: "Name of transaction" },
+      { key: "TimeSeconds", description: "Transaction processing time (in seconds)" },
+      { key: "TPin", description: "Transaction PIN" },
+      { key: "Reason", description: "Failure or status reason" },
+      { key: "ClientOrderId", description: "Client order reference ID" },
+      { key: "Process", description: "Process type" },
+      { key: "VendorCharges", description: "Charges applied by vendor" },
+      { key: "VendorGST", description: "GST on vendor charges" },
+      { key: "balanceAmount", description: "Remaining balance amount" },
+      { key: "bankRRN", description: "Bank reference number" }
+    ]
+  }
+}
         }, {
             title: " Balance Enquiry",
+            notes : ["Balance Enquiry For Uat Testing :",`For Success Use  MerchantPhoneNumber = "9999999999"`,`For Failed  Use MerchantPhoneNumber = "5555555555"`],
+            subInforamtion: "This AEPS Balance Enquiry API is used to retrieve the customer’s available bank account balance using Aadhaar authentication. The request is processed through biometric verification (fingerprint/iris) along with bank and Aadhaar details Upon successful authentication, it returns the available account balance along with basic transaction and customer details.",
             request: "All headers Required",
             topText: " {AEPS Base URL}/BalanceEnquiryApiUser",
             post: {
@@ -1137,6 +1240,8 @@ export const aepsApiD: MainInterface = {
             }
         }, {
             title: "Mini Statement",
+              notes : ["Mini Statement For Uat Testing :",`For Success Use  MerchantPhoneNumber = "9999999999"`,`For Failed  Use MerchantPhoneNumber = "5555555555"`],
+            subInforamtion: "This API fetches the mini statement of a customer’s bank account using Aadhaar and biometric authentication. It returns recent transaction history along with balance details and transaction status after successful validation.",
             topText: "{AEPS Base URL}/MiniStatementApiUser",
             request: "All headers Required",
             post: {

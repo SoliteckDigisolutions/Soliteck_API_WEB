@@ -1,5 +1,5 @@
 "use client";
-import profileGif from "@/public/assets/download (4).gif";
+import profileGif from "@/public/assets/animation cat GIF by Olle Engstrom.gif";
 import { User, LogOut } from "lucide-react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
@@ -43,7 +43,7 @@ export default function UserDropdown() {
   return (
     <div className="relative cursor-pointer" ref={dropdownRef}>
       {/* Avatar */}
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-11 h-11 flex items-center justify-center rounded-full cursor-pointer overflow-hidden border hover:ring-2 hover:ring-gray-400 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
         aria-expanded={isOpen}
@@ -52,10 +52,9 @@ export default function UserDropdown() {
       </button>
 
       {/* Dropdown */}
-      <div 
-        className={`absolute right-0 mt-2 w-56 bg-white shadow-xl rounded-lg border transition-all duration-200 z-50 origin-top-right ${
-          isOpen ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
-        }`}
+      <div
+        className={`absolute right-0 mt-2 w-56 bg-white shadow-xl rounded-lg border transition-all duration-200 z-50 origin-top-right ${isOpen ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"
+          }`}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 py-3 border-b text-sm font-semibold">

@@ -89,8 +89,8 @@ export const pgApiD: MainInterface = {
 
     {
       title: "Bulk Pay Sender Login",
-      subInforamtion: "The Bulk Pay Sender Login API is used to authenticate a sender on the SoliTeck payment gateway platform before initiating bulk payout transactions. This API verifies the sender’s credentials and establishes a secure session, allowing access to bulk payment services such as multiple transfers in a single request. Once successfully authenticated, the sender can proceed with high-volume transactions in a safe and controlled manner. This API ensures strong security, proper validation, and compliance checks, making it an essential step for enabling efficient and reliable bulk payout processing through the payment gateway system.",
-      topText: "SenderLogin",
+      subInforamtion: 'This API authenticates the sender using mobile number and token. It returns sender details such as PAN/Aadhaar, along with linked card details, beneficiary list, applicable charges, and supported card types.',
+      topText: "/SenderLogin",
       request: "All headers Required",
       notes: ["For Uat Testing:", `SenderMobile: "1234567890" for success`],
       post: {
@@ -160,8 +160,8 @@ export const pgApiD: MainInterface = {
 
     {
       title: "Create Sender For BulkPay",
-      topText: "/ CreateSender",
-      subInforamtion: "The Create Sender API is used to register a new sender on the SoliTeck BulkPay payment gateway platform. This API captures and verifies essential sender details such as mobile number and identity information to create a secure sender profile. Once the sender is successfully created, they become eligible to initiate bulk payout transactions and manage payment activities through the system. This process ensures proper onboarding, enhances security, and maintains a verified sender base, enabling safe and reliable bulk payment operations within the platform.",
+      topText: "/CreateSender",
+      subInforamtion: "This API is used to register a new sender by capturing basic details such as name, PAN, Aadhaar, and mobile number.",
       notes: ["For Uat Testing:", `SenderMobile: "1234567890" for success`],
       post: {
         Token: "SAME VALUE AS IN HEADER ‘ClientToken KEY’ ", SenderName: "ABCD",
@@ -233,7 +233,7 @@ export const pgApiD: MainInterface = {
     },
     {
       title: "Add Card Details For BulkPay",
-      subInforamtion: "The Add Card Details API is used to securely add and store bank card information for a sender on the SoliTeck BulkPay payment gateway platform. By sending required card details such as card number, expiry date, and other necessary verification data, the system validates and links the card to the sender’s profile. This allows the sender to use the saved card for initiating bulk payout transactions efficiently. The API ensures secure handling of sensitive information through encryption and validation checks, making the payment process faster, safer, and more reliable for recurring and high-volume transactions.",
+      subInforamtion: "This API is used to add a new card to the sender’s profile by providing card details such as card number, CVV, expiry, and sender ID.",
       topText: "/AddCardDetails",
       notes: ["For Uat Testing:", `CardNo: " 4022190003360703" for success`],
       post: {
@@ -316,8 +316,8 @@ export const pgApiD: MainInterface = {
 
     },
     {
-      title: "  Create Beneficiary For Bulk Pay ",
-      subInforamtion: "The Create Beneficiary API is used to add and register a new beneficiary under the SoliTeck BulkPay payment gateway platform for receiving bulk payout transactions. This API captures essential beneficiary details such as bank account number, IFSC code, and personal or business information, and securely stores them after validation. Once the beneficiary is successfully created, they become eligible to receive funds through bulk payment transfers initiated by the sender. This API ensures accurate data handling, reduces manual entry errors, and enables fast, secure, and efficient bulk payout processing within the system.",
+      title: "Create Beneficiary For Bulk Pay ",
+      subInforamtion: 'This API is used to add a new beneficiary to the sender’s account by providing beneficiary name, account number, IFSC, and sender ID.',
       topText: "/CreateBeneficiary ",
 
       post: {
@@ -399,7 +399,7 @@ export const pgApiD: MainInterface = {
     },
     {
       title: "Card Collection Url Bulk Pay ",
-      subInforamtion: "The Card Collection URL API is used to generate a secure payment collection link for card-based transactions on the SoliTeck BulkPay payment gateway platform. By sending a request to the /CardCollectionUrl endpoint with required sender and transaction details, the system creates a unique URL where the payer can securely enter card information to complete the payment. This approach ensures that sensitive card data is handled safely through a secure interface without direct exposure to the application. It improves transaction security, simplifies payment collection, and provides a seamless user experience for bulk payment processing.",
+      subInforamtion: "This API is used to generate a card collection request for initiating payment from a sender’s card to one or more beneficiaries. It requires beneficiary ID, sender card reference, amount, and charges.",
       topText: "/CardCollectionUrl",
       notes: ["For Uat testing:", `For success use txnSenderId:"UCDPREF008273"`],
       post: {
@@ -490,7 +490,7 @@ export const pgApiD: MainInterface = {
     },
     {
       title: "Upload Credit Card Image",
-      subInforamtion: "The Upload Credit Card Image API is used to securely upload and store images of credit cards on the SoliTeck BulkPay payment gateway platform. This API allows users or systems to submit card images for verification and documentation purposes during onboarding or transaction processing. The uploaded image is processed and linked to the respective sender or beneficiary profile after proper validation checks. This helps enhance verification accuracy, reduces fraud risk, and ensures compliance with payment security standards. It plays an important role in improving trust, transparency, and secure handling of card-related operations within the system.",
+      subInforamtion: "This API is used to upload credit card images for verification purposes using the provided token. Upon successful upload, it returns the stored image URL along with masked card details, which can be used for validation and record-keeping.",
       topText: "/UploadCreditCardImage ",
       notes: ["All headers Required and also add this headers that mentioned below:", "Cardimagetype -> (Front/Back)", "SoliteckCardDetailId -> As received in Add Card Details Response", "Txnsenderid -> As received in Add Card Details Response"],
       post: "TOKEN",

@@ -4,7 +4,7 @@ export const bbpsonline: MainInterface = {
   title: "SOLITECK PAYOUTS (BBPS) | Digital Transformation made easy",
 
   BaseUrls: {
-    link: "https://api-uat.soliteck.in/uat/api/BBPSOfflineTxn/",
+    link: "https://api-uat.soliteck.in/uat/api/BBPSTxn/ ",
     auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
   },
 
@@ -73,7 +73,7 @@ export const bbpsonline: MainInterface = {
     {
       id: 3,
       title: "Get Services",
-      subInforamtion: "The Get Services API is used to retrieve the list of available bill payment services and operators under the BBPS online system on the SoliTeck platform. By sending a request to the /GetServices endpoint with a valid authentication token, clients can dynamically fetch updated categories such as electricity, gas, water, telecom, and other supported billers. This API ensures that applications always display the latest service options without relying on hardcoded data. It enhances flexibility, improves accuracy, and plays a key role in enabling seamless integration of BBPS online bill payment services.",
+      subInforamtion: "This API fetches the list of available bill payment and service categories using the provided token. It returns various services such as electricity, loan, insurance, gas, and more.",
       post: "TOKEN",
       topText: "/GetServices",
       request: "All headers required",
@@ -137,7 +137,7 @@ export const bbpsonline: MainInterface = {
       id: 4,
       title: "Get Billers",
       topText: "/GetBillers",
-      subInforamtion: "The Get Billers API is used to retrieve the list of all available billers under the BBPS system on the SoliTeck platform. By sending a request to the /GetBillers endpoint with a valid authentication token and service details, the system returns a structured list of supported billers across different categories such as electricity, gas, water, telecom, and more. This API ensures that applications always display accurate and up-to-date biller information without manual updates. It helps improve flexibility, reduces integration complexity, and enables seamless selection of billers for bill payment transactions.",
+      subInforamtion: "This API fetches the list of billers for a selected service using the service ID. It returns details such as biller name, biller ID, payment rules, and required input parameters.",
       request: "All headers required",
 
       post: {
@@ -210,7 +210,7 @@ export const bbpsonline: MainInterface = {
     {
       id: 5,
       title: "Bill Fetch",
-      subInforamtion: "The Bill Fetch API is used to retrieve the latest bill details for a customer under the BBPS online system on the SoliTeck platform. By sending a request to the /BillFetch endpoint with required parameters such as customer account number, biller ID, and service details, the system fetches real-time billing information including bill amount, due date, billing cycle, and status. This API ensures that users always get accurate and updated bill data before making a payment. It helps reduce errors, improves transparency, and provides a reliable foundation for seamless bill payment processing.",
+      subInforamtion: "This API fetches bill details for a selected biller using the provided customer information and parameters. It retrieves details such as customer name, bill amount, due date, and reference ID.",
       topText: "/BillFetch",
       request: "All headers required",
       post: {
@@ -283,7 +283,7 @@ export const bbpsonline: MainInterface = {
     {
       id: 6,
       request: "All headers required",
-      subInforamtion: "The Bill Pay API is used to process bill payment transactions under the BBPS online system on the SoliTeck platform. By sending a request to the /BillPay endpoint with validated bill and customer details, the system securely processes the payment through authorized banking channels. This API ensures that transactions are executed in real time or near real time with proper authentication, validation, and compliance checks. It also returns transaction status, reference IDs, and confirmation details for tracking purposes. This makes it a core service for enabling fast, secure, and reliable bill payment experiences within applications.",
+      subInforamtion: 'This API is used to perform bill payment for a selected biller using fetched or direct customer details. It requires biller ID, customer parameters, amount, and a unique client order ID.',
       notes: ["For Success, use the Amount = “599”,  BillerId = “APBB11118PPS12” and  RefId = “HNKLLJAUZ3YA86SJFWK1ZITYF2B50567478”", "For Pending, use the Amount = “799”, BillerId = “APBB11118PPS12” and RefId = “HNKLLJAUZ3YA86SJFWK1ZITYF2B50567478”", "For Failed, use the Amount = “699”, BillerId = “APBB11118PPS12” and RefId = “HNKLLJAUZ3YA86SJFWK1ZITYF2B50567478”"],
       title: "Bill Pay",
       topText: "/BillPay",

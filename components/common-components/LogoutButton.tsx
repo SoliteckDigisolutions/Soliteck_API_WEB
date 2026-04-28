@@ -23,6 +23,9 @@ export default function LogoutButton() {
         throw new Error("Logout API failed");
       }
 
+      // Clear localStorage first
+      localStorage.removeItem("AUTHACCESS");
+
       // Clear redux state
       dispatch(logoutUser());
 
@@ -31,8 +34,10 @@ export default function LogoutButton() {
 
       toast.success("Logout successful");
 
-      // Redirect user
-      router.replace("/");
+      // Redirect user with a small delay to ensure state is cleared
+      setTimeout(() => {
+        router.replace("/login");
+      }, 100);
     } catch (error) {
       console.error(error);
       toast.error("Logout failed");

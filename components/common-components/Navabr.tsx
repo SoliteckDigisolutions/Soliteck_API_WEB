@@ -11,6 +11,7 @@ import Search from "./SearchGlobal";
 import UserProfile from "./UserProfile";
 import { useServiceAccess } from "@/hooks/useServiceAccess";
 import { sidebarMenu } from "@/app/constants/GlobalConstants";
+import NavList from "@/components/common-components/NavList"
 
 export default function Header() {
   const router = useRouter();
@@ -48,7 +49,7 @@ export default function Header() {
       {/* top gradient line */}
       <div className="h-[2px] bg-gradient-to-r from-blue-700 via-purple-600 to-cyan-600" />
 
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-14">
+      <div className="max-w-8xl mx-auto flex items-center justify-between px-4 md:px-8 h-14">
         {/* LOGO */}
         <div
           onClick={() => router.push("/")}
@@ -62,26 +63,20 @@ export default function Header() {
         </div>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center align-middle gap-1">
-          <Link
-            href="/docs/getting-started/introduction"
-            className="text-[13px] font-medium text-gray-700 px-3 py-1 rounded-md hover:bg-gray-100 hover:text-gray-900 transition"
-          >
-            Documentation
-          </Link>
-        </nav>
+        <NavList/>
 
-        {/* SEARCH */}
-        <div className="">
-          <Search />
-        </div>
+      
 
         {/* RIGHT SIDE */}
         <div className="hidden md:flex items-center gap-4">
+            {/* SEARCH */}
+        <div className="">
+          <Search />
+        </div>
           <a
             href="https://soliteck.com"
             target="_blank"
-            className="flex items-center gap-1 px-3 py-1 rounded-md border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
+            className="flex items-center gap-1 px-3 py-1 rounded-lg border border-gray-200 text-xs font-mono text-gray-500 hover:bg-gray-50 hover:text-gray-700 transition"
           >
             <Image src={logo} alt="Soliteck logo" className="w-16" />
             .com <TiLink size={12} />

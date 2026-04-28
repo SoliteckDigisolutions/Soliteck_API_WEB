@@ -1,4 +1,3 @@
-"use client";
 import MainPage from "@/components/common-components/MainPage";
 import { bbpsonline } from "@/app/docs/api-reference/bbpsapionline/bbpsonline";
 

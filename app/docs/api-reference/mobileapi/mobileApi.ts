@@ -89,7 +89,7 @@ export const MobileDocs: MainInterface = {
     {
       id: 4,
       title: "Mobile Recharges",
-      subInforamtion: "The Mobile Recharges API is used to perform prepaid mobile recharge transactions through the SoliTeck platform. By sending a request to the recharge endpoint along with required details such as mobile number, operator, circle, and recharge amount, the system processes the transaction in real time. This API ensures fast, secure, and reliable recharges across multiple telecom operators using a single integration. It also provides transaction status and response details, allowing developers to track and manage recharge operations efficiently. This makes it an essential service for enabling seamless mobile recharge functionality within applications.",
+      subInforamtion: "This API is used to perform mobile recharge transactions for a given customer number. It requires details such as mobile number, recharge amount, execution mode, and a unique client order ID.",
       notes: ["For Uat Testing:", "For Success, use the Jio Operator ApiCode with amounts 19, 29, or 119", "For Pending, use the Airtel ApiCode", "For Failed, use any remaining ApiCode"],
       topText: "{Recharge Base URL}/MobileRecharge",
       request: "All headers Required",

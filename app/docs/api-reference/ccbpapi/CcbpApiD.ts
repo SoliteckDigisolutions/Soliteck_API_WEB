@@ -88,7 +88,7 @@ export const CcBpApiD: MainInterface = {
     {
       title: "Get Operators",
       topText: "/NGG_CCBillPayGetOperators",
-      subInforamtion: 'The Get Operators API is used to fetch the list of supported credit card bill payment operators under the SoliTeck platform. By sending a request to the /NGG_CCBillPayGetOperators endpoint with a valid authentication token, the system returns available banks or card issuers that support bill payment services. This API helps ensure that users can select the correct credit card operator before initiating a payment, reducing errors and improving transaction accuracy. It plays an important role in enabling smooth and reliable credit card bill payment integrations by providing real-time and updated operator information. ',
+      subInforamtion: "This API fetches the list of available credit card operators using the provided token. It returns operator IDs and names (e.g., VISA, Mastercard, AMEX, RuPay).",
       request: "All headers required",
 
       post: "TOKEN",
@@ -151,7 +151,7 @@ export const CcBpApiD: MainInterface = {
 
     {
       title: "CC Bill Pay",
-      subInforamtion: 'The Credit Card Bill Pay API is used to process credit card bill payments through the SoliTeck platform. By sending a request to the /NGG_CCBillPay endpoint with required details such as card number, biller/operator information, and payment amount, the system securely processes the transaction through supported banking channels. This API ensures accurate validation of credit card details and enables fast, secure, and reliable payment processing. It also returns transaction status and reference information for tracking and reconciliation purposes, making it a core service for seamless credit card bill payment integration.',
+      subInforamtion: "This API is used to perform credit card bill payment using card and operator details. It requires card information, amount, network type, operator ID, and a unique client order ID.",
       notes: [
         "For Failed, use the Card Number = '3333333333333333'",
         "For Success, use the Card Number = '1111111111111111'",

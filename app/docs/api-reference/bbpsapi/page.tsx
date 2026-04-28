@@ -1,5 +1,3 @@
-"use client";
-
 import MainPage from "@/components/common-components/MainPage";
 import { BbpsApiD } from "@/app/docs/api-reference/bbpsapi/BbpsApiD";
 

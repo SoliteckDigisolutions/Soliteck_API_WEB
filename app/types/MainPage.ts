@@ -154,6 +154,7 @@ interface EndpointInterface extends CommonSection {
   notes2?: string[] | string;
   subData?: any;
   topText?: string;
+  biometric?: string;
   post?: string | Record<string, unknown>; //only accepts object, string
   post2?: string | Record<string, unknown>;
   request?: string | object;

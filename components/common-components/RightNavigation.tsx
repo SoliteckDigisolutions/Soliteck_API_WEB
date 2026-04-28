@@ -25,11 +25,10 @@ export default function RightNavigation({ endpoints, active }: Props) {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`text-[14px]  transform transition-transform duration-300 ease-in-out  ${
-                    active === id
-                      ? "text-blue-600  rounded-sm bg-blue-50 p-1  font-medium   border-blue-200 -ml-[17px] border border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-sm pl-4"
-                      : "text-gray-600 border border-gray-100 rounded-sm bg-white p-1  font-medium   border-gray-10 -ml-[17px] pl-4"
-                  }`}
+                  className={`text-[14px]  transform transition-transform duration-300 ease-in-out  ${active === id
+                    ? "text-blue-600  rounded-sm bg-blue-50 p-1  font-medium   border-blue-200 -ml-[17px] border border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-sm pl-4"
+                    : "text-gray-600 border border-gray-100 rounded-sm bg-white p-1  font-medium   border-gray-10 -ml-[17px] pl-4"
+                    }`}
                 >
                   {endpoint.title}
                 </a>

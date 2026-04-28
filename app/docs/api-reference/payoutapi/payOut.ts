@@ -91,7 +91,7 @@ export const payoutDocs: MainInterface = {
     {
       id: 4,
       title: "Get Banks For Payout",
-      subInforamtion: "The Get Banks For Payout API is used to retrieve the list of supported banks available for payout transactions within the SoliTeck platform. This API helps developers dynamically fetch updated bank options, ensuring accurate and reliable payout processing. By using a valid authentication token, clients can access the list of banks along with relevant details required for initiating transfers. It eliminates the need to hardcode bank data and ensures that any updates or changes in supported banks are reflected in real time. This improves flexibility, reduces errors, and enhances the overall payout experience.",
+      subInforamtion: "This API fetches the list of available banks that can be used for payout transactions. It returns bank details such as bank name, bank code, and supported transfer modes (IMPS/NEFT)",
       post: "TOKEN",
       topText: "/GetAPIBanks",
       request: "All headers required",
@@ -151,7 +151,7 @@ sDeleted\":\"0\"}]`,
     {
       title: "Get Master IFSC For Payout",
       post: "BCBL",
-      subInforamtion: "The Get Master IFSC For Payout API is used to fetch the list of IFSC codes required for processing payout transactions. This API helps ensure that bank transfers are routed correctly by providing accurate and up-to-date IFSC details associated with supported banks. By using a valid authentication token, clients can retrieve master IFSC information dynamically instead of storing it manually. This reduces errors in transactions, improves reliability, and ensures smooth payout processing. It is especially useful for validating bank details before initiating transfers, making the overall system more secure and efficient.",
+      subInforamtion: "This API retrieves the master IFSC code for a selected bank based on the provided bank code. It is used to identify the correct IFSC required for payout transactions.",
       topText: "/MasterIfscByBankCode",
       request: "All headers required",
 
@@ -208,7 +208,7 @@ sDeleted\":\"0\"}]`,
         "8888888888 → Unverified but existing remitter",
         "7777777777 → Unverified and new remitter"
       ],
-      subInforamtion: "The Remitter Login API is used to authenticate a remitter (end user) on the SoliTeck platform before initiating any financial transactions such as payouts or transfers. This API verifies the remitter’s registered mobile number and other required credentials to ensure secure access. Once successfully authenticated, the system generates a session or validation response that allows the user to proceed with further services like fund transfers and beneficiary management. This step is essential for maintaining security, preventing unauthorized access, and ensuring that all transactions are performed by verified users only.",
+      subInforamtion: "This API authenticates the remitter using their registered mobile number and token. Upon successful login, it returns remitter details such as name, mobile number, and transaction limits and a list of all beneficiaries.",
       post: {
         RemitterMobile: "9999999999",
         Token: "ClientToken",
@@ -406,7 +406,7 @@ NEFT\":\"0\"}]}`,
 
     {
       title: "Remitter Registration",
-      subInforamtion: "The Remitter Registration API is used to register a new remitter (end user) on the SoliTeck platform so they can access payout and money transfer services. Through this API, user details such as mobile number and required identity information are captured and verified to create a secure remitter profile. Once the registration is successfully completed, the remitter becomes eligible to use services like fund transfers, beneficiary addition, and other financial operations. This process ensures proper user onboarding, improves transaction security, and helps maintain a verified user base for safe and reliable payouts",
+      subInforamtion: "This API is used to register a new remitter or complete the remitter setup after login. It verifies the OTP sent to the remitter’s mobile number and finalizes the registration process.",
       post: {
         RemitterMobile: "8888888888",
         Token: "SAME VALUE AS IN HEADER 'ClientToken' KEY",
@@ -468,7 +468,7 @@ NEFT\":\"0\"}]}`,
         RemitterNumber: "9999999999",
         BeneId: "11113",
       },
-      subInforamtion: "The Add Beneficiary API is used to add a new beneficiary under a registered remitter on the SoliTeck platform for enabling payout and fund transfer services. This API allows users to securely store beneficiary bank details such as account number, IFSC code, and bank name after proper validation. Once the beneficiary is successfully added, they can be used for initiating future transfers without re-entering bank details again. This process helps reduce errors, speeds up transactions, and ensures safe and efficient money transfers by maintaining a verified list of beneficiaries linked to the remitter account.",
+      subInforamtion : "This API is used to add a new beneficiary to the remitter’s account for payout transactions. It captures beneficiary details such as name, bank account number, IFSC, bank code, and pincode and returns BeneId in ResponseData.",
       post2: {
         RemitterNumber: "9999999999",
         BeneName: "Alice Smith",
@@ -530,7 +530,7 @@ API.`,
     {
       title: "Delete Beneficiary",
       topText: "/DeleteBeneficiary",
-      subInforamtion: "The Delete Beneficiary API is used to remove an existing beneficiary from a registered remitter account on the SoliTeck platform. This API helps users manage their beneficiary list by allowing them to delete outdated, incorrect, or no longer required bank details. Once the request is successfully processed, the selected beneficiary is permanently removed and will no longer be available for future payout transactions. This ensures better account management, reduces the risk of accidental transfers, and keeps the remitter’s beneficiary list clean, secure, and up to date.",
+      subInforamtion: "This API is used to delete an existing beneficiary linked to the remitter. It requires the remitter’s mobile number, token, and the beneficiary ID to identify the record.",
       post: {
         RemitterNumber: "9999999999",
         Token: "SAME VALUE AS IN HEADER 'ClientToken' KEY",
@@ -579,7 +579,7 @@ API.`,
     {
       title: "Verify Beneficiary",
       topText: "/VerifyBeneficiary",
-      subInforamtion: "The Verify Beneficiary API is used to validate the bank account details of a beneficiary before initiating any payout or fund transfer on the SoliTeck platform. This API checks critical information such as account number and IFSC code against the banking network to ensure the beneficiary details are correct and active. Once verification is successful, the beneficiary is marked as validated and becomes eligible for secure transactions. This step helps reduce failed transfers, prevents incorrect payments, and enhances the overall safety and reliability of the payout system.",
+      subInforamtion: "This API is used to verify beneficiary bank account details before initiating a payout. It validates the account number and IFSC to confirm that the beneficiary information is correct.",
       notes: ["For Uat Testing: If already in active list and need to verify", "Success when RemitterNumber is 9999999999 and BeneId is 11114", "Failed when BeneId is 11111"],
       notes2: ["If you are verifying new Beneficiary use below request body"],
       post: {
@@ -641,7 +641,7 @@ API.`,
 
     {
       title: "Payout Transfer",
-      subInforamtion: "The Payout Transfer API is used to initiate secure fund transfers from a remitter account to a verified beneficiary bank account on the SoliTeck platform. Once the beneficiary is added and validated, this API allows the client to transfer money directly using approved banking channels in real time or near real time. It processes the transaction after performing necessary validations such as sufficient balance, correct beneficiary details, and authentication checks. This API ensures fast, secure, and reliable money movement while maintaining full transaction tracking and compliance, making it the core service for payout operations.",
+      subInforamtion: "This API initiates a payout transfer using the remitter’s registered mobile number, beneficiary ID, amount, client order ID, and transfer mode (e.g., IMPS). Upon successful processing, it returns transaction details including status, transaction ID, bank reference ID, and beneficiary information.",
       notes: ["For UAT testing: use the BeneId in the request body to get the following responses","BeneId = 11111 → Success (200)","BeneId = 11114 → Failed (204)","BeneId = 11113 → Pending (201)"],
       notes2: ["200 for Success, 201 for Pending and 204 for Failed Transaction"],
 

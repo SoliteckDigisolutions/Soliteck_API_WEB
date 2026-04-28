@@ -88,7 +88,7 @@ export const dthApiD: MainInterface = {
     {
       id: 4,
       topText: "/DTHRecharge",
-      subInforamtion: "The DTH Recharges API is used to perform direct-to-home (DTH) television recharge transactions through the SoliTeck platform. By sending a request to the /DTHRecharge endpoint with required details such as customer ID, operator, and recharge amount, the system processes the recharge quickly and securely. This API supports multiple DTH service providers and ensures real-time or near real-time transaction processing. It also returns transaction status and response details, enabling developers to track and manage recharge operations efficiently. This makes it a reliable solution for integrating DTH recharge services into applications.",
+      subInforamtion: 'This API is used to perform DTH recharge for a given customer/account number using the specified operator. It requires details such as customer ID, recharge amount, execution mode, and operator API code.',
       notes: ["For Uat Testing:", "For Success, use the DishTv Operator ApiCode with amounts 200", "For Pending, use the TataSky ApiCode", "For Failed, use any remaining ApiCode"],
       title: "DTH Recharges",
       request: "All headers required",
