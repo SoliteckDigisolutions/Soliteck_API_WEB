@@ -247,3 +247,11 @@ export const categorieses = [
     dot: "bg-teal-500",
   },
 ];
+
+
+export const Contact = {
+
+  number : "+91 79775 25091",
+  email : "sanjay.shirsat@soliteck.com"
+
+}

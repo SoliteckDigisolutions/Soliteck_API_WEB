@@ -1,5 +1,3 @@
-"use client";
-
 import BaseUrls from "@/components/common-components/BaseUrl";
 import { processFlow } from "@/app/constants/GlobalConstants";
 

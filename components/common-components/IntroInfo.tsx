@@ -47,7 +47,7 @@ export default function IntroInfoSection() {
                   key={idx}
                   className="flex lg:flex lg:flex-row flex-col items-start gap-2 border rounded-md p-3 bg-gray-50"
                 >
-                  <span className="text-blue-600 font-semibold whitespace-nowrap">
+                  <span className="text-gray-600 font-semibold whitespace-nowrap">
                     {item.title}
                   </span>
 

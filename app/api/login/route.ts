@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const response = await axios.post(
       "https://gateway-uat.soliteck.in/UAT/APIUserLogin",
-      body,
+      body, 
       {
         headers: {
           "X-Soliteck2024API-KEY": "Soliteck_2024",
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       const cookieStore = cookies();
 
       const maxAge = rememberMe
-        ? 60 * 60 * 24 * 1 // 1 days
+        ? 60 * 60 * 24 * 1 // 1 day
         : undefined; // session cookie
 
       (await cookieStore).set(

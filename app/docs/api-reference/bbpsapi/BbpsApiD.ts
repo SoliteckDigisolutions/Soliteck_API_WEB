@@ -88,7 +88,7 @@ export const BbpsApiD: MainInterface = {
     {
       id: 3,
       title: "Get Service/Operator",
-      subInforamtion: "The Get Service / Operator API is used to fetch the list of available services and operators supported under BBPS offline transactions on the SoliTeck platform. By sending a request to the /GetOfflineServices endpoint with a valid authentication token, clients can dynamically retrieve updated service categories such as electricity, gas, water, and other billers along with their respective operators. This API helps eliminate hardcoded configurations by providing real-time data, ensuring accuracy and flexibility in service selection. It plays a crucial role in enabling seamless BBPS offline integrations while improving reliability and reducing operational errors.",
+      subInforamtion : "This API fetches the list of available offline services based on the provided flag and service name. It returns service categories such as mobile, electricity, DTH, and others.",
       extraInfo: {
         flag1: {
           name: "Flag 1: Services",
@@ -172,7 +172,7 @@ export const BbpsApiD: MainInterface = {
     {
       id: 4,
       title: "Get BBPS Bill Validations",
-      subInforamtion: "The Get BBPS Bill Validation API is used to validate customer bill details before initiating a payment under the BBPS system on the SoliTeck platform. By sending a request to the /OFBillValidation endpoint with required inputs such as customer account number, operator, and biller information, the system verifies the details and fetches the bill amount and status. This step ensures that the entered information is correct and the bill is eligible for payment. It helps prevent failed or incorrect transactions, improves accuracy, and enhances user trust by confirming bill details prior to processing the payment.",
+      subInforamtion: "This API validates biller details for offline services using the provided mobile number and provider code. It checks whether the biller is valid and returns required input parameters and supported payment modes.  ",
       topText: " {BBPS Base URL}/OFBillValidation ",
       post: {
         MobileNumber: "87X57X48X7",
@@ -226,7 +226,7 @@ export const BbpsApiD: MainInterface = {
       id: 5,
       title: "Bill Fetch",
       topText: "{BBPS Base URL} /OFBillVerification",
-      subInforamtion: "The Bill Fetch API is used to retrieve detailed bill information for a customer before proceeding with payment under the BBPS system on the SoliTeck platform. By sending a request to the /OFBillVerification endpoint with required parameters such as customer account number, biller, and operator details, the system fetches the latest bill data including amount, due date, and bill status. This API helps ensure that accurate and up-to-date billing information is displayed to the user, reducing the chances of incorrect payments. It plays a key role in improving transparency, reliability, and overall user experience in the bill payment process.",
+      subInforamtion: "This API verifies bill details for a given provider and customer number using required parameters. It fetches bill information such as customer name, bill amount, due date, and provider details. ",
       notes: ["For Uat Testing:", "Use provider code 70 for success"],
       request: "All headers required",
 
@@ -266,7 +266,7 @@ export const BbpsApiD: MainInterface = {
     {
       id: 9,
       title: "Bill Pay",
-      subInforamtion: "The Bill Pay API is used to process bill payment transactions under the BBPS system on the SoliTeck platform. By sending a request to the /OFBillPay endpoint with validated customer and bill details, the system securely completes the payment through supported banking channels. This API ensures that payments are processed efficiently while maintaining proper validation, authentication, and compliance checks. It also returns transaction status and reference details, allowing developers to track and confirm successful payments. This makes it a critical component for enabling seamless, secure, and reliable bill payment services within applications.",
+      subInforamtion: "This API is used to initiate offline bill payment for a given provider using validated customer details. It requires amount, payment mode, client order ID, and necessary parameters.",
       notes: ["For UAT Testing", "Success:", "• ProviderCode: 70", "• Amount: 100", "• ClientOrderId: HNUZ3YA86SJFWK1ZITYF2B57479", " Failed:", "• ProviderCode: 50", "• Amount: 299", "• ClientOrderId: HNUZ3YA86SJFWK1ZITYF2B57479", "Pending:", "• ProviderCode: 40", "• Amount: 250", "• ClientOrderId: HNUZ3YA86SJFWK1ZITYF2B57479"],
       topText: "{BBPS Base URL}/OFBillPay",
       request: "All headers required",

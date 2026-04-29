@@ -2,16 +2,21 @@ import { MainInterface } from "@/app/types/MainPage";
 
 export const CheckTransacStatus: MainInterface = {
     title: "SOLITECK MOBILE REG API | Digital Transformation made easy",
+    BaseUrls: {
+        link: "https://api-uat.soliteck.in/api/AdminActivity",
+        auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+    },
 
 
 
     note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
 
     Endpoints: [
+
         {
             title: "Check Transaction Status",
 
-            topText: "/Transfer",
+            topText: "/CheckTxnStatus",
             post: "67364727423712912",
             request: "All header Required",
             response: {
@@ -22,10 +27,7 @@ export const CheckTransacStatus: MainInterface = {
                         responseCode: 200,
                         responseMessage: "Transaction Fetched",
                         data: "TOKEN",
-                        responseData: `[{\"Amount\":\"1000\",\"VendorRefNumber\":\"29974465\",\"TransactionMode\":
-\"Wallet\",\"ExecutionMode\":1,\"StatusId\":1,\"SPTransactionRef\":\"6736472 
-7423712912\",\"CustomerDetail\":\"28934709239\",\"TransactionName\":\"Payout
-\",\"TimeSeconds\":\"16218013\"}]`,
+                        responseData: `[{\"Amount\":\"1000\",\"VendorRefNumber\":\"29974465\",\"TransactionMode\":\"Wallet\",\"ExecutionMode\":1,\"StatusId\":1,\"SPTransactionRef\":\"67364727423712912\",\"CustomerDetail\":\"28934709239\",\"TransactionName\":\"Payout\",\"TimeSeconds\":\"16218013\"}]`,
                         signalR: null,
                     },
                 },],

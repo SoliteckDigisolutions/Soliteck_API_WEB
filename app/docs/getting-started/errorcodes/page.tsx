@@ -1,12 +1,9 @@
-"use client";
-
 import { MdErrorOutline } from "react-icons/md";
 import { httpErrors } from "@/app/constants/GlobalConstants";
 import { apiErrors } from "@/app/constants/GlobalConstants";
 
 export default function IntroductionPage() {
   // constants/errorCodes.ts
-
   return (
     <div className="space-y-12 p-6 pt-16">
       {/* HTTP Errors */}

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import logo from "@/public/assets/Logo.svg";
+import {Contact} from "@/app/constants/GlobalConstants"
 import {
   Popover,
   PopoverContent,
@@ -50,10 +51,10 @@ export default function PopoverBasic() {
                     </span>
                     <span className="text-gray-700 font-medium">Email:</span>
                     <a
-                      href="mailto:sanjay.shirsat@soliteck.com"
+                      href={`mailto:${Contact.email}`}
                       className="text-blue-600 hover:underline"
                     >
-                      sanjay.shirsat@soliteck.com
+                     {Contact.email}
                     </a>
                   </div>
 
@@ -63,10 +64,10 @@ export default function PopoverBasic() {
                     </span>
                     <span className="text-gray-700 font-medium">Phone:</span>
                     <a
-                      href="tel:+917977525091"
+                      href={`tel:${Contact.number}`}
                       className="text-blue-600 hover:underline"
                     >
-                      +91 79775 25091
+                      {Contact.number}
                     </a>
                   </div>
                 </div>

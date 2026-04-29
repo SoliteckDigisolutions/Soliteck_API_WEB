@@ -10,6 +10,7 @@ export const WebHook: MainInterface = {
     Endpoints: [
         {
             title: "Webhook",
+            notes: ["Testing", "Webhooks are generally not available in UAT/Sandbox", "You can test in: Production environment only (with controlled transactions)"],
 
             // topText: "-",
             // post: "-",
@@ -41,6 +42,15 @@ export const WebHook: MainInterface = {
             },
 
             table: {
+                responseKeysTable: {
+                    id: 8,
+                    title: "Transaction Status Codes",
+                    tableData: [
+                        { key: "SUCCESS (200)", description: "Transaction Success" },
+                        { key: "FAILED (204)", description: "Transaction failed" },
+                        { key: "PENDING (201)", description: "Transaction Pending" }
+                    ]
+                },
                 transaction: {
                     id: 1,
                     title: `Response Structure
@@ -54,7 +64,7 @@ export const WebHook: MainInterface = {
                     ],
                 },
             },
-            note: "-",
+            note: "Always check using: transactionId or clientOrderId",
         },
     ],
 };

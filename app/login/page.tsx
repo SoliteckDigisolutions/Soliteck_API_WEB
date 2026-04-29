@@ -4,7 +4,7 @@ import Image from "next/image";
 import logo from "@/public/assets/Logo.svg";
 import { MdAddTask, MdOutlinePayments } from "react-icons/md";
 import { TbApi } from "react-icons/tb";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setPhone,
@@ -19,14 +19,21 @@ import VideoAutoPlay from "../../components/common-components/VideoAutoPlay";
 export default function LoginPage() {
   const dispatch = useDispatch();
   const [rememberMe, setRememberMe] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const phone = useSelector((state: any) => state.auth.phone);
   const password = useSelector((state: any) => state.auth.password);
   const router = useRouter();
 
+  // Clear local storage when component mounts to ensure fresh state
+  useEffect(() => {
+    localStorage.removeItem("AUTHACCESS");
+    localStorage.removeItem("persist:root")
+  }, []);
+
   const loginUser = async () => {
     try {
+      setIsLoading(true);
       const res = await fetch("/api/login", {
         method: "POST",
         headers: {
@@ -35,29 +42,35 @@ export default function LoginPage() {
         body: JSON.stringify({
           MobileNumber: phone,
           Password: password,
+          rememberMe: rememberMe,
         }),
       });
 
       const data = await res.json();
 
       if (data.responseCode === 200) {
-        dispatch(setResponse(data.responseData));
-
-        // store auth
+        // Store auth data first
         localStorage.setItem("AUTHACCESS", JSON.stringify(data.responseData));
 
-        // update redux login state
+        // Update redux login state
+        dispatch(setResponse(data.responseData));
         dispatch(loginSuccess());
 
         toast.success("Login successful");
 
-        router.push("/docs/getting-started/introduction");
+        // Use replace instead of push for post-logout navigation
+        // Add a small delay to ensure state is fully updated
+        setTimeout(() => {
+          router.replace("/docs/getting-started/introduction");
+        }, 100);
       } else {
         toast.error(data?.responseMessage || "Login failed");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Login error:", error);
       toast.error("Something went wrong");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -238,9 +251,10 @@ animate-[twinkle_4s_infinite_alternate_ease-in-out] items-center justify-center"
             {/* login */}
             <button
               onClick={loginUser}
-              className="w-full bg-[#0f2654] text-white py-2.5 rounded-lg text-sm font-medium hover:bg-[#163270] transition"
+              disabled={isLoading}
+              className="w-full bg-[#0f2654] text-white py-2.5 rounded-lg text-sm font-medium hover:bg-[#163270] transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Login in
+              {isLoading ? "Logging in..." : "Login"}
             </button>
 
             {/* divider */}

@@ -645,7 +645,25 @@ export const IntroInfo: GlobalnotesInfo = {
   },
   webhook: {
     mainHeading: "Soliteck Webhook",
+    subTitleContent : "A webhook is a real-time callback mechanism that allows our system to notify your server when a transaction status changes (e.g., success, failure, pending). Instead of repeatedly calling the status API, your system will automatically receive updates.",
     subContent: [
+      {
+        title: "Webhook URL Setup",
+        content:
+          "You must provide a public HTTPS endpoint (POST API) to receive webhook notifications.",
+        data: [
+          {
+            title: "Ensure",
+            content:
+              "Endpoint is accessible over the internet | Supports POST method | Accepts JSON payload",
+          },
+          {
+            title: "Url:",
+            content:
+              "https://yourdomain.com/api/webhook/transaction-status",
+          }
+        ],
+      },
       {
         title: "Webhook Notifications",
         content:
@@ -663,6 +681,8 @@ export const IntroInfo: GlobalnotesInfo = {
   },
   cts: {
     mainHeading: "Check Transaction Status",
+    
+    subTitleContent: "Transaction status can be checked only in the production environment using the API provided below. This API is intended for production use only.",
     subContent: [
       {
         title: "Transaction Status",

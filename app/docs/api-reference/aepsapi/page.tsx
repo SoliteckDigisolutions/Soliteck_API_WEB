@@ -1,4 +1,4 @@
-"use client";
+
 
 import MainPage from "@/components/common-components/MainPage";
 import { aepsApiD } from "@/app/docs/api-reference/aepsapi/aepsApiD";
