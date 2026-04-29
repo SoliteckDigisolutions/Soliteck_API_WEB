@@ -1,5 +1,7 @@
-import Navbar from "@/app/components/Navabr";
-import Sidebar from "@/app/components/SideNavigation";
+"use client";
+
+import Navbar from "@/components/common-components/Navabr";
+import Sidebar from "@/components/common-components/SideNavigation";
 
 export default function DocsLayout({
   children,
@@ -11,15 +13,9 @@ export default function DocsLayout({
       <Navbar />
 
       <div className="flex">
-
-        {/* Sidebar */}
         <Sidebar />
 
-        {/* Docs Content */}
-        <main className="flex-1  p-2 w-100 font-sans">
-          {children}
-        </main>
-
+        <main className="flex-1  p-2 w-100 font-sans">{children}</main>
       </div>
     </>
   );
