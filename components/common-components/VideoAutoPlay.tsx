@@ -13,7 +13,7 @@ export default function SlowVideo() {
   return (
     <video
       ref={videoRef}
-      className="w-full border-6 border-white   h-50 rounded-sm object-cover"
+      className="w-full border-6 border-white rounded-2xl   h-50 object-cover"
       autoPlay
       loop
       muted

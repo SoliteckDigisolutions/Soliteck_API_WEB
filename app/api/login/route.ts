@@ -17,12 +17,15 @@ export async function POST(req: Request) {
       }
     );
 
+   
+
     if (response.data.responseCode === 200) {
       const cookieStore = cookies();
 
+      // Set cookie expiration based on remember me
       const maxAge = rememberMe
-        ? 60 * 60 * 24 * 1 // 1 day
-        : undefined; // session cookie
+        ? 60 * 60 * 24 * 7 // 7 days
+        : undefined; // session cookie (expires when browser closes)
 
       (await cookieStore).set(
         "AUTH_SESSION",

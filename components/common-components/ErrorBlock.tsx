@@ -11,31 +11,58 @@ export default function ErrorBlock({ data }: Props) {
   const text = JSON.stringify(data.code, null, 2);
 
   return (
-    <div className="rounded-xl overflow-hidden border border-gray-200">
-      {/* Editor Header */}
-      <div className="flex items-center justify-between  px-4 py-2">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-3 w-3">
-            <span
-              className={`animate-ping absolute inline-flex h-full w-full rounded-full ${"bg-red-500"} opacity-75`}
-            ></span>
-            <span
-              className={`relative inline-flex rounded-full h-3 w-3 ${"bg-red-500"}`}
-            ></span>
+    <div className="rounded-xl border border-destructive/20 dark:border-destructive/30 overflow-hidden">
+
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-2.5 bg-destructive/5 dark:bg-destructive/10 border-b border-destructive/20 dark:border-destructive/30">
+        <div className="flex items-center gap-2.5">
+
+          {/* Traffic lights */}
+          <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-400 opacity-40" />
+          <span className="w-2.5 h-2.5 rounded-full bg-green-400 opacity-40" />
+
+          <div className="w-px h-3.5 bg-destructive/20 mx-1" />
+
+          {/* Pulsing dot */}
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
           </span>
-          <h3 className="text-sm font-semibold text-gray-700">
-            Error {data.code.responseCode} : {data.code.responseMessage}
-          </h3>
+
+          <span className="font-mono text-[11px] tracking-wide text-red-500 dark:text-red-400">
+            error response
+          </span>
+
+          {data.code?.responseCode && (
+            <span className="font-mono text-[11px] font-medium px-2 py-0.5 rounded-md bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20">
+              {data.code.responseCode}
+            </span>
+          )}
+
+          {data.code?.responseMessage && (
+            <span className="font-mono text-[11px] text-red-400/70 dark:text-red-500/70 hidden sm:inline">
+              {data.code.responseMessage}
+            </span>
+          )}
         </div>
 
         <CopyButton text={text} />
       </div>
 
-      {/* Code Area */}
-      <pre className="bg-[#0f172a] text-red-400 p-4 text-sm overflow-x-auto font-mono">
+      {/* Code area */}
+      <pre className="bg-[#0d1117] text-red-400 p-5 text-[13px] leading-relaxed overflow-x-auto font-mono">
         <code>{text}</code>
       </pre>
-      <h3 className="text-sm font-semibold p-2 text-gray-800">{data.info}</h3>
+
+      {/* Info footer */}
+      {data.info && (
+        <div className="flex items-start gap-2.5 px-5 py-3.5 border-t border-destructive/20 dark:border-destructive/30 bg-destructive/5 dark:bg-destructive/10">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0 mt-[5px]" />
+          <p className="text-[12px] text-red-600 dark:text-red-400 leading-relaxed">{data.info}</p>
+        </div>
+      )}
+
     </div>
   );
 }

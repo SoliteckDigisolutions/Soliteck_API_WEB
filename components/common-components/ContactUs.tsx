@@ -2,13 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import logo from "@/public/assets/Logo.svg";
-import {Contact} from "@/app/constants/GlobalConstants"
+import { Contact } from "@/app/constants/GlobalConstants";
 import {
   Popover,
   PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import Image from "next/image";
@@ -16,66 +13,63 @@ import { MdAddIcCall, MdMarkEmailRead } from "react-icons/md";
 
 export default function PopoverBasic() {
   return (
-    <>
-      <Popover>
-        <PopoverTrigger
-          render={
-            <Button
-              variant="outline"
-              className="w-fit boder shadow text-gray-900  bg-gray-300"
-            >
-              Contact Us
-            </Button>
-          }
-        />
-        <PopoverContent align="center">
-          <PopoverHeader>
-            <PopoverTitle>
-              <Image className="w-20 mt-2 opacity-40" alt="logo" src={logo} />
-            </PopoverTitle>
-            <PopoverDescription>
-              <div className="mt-6 rounded-xl text-sm border border-gray-200 bg-gray-100 p-2 shadow-sm">
-                <div className="text-sm font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                  <span className="text-blue-600"></span> Need Help?
-                </div>
+    <Popover>
+      {/* ✅ FIX: use render prop to avoid nested button */}
+      <PopoverTrigger
+        render={
+          <Button
+            variant="outline"
+            className="text-foreground px-4 py-2 transition"
+          />
+        }
+      >
+        Contact Us
+      </PopoverTrigger>
 
-                <span className="text-sm text-gray-600 mb-3">
-                  If you require any assistance, please contact us using the
-                  details below.
-                </span>
+      {/* ✅ Clean Content */}
+      <PopoverContent
+        side="bottom"
+        align="center"
+        className="w-72 p-4 rounded-xl shadow-lg border border-border bg-popover"
+      >
+        {/* Logo */}
+        <div className="flex justify-center mb-3">
+          <Image src={logo} alt="logo" width={80} height={40} className="opacity-50" />
+        </div>
 
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center gap-1">
-                    <span className="text-gray-500">
-                      <MdMarkEmailRead size={18} />
-                    </span>
-                    <span className="text-gray-700 font-medium">Email:</span>
-                    <a
-                      href={`mailto:${Contact.email}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                     {Contact.email}
-                    </a>
-                  </div>
+        {/* Title */}
+        <h3 className="text-sm font-semibold text-foreground text-center">
+          Need Help?
+        </h3>
 
-                  <div className="flex items-center gap-2">
-                    <span className="text-gray-500">
-                      <MdAddIcCall size={18} />
-                    </span>
-                    <span className="text-gray-700 font-medium">Phone:</span>
-                    <a
-                      href={`tel:${Contact.number}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                      {Contact.number}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </PopoverDescription>
-          </PopoverHeader>
-        </PopoverContent>
-      </Popover>
-    </>
+        {/* Description */}
+        <p className="text-xs text-muted-foreground text-center mt-1 mb-4">
+          Reach out to us using the details below.
+        </p>
+
+        {/* Contact Info */}
+        <div className="space-y-3 text-sm">
+          {/* Email */}
+          <a
+            href={`mailto:${Contact.email}`}
+            className="flex items-center gap-2 hover:bg-muted/50 p-2 rounded-md transition"
+          >
+            <MdMarkEmailRead size={18} className="text-muted-foreground" />
+            <span className="font-medium text-foreground">Email:</span>
+            <span className="text-primary truncate">{Contact.email}</span>
+          </a>
+
+          {/* Phone */}
+          <a
+            href={`tel:${Contact.number}`}
+            className="flex items-center gap-2 hover:bg-muted/50 p-2 rounded-md transition"
+          >
+            <MdAddIcCall size={18} className="text-muted-foreground" />
+            <span className="font-medium text-foreground">Phone:</span>
+            <span className="text-primary">{Contact.number}</span>
+          </a>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }

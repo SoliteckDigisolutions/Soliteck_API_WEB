@@ -63,13 +63,19 @@ export default function CopyButton({ text, className }: Props) {
     <button
       onClick={handleCopy}
       className={twMerge(
-        "text-[16px] p-1 flex gap-1 items-center cursor-pointer transition-colors",
-        copied ? "text-green-600" : "text-black hover:text-gray-400",
+        "p-1.5 rounded-md flex items-center justify-center transition-all duration-200",
+        copied 
+          ? "text-emerald-500 bg-emerald-500/10" 
+          : "text-muted-foreground hover:text-foreground hover:bg-muted",
         className
       )}
       title="Copy to clipboard"
     >
-      {copied ? <IoCheckmarkOutline className="text-green-500" /> : <IoCopyOutline />}
+      {copied ? (
+        <IoCheckmarkOutline className="w-4 h-4 animate-in zoom-in duration-300" />
+      ) : (
+        <IoCopyOutline className="w-4 h-4" />
+      )}
     </button>
   );
 }

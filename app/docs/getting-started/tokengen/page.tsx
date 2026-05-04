@@ -7,16 +7,16 @@ export default function page() {
       {/* GENERATE TOKEN */}
       <section id="generate-token  ">
         <BaseUrls />
-        <h2 className="flex items-center gap-2 text-xl font-light mb-3">
-          <RiTokenSwapLine /> Generate Token
+        <h2 className="flex items-center gap-2 text-xl font-light mb-3 text-foreground">
+          <RiTokenSwapLine className="text-primary" /> Generate Token
         </h2>
 
-        <div className="bg-gray-100 p-3 rounded-md w-80 font-sans text-sm">
+        <div className="bg-muted p-3 rounded-md w-80 font-mono text-sm text-foreground border border-border">
           POST /GenerateUATToken
         </div>
 
-        <p className="mt-2 text-sm text-gray-600">
-          Token valid for <strong>20 minutes</strong>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Token valid for <strong className="text-foreground">20 minutes</strong>
         </p>
       </section>
     </div>

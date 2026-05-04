@@ -22,13 +22,13 @@ export default function Search() {
   return (
     <div className="relative w-60 lg:block hidden max-w-sm">
       {/* Search Input */}
-      <div className="flex gap-2 items-center border rounded-xl  px-2 py-1">
-        <CiSearch />
+      <div className="flex gap-2 items-center border border-border rounded-xl px-2 py-1 bg-muted/20">
+        <CiSearch className="text-muted-foreground" />
         <input
           type="text"
           value={query}
           placeholder="Search docs..."
-          className="outline-none text-sm w-full"
+          className="outline-none text-sm w-full bg-transparent text-foreground"
           onChange={(e) => {
             setQuery(e.target.value);
             setOpen(true);
@@ -38,9 +38,9 @@ export default function Search() {
 
       {/* Results Dropdown */}
       {open && query && (
-        <div className="absolute top-9 w-full border  bg-white  rounded-xl shadow-md z-50">
+        <div className="absolute top-9 w-full border border-border bg-white dark:bg-gray-950 rounded-xl shadow-md z-50 overflow-hidden">
           {results.length === 0 && (
-            <div className="p-2 text-sm text-gray-500">No results</div>
+            <div className="p-2 text-sm text-gray-500 dark:text-gray-400">No results</div>
           )}
 
           {results.map((result) => (
@@ -51,7 +51,7 @@ export default function Search() {
                 setOpen(false);
                 setQuery("");
               }}
-              className="block p-2 text-sm border-b  hover:bg-gray-50"
+              className="block p-2 text-sm border-b border-border hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors"
             >
               {result.item.title}
             </Link>

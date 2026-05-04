@@ -1,38 +1,42 @@
-import { LuTestTubeDiagonal } from "react-icons/lu"
-import { MdSpeakerNotes } from "react-icons/md"
+import { LuTestTubeDiagonal } from "react-icons/lu";
 
 interface notes {
-  notes: any
+  notes: any;
 }
+
 export default function Notes({ notes }: notes) {
-  console.log(notes, "shadulla")
+  if (!notes) return null;
+
   return (
-    <>
-      {
-        notes && (
-          <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-sm p-5">
+    <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 overflow-hidden backdrop-blur-sm">
 
-            {/* Heading (index 0) */}
-            {notes[0] && (
-              <h3 className="text-base flex gap-2 items-center font-semibold text-blue-800 mb-2">
-                <LuTestTubeDiagonal />{notes[0]}
-              </h3>
-            )}
+      {/* ── Header ── */}
+      {notes[0] && notes.length > 1 && (
+        <div className="flex items-center gap-2.5 px-5 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-800/50">
+          <LuTestTubeDiagonal size={14} className="text-slate-400 dark:text-slate-500 flex-shrink-0" />
+          <h3 className="font-mono text-[11px] font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+            {notes[0]}
+          </h3>
+        </div>
+      )}
 
-            {/* Remaining content */}
-            <div className="space-y-2">
-              {notes?.slice(1).map((line: string, index: number) => (
-                <p key={index} className="text-sm text-gray-700 leading-relaxed">
-                  {line}
-                </p>
-              ))}
+      {/* ── Note lines ── */}
+      <div className="px-5 py-4 space-y-3">
+        {notes.length > 1 ? (
+          notes.slice(1).map((line: string, index: number) => (
+            <div key={index} className="flex items-start gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 flex-shrink-0 mt-[6.5px] shadow-[0_0_8px_rgba(59,130,246,0.3)]" />
+              <p className="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{line}</p>
             </div>
-
-            {/* Optional accent line */}
-            <div className="mt-4 h-1 w-12 bg-blue-500 rounded-full"></div>
+          ))
+        ) : (
+          <div className="flex items-start gap-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 flex-shrink-0 mt-[6.5px] shadow-[0_0_8px_rgba(59,130,246,0.3)]" />
+            <p className="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{notes[0]}</p>
           </div>
-        )
-      }
-    </>
-  )
+        )}
+      </div>
+
+    </div>
+  );
 }

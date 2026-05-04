@@ -157,6 +157,7 @@ interface EndpointInterface extends CommonSection {
   biometric?: string;
   post?: string | Record<string, unknown>; //only accepts object, string
   post2?: string | Record<string, unknown>;
+  post3?: string | Record<string, unknown>;
   request?: string | object;
   response?: ResponseInterface;
   note?: any;

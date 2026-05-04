@@ -19,6 +19,7 @@ interface InfoType {
 type GlobalnotesInfo = Record<string, InfoType>;
 
 export const IntroInfo: GlobalnotesInfo = {
+ 
   payoutapi: {
     mainHeading: "SOLITECK PayOut API | Digital Transformation made easy",
     subTitle: "Payout API Documentation",
@@ -509,28 +510,28 @@ export const IntroInfo: GlobalnotesInfo = {
     ],
   },
   pgapi: {
-    mainHeading: "SOLITECK Bulk Pay API | Digital Transformation made easy",
+    mainHeading: "SOLITECK PG API | Digital Transformation made easy",
 
-    subTitle: "Bulk Pay (PG) API Documentation",
+    subTitle: "PG API Documentation",
 
     subTitleContent:
-      "The Bulk Pay API enables businesses and developers to process bulk payouts and card-based fund collections seamlessly. This API provides endpoints for authentication, sender management, card registration, beneficiary management, and transaction processing. Using this API, you can register senders, add card details, create beneficiaries, generate collection URLs, and manage bulk payout transactions efficiently.",
+      "The ulk Pay API enables businesses and developers to process PG and card-based fund collections seamlessly. This API provides endpoints for authentication, sender management, card registration, beneficiary management, and transaction processing. Using this API, you can register senders, add card details, create beneficiaries, generate collection URLs, and manage PG transactions efficiently.",
 
     subContent: [
       {
         title: "Authentication",
         content:
-          "Before accessing any Bulk Pay services, you must authenticate your application.",
+          "Before accessing any PG services, you must authenticate your application.",
         data: [
           {
             title: "GenerateToken",
             content:
-              "Create a secure access token required to call Bulk Pay APIs.",
+              "Create a secure access token required to call PG APIs.",
           },
           {
             title: "VerifyToken",
             content:
-              "Validate the generated token before performing operations.",
+              "ValiBdate the generated token before performing operations.",
           },
         ],
       },
@@ -538,7 +539,7 @@ export const IntroInfo: GlobalnotesInfo = {
       {
         title: "Sender Management",
         content:
-          "Manage sender details for initiating bulk payout transactions.",
+          "Manage sender details for initiating PG transactions.",
         data: [
           {
             title: "SenderLogin",
@@ -548,7 +549,7 @@ export const IntroInfo: GlobalnotesInfo = {
           {
             title: "CreateSender",
             content:
-              "Register a new sender with PAN, Aadhaar, and mobile number to enable Bulk Pay services.",
+              "Register a new sender with PAN, Aadhaar, and mobile number to enable PG services.",
           },
         ],
       },
@@ -582,7 +583,7 @@ export const IntroInfo: GlobalnotesInfo = {
       {
         title: "Transaction Processing",
         content:
-          "Execute and manage bulk payout transactions.",
+          "Execute and manage PG transactions.",
         data: [
           {
             title: "CardCollectionUrl",
@@ -679,6 +680,13 @@ export const IntroInfo: GlobalnotesInfo = {
     ]
 
   },
+   aepsapi: {
+    mainHeading: "SOLITECK PayOut API | Digital Transformation made easy",
+    subTitleContent : "AEPS API allows Aadhaar-based banking services like cash withdrawal, balance inquiry, and mini statements using biometric authentication. It provides secure, real-time transaction processing and enables seamless integration of assisted banking services into your platform.",
+    subTitle: "AEPS API Documentation",
+
+
+  },
   cts: {
     mainHeading: "Check Transaction Status",
     
@@ -707,5 +715,11 @@ export const IntroInfo: GlobalnotesInfo = {
         ],
       },
     ],
+  },
+   dmt: {
+    mainHeading: "SOLITECK DMT API | Digital Transformation made easy",
+    subTitle: "DMT API Documentation",
+    subTitleContent: "DMT API allows users to send money to bank accounts using mobile numbers. It provides seamless, real-time transaction processing and enables instant fund transfers with secure, reliable integration.",
+   
   }
 };

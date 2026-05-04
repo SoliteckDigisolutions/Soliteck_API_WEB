@@ -4,8 +4,8 @@ export const payoutDocs: MainInterface = {
   title: "SOLITECK PAYOUTS API'S | Digital Transformation made easy",
 
   BaseUrls: {
-    link: "https://api-uat.soliteck.in/uat/api/PayoutTxn/",
-    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+    link: "https://api-uat.soliteck.in/uat/api/PayoutTxn",
+    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT",
   },
 
   note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
@@ -311,7 +311,7 @@ NEFT\":\"0\"}]}`,
       table: {
         remitter: {
           id: 1,
-          title: "Remitter Logi Response",
+          title: "Remitter Login Response",
           tableData: [
             { id: 1, key: "RemitterName", description: "Remitter Name" },
             {

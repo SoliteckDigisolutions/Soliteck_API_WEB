@@ -10,6 +10,7 @@ const serviceRoutes: Record<string, number | string> = {
   "/docs/api-reference/ccbpapi": 59,
   "/docs/api-reference/pgapi": 54,
   "/docs/api-reference/aepsapi": 64,
+  "/docs/api-reference/dmt": 48,
 };
 
 export function middleware(request: NextRequest) {

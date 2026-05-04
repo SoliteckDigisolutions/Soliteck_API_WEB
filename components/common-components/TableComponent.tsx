@@ -1,28 +1,50 @@
-import { CiViewTable } from "react-icons/ci";
 import { SiAirtable } from "react-icons/si";
 
 export default function TableComponent({ data }: any) {
   return (
-    <section id="authentication" className="mb-10">
-      <h2 className="mb-4 flex gap-1 items-center  font-bold text-gray-600"><SiAirtable />{data?.title}</h2>
+    <section id="authentication" className="mb-12">
 
-      <div className="overflow-x-auto border  border-gray-200 rounded-lg">
-        <table className="w-full  text-sm text-left border-collapse">
-          <thead className=" bg-gradient-to-br from-blue-100 border-b-blue-200 to-white shadow-sm text-gray-700">
+      {/* Heading */}
+      <h2 className="mb-5 flex items-center gap-2 text-[15px] font-semibold text-foreground">
+        <SiAirtable className="text-primary" size={16} />
+        {data?.title}
+      </h2>
+
+      {/* Table Container */}
+      <div className="overflow-hidden rounded-xl border border-border bg-card">
+
+        <table className="w-full text-sm text-left">
+
+          {/* Head */}
+          <thead className="bg-muted/50 border-b border-border">
             <tr>
-              <th className="px-4 py-3 font-semibold">Key</th>
-              <th className="px-4 py-3 font-semibold">Description</th>
+              <th className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Key
+              </th>
+              <th className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Description
+              </th>
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-200">
-            {data?.tableData.map((d: any, i: any) => (
-              <tr key={i} className="hover:bg-gray-50">
-                <td className="px-4 py-3 font-medium">{d.key}</td>
-                <td className="px-4 py-3 text-gray-600">{d.description}</td>
+          {/* Body */}
+          <tbody className="divide-y divide-border">
+            {data?.tableData.map((d: any, i: number) => (
+              <tr
+                key={i}
+                className="group hover:bg-muted/30 transition-colors"
+              >
+                <td className="px-5 py-3 font-mono text-[13px] text-foreground">
+                  {d.key}
+                </td>
+
+                <td className="px-5 py-3 text-muted-foreground leading-relaxed">
+                  {d.description}
+                </td>
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
     </section>

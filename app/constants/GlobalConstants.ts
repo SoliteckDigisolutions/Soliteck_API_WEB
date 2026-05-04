@@ -125,6 +125,11 @@ export const sidebarMenu: SidebarSection[] = [
         href: "/docs/api-reference/pgapi",
         serviceID: 54,
       },
+      {
+        name: "DMT API",
+        href: "/docs/api-reference/dmt",
+        serviceID: 48,
+      },
       { name: "AEPS API", href: "/docs/api-reference/aepsapi", serviceID: 64 },
       { name: "Webhook", href: "/docs/api-reference/webhook" },
       { name: "Check Transaction Status ", href: "/docs/api-reference/cts" },
@@ -207,43 +212,43 @@ export const categorieses = [
   {
     label: "Payout API",
     href: "",
-    color: "bg-blue-50 text-blue-700 border-blue-200",
+    color: "text-foreground hover:bg-blue-500/5 border-border hover:border-blue-500/30",
     dot: "bg-blue-500",
   },
   {
     label: "Mobile Recharge API",
     href: "",
-    color: "bg-violet-50 text-violet-700 border-violet-200",
+    color: "text-foreground hover:bg-violet-500/5 border-border hover:border-violet-500/30",
     dot: "bg-violet-500",
   },
   {
     label: "DTH API",
     href: "",
-    color: "bg-orange-50 text-orange-700 border-orange-200",
-    dot: "bg-orange-400",
+    color: "text-foreground hover:bg-orange-500/5 border-border hover:border-orange-500/30",
+    dot: "bg-orange-500",
   },
   {
     label: "Payment Gateway API",
     href: "",
-    color: "bg-green-50 text-green-700 border-green-200",
+    color: "text-foreground hover:bg-green-500/5 border-border hover:border-green-500/30",
     dot: "bg-green-500",
   },
   {
     label: "BBPS API",
     href: "",
-    color: "bg-yellow-50 text-yellow-700 border-yellow-200",
+    color: "text-foreground hover:bg-yellow-500/5 border-border hover:border-yellow-500/30",
     dot: "bg-yellow-500",
   },
   {
     label: "CC Bill Payment API",
     href: "",
-    color: "bg-rose-50 text-rose-700 border-rose-200",
+    color: "text-foreground hover:bg-rose-500/5 border-border hover:border-rose-500/30",
     dot: "bg-rose-500",
   },
   {
     label: "AEPS API",
     href: "",
-    color: "bg-teal-50 text-teal-700 border-teal-200",
+    color: "text-foreground hover:bg-teal-500/5 border-border hover:border-teal-500/30",
     dot: "bg-teal-500",
   },
 ];
@@ -251,7 +256,7 @@ export const categorieses = [
 
 export const Contact = {
 
-  number : "+91 79775 25091",
-  email : "sanjay.shirsat@soliteck.com"
+  number: "+91 79775 25091",
+  email: "sanjay.shirsat@soliteck.com"
 
 }

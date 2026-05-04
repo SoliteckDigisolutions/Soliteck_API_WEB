@@ -4,7 +4,7 @@ export const CheckTransacStatus: MainInterface = {
     title: "SOLITECK MOBILE REG API | Digital Transformation made easy",
     BaseUrls: {
         link: "https://api-uat.soliteck.in/api/AdminActivity",
-        auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+        auth: "https://api-uat.soliteck.in/uat/api/TokenUAT",
     },
 
 
@@ -12,6 +12,77 @@ export const CheckTransacStatus: MainInterface = {
     note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
 
     Endpoints: [
+        {
+      title: "Generate Token",
+      topText: "/GenerateUATToken",
+      post: "TOKEN",
+      request:
+        "All headers required (ClientId, ClientPass, ClientTPin, ClientSecret)",
+
+      response: {
+        success: [
+          {
+            id: 1,
+            info: "",
+            code: {
+              responseCode: 200,
+              responseMessage: "Token Generated Success",
+              data: "Generated Token",
+              responseData: null,
+              signalR: null,
+            },
+          },
+        ],
+
+
+        error: [{
+          id: 1,
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Client_Id is not present",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
+        },]
+      },
+      note: "The Token is valid for 20 mins after creation. To check Token validity always hit refresh token API",
+    },
+
+    {
+      title: "Verify Token",
+      post: "TOKEN",
+      topText: "/VerifyUATToken",
+      request: "All headers required",
+
+      response: {
+        success: [{
+          id: 1,
+          info: "",
+          code: {
+            responseCode: 200,
+            responseMessage: "Token Is Valid",
+            data: "Token",
+            responseData: null,
+            signalR: null,
+          },
+        },],
+
+        error: [{
+          id: 1,
+          info: "",
+          code: {
+            responseCode: 400,
+            responseMessage: "Token Expired, Re-Generate Token",
+            data: null,
+            responseData: null,
+            signalR: null,
+          },
+        },]
+      },
+      note: "-",
+    },  
 
         {
             title: "Check Transaction Status",

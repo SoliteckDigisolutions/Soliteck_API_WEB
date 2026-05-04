@@ -11,35 +11,50 @@ interface Props {
 export default function RightNavigation({ endpoints, active }: Props) {
   return (
     <aside className="hidden xl:block xl:w-[260px] xl:sticky xl:top-24 h-fit">
+      
       <div className="space-y-6">
+
+        {/* Heading */}
         <div>
-          <h3 className="text-xs gap-1 flex items-center  font-semibold text-gray-500 uppercase tracking-wider mb-1">
-            <RiPageSeparator size={18} /> On this page Navigation
+          <h3 className="flex items-center gap-2 text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+            <RiPageSeparator size={16} />
+            On this page
           </h3>
 
-          <nav className="flex flex-col gap-1  pl-4">
+          {/* Nav */}
+          <nav className="relative flex flex-col gap-1 pl-4 border-l border-border">
             {endpoints?.map((endpoint, index) => {
               const id = `endpoint-${index}`;
+              const isActive = active === id;
 
               return (
                 <a
                   key={id}
                   href={`#${id}`}
-                  className={`text-[14px]  transform transition-transform duration-300 ease-in-out  ${active === id
-                    ? "text-blue-600  rounded-sm bg-blue-50 p-1  font-medium   border-blue-200 -ml-[17px] border border-blue-200 bg-gradient-to-br from-blue-50 to-white shadow-sm pl-4"
-                    : "text-gray-600 border border-gray-100 rounded-sm bg-white p-1  font-medium   border-gray-10 -ml-[17px] pl-4"
+                  className={`relative text-[13px] py-1 transition-all duration-200
+                    ${
+                      isActive
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                 >
+                  {/* Active indicator line */}
+                  {isActive && (
+                    <span className="absolute -left-[17px] top-0 h-full w-[2px] bg-primary rounded-full" />
+                  )}
+
                   {endpoint.title}
                 </a>
               );
             })}
           </nav>
-          <div className="mx-0 m-4">
-          </div>
-
-          {/* <button onClick={() => {<ContactUs/>}} className="shadow p-2 py-1 px-4 m-4 mx-0 rounded border font-sans text-sm bg-blue-200">Contact Us</button> */}
         </div>
+
+        {/* Contact Card */}
+        <div className=" border-border rounded-lg p-1 w-fit bg-muted/50">
+          <ContactUs />
+        </div>
+
       </div>
     </aside>
   );

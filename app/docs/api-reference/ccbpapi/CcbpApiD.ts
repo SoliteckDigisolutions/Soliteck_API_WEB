@@ -4,8 +4,8 @@ export const CcBpApiD: MainInterface = {
   title: "SOLITECK CC BILL PAY API | Digital Transformation made easy",
 
   BaseUrls: {
-    link: "https://api-uat.soliteck.in/uat/api/NGGCCBillPayUat/",
-    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+    link: "https://api-uat.soliteck.in/uat/api/NGGCCBillPayUat",
+    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT",
   },
 
   note: "The Token is valid for 20 minutes. Always refresh token before expiry.",

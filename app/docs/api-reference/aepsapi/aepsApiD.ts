@@ -7,8 +7,8 @@ export const aepsApiD: MainInterface = {
     title: "SOLITECK MOBILE REG API | Digital Transformation made easy",
 
     BaseUrls: {
-        link: "https://api-uat.soliteck.in/uat/api/FingPayAEPS/",
-        auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+        link: "https://api-uat.soliteck.in/uat/api/AEPSApiUserUat",
+        auth: "https://api-uat.soliteck.in/uat/api/TokenUAT",
     },          
 
     note: "The Token is valid for 20 minutes. Always refresh token before expiry.",
@@ -73,7 +73,7 @@ export const aepsApiD: MainInterface = {
                 success: [
                     {
                         id: 1,
-                        info: "Hi",
+                        info: "",
                         code: {
                             responseCode: 200,
                             responseMessage: "Token Is Valid",

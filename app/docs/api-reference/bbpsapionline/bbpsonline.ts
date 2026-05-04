@@ -4,8 +4,8 @@ export const bbpsonline: MainInterface = {
   title: "SOLITECK PAYOUTS (BBPS) | Digital Transformation made easy",
 
   BaseUrls: {
-    link: "https://api-uat.soliteck.in/uat/api/BBPSTxn/ ",
-    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+    link: "https://api-uat.soliteck.in/uat/api/BBPSTxn",
+    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT",
   },
 
   note: "Token valid for 20 minutes. Always refresh before expiry.",

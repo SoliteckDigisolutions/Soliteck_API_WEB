@@ -1,11 +1,11 @@
 import { MainInterface } from "../../../types/MainPage";
 
 export const pgApiD: MainInterface = {
-  title: "API Documentation for Soliteck Bulk Pay",
+  title: "API Documentation for Soliteck PG",
 
   BaseUrls: {
-    link: "https://api-uat.soliteck.in/uat/api/PGTxn/",
-    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT/",
+    link: "https://api-uat.soliteck.in/uat/api/PGTxn",
+    auth: "https://api-uat.soliteck.in/uat/api/TokenUAT",
   },
 
   note: "",
@@ -88,7 +88,7 @@ export const pgApiD: MainInterface = {
     },
 
     {
-      title: "Bulk Pay Sender Login",
+      title: "Sender Login",
       subInforamtion: 'This API authenticates the sender using mobile number and token. It returns sender details such as PAN/Aadhaar, along with linked card details, beneficiary list, applicable charges, and supported card types.',
       topText: "/SenderLogin",
       request: "All headers Required",
@@ -159,7 +159,7 @@ export const pgApiD: MainInterface = {
     },
 
     {
-      title: "Create Sender For BulkPay",
+      title: "Create Sender",
       topText: "/CreateSender",
       subInforamtion: "This API is used to register a new sender by capturing basic details such as name, PAN, Aadhaar, and mobile number.",
       notes: ["For Uat Testing:", `SenderMobile: "1234567890" for success`],
@@ -232,7 +232,7 @@ export const pgApiD: MainInterface = {
 
     },
     {
-      title: "Add Card Details For BulkPay",
+      title: "Add Card Details",
       subInforamtion: "This API is used to add a new card to the sender’s profile by providing card details such as card number, CVV, expiry, and sender ID.",
       topText: "/AddCardDetails",
       notes: ["For Uat Testing:", `CardNo: " 4022190003360703" for success`],
@@ -316,7 +316,7 @@ export const pgApiD: MainInterface = {
 
     },
     {
-      title: "Create Beneficiary For Bulk Pay ",
+      title: "Create Beneficiary",
       subInforamtion: 'This API is used to add a new beneficiary to the sender’s account by providing beneficiary name, account number, IFSC, and sender ID.',
       topText: "/CreateBeneficiary ",
 
@@ -398,7 +398,7 @@ export const pgApiD: MainInterface = {
 
     },
     {
-      title: "Card Collection Url Bulk Pay ",
+      title: "Card Collection Url",
       subInforamtion: "This API is used to generate a card collection request for initiating payment from a sender’s card to one or more beneficiaries. It requires beneficiary ID, sender card reference, amount, and charges.",
       topText: "/CardCollectionUrl",
       notes: ["For Uat testing:", `For success use txnSenderId:"UCDPREF008273"`],

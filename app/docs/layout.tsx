@@ -1,7 +1,14 @@
 "use client";
 
-import Navbar from "@/components/common-components/Navabr";
+import dynamic from "next/dynamic";
 import Sidebar from "@/components/common-components/SideNavigation";
+
+const Navbar = dynamic(() => import("@/components/common-components/Navabr"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-16 bg-background border-b border-border animate-pulse" />
+  ),
+});
 
 export default function DocsLayout({
   children,
@@ -12,10 +19,10 @@ export default function DocsLayout({
     <>
       <Navbar />
 
-      <div className="flex">
+      <div className="flex bg-background">
         <Sidebar />
 
-        <main className="flex-1  p-2 w-100 font-sans">{children}</main>
+        <main className="flex-1 p-2 w-100 font-sans">{children}</main>
       </div>
     </>
   );

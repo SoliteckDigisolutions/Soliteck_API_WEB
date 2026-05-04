@@ -23,8 +23,10 @@ export default function LogoutButton() {
         throw new Error("Logout API failed");
       }
 
-      // Clear localStorage first
+      // Clear localStorage
       localStorage.removeItem("AUTHACCESS");
+      localStorage.removeItem("REMEMBER_ME_PHONE");
+      localStorage.removeItem("REMEMBER_ME_ENABLED");
 
       // Clear redux state
       dispatch(logoutUser());

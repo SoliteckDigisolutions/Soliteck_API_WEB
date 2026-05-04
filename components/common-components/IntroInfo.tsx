@@ -11,55 +11,84 @@ export default function IntroInfoSection() {
   if (!info) return null;
 
   return (
-    <>
-      <section className="max-w-5xl mx-auto px-2  space-y-6">
-        {/* Header */}
-        <div className="space-y-4 border-b pb-6">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
-            {info.mainHeading}
-          </h1>
+    <section className="space-y-10 pb-4">
 
-          <h2 className="text-xl font-semibold text-gray-800">
+      {/* Page header */}
+      <div className="space-y-4 border-b border-border pb-6 sm:pb-8">
+        
+        <p className="font-mono text-[10px] sm:text-[11px] tracking-[.12em] uppercase text-muted-foreground">
+          {currentRoute}
+        </p>
+
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-foreground leading-tight">
+          {info.mainHeading}
+        </h1>
+
+        {info.subTitle && (
+          <h2 className="text-sm sm:text-[15px] md:text-base font-medium text-muted-foreground">
             {info.subTitle}
           </h2>
+        )}
 
-          <p className="text-gray-600 leading-relaxed max-w-3xl">
+        {info.subTitleContent && (
+          <p className="text-sm sm:text-[13px] md:text-[14px] leading-relaxed text-muted-foreground max-w-2xl">
             {info.subTitleContent}
           </p>
-        </div>
+        )}
+      </div>
 
-        {/* Sections */}
-        {info?.subContent?.map((section, index) => (
-          <div key={index} className=" rounded-xl bg-white ">
-            {/* Section Header */}
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">
-                {section.title}
-              </h3>
+      {/* Sub-sections */}
+      {info?.subContent?.map((section, index) => (
+        <div key={index} className="space-y-5 sm:space-y-6">
 
-              <p className="text-gray-600 mt-1">{section.content}</p>
-            </div>
+          {/* Section heading */}
+          <div>
+            <p className="font-mono text-[10px] sm:text-[11px] tracking-[.12em] uppercase text-muted-foreground mb-1">
+              {String(index + 1).padStart(2, "0")}
+            </p>
 
-            {/* API List */}
-            <div className="space-y-3">
+            <h3 className="text-sm sm:text-[15px] md:text-[16px] font-medium text-foreground mb-1">
+              {section.title}
+            </h3>
+
+            {section.content && (
+              <p className="text-sm sm:text-[13px] md:text-[14px] leading-relaxed text-muted-foreground max-w-2xl">
+                {section.content}
+              </p>
+            )}
+          </div>
+
+          {/* API item rows */}
+          {section.data?.length > 0 && (
+            <div className="rounded-xl border border-border overflow-hidden bg-card">
+
               {section.data.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex lg:flex lg:flex-row flex-col items-start gap-2 border rounded-md p-3 bg-gray-50"
+                  className={`flex flex-col sm:flex-row gap-2 sm:gap-5 px-4 sm:px-5 py-4 hover:bg-muted/30 transition-colors ${
+                    idx !== 0 ? "border-t border-border" : ""
+                  }`}
                 >
-                  <span className="text-gray-600 font-semibold whitespace-nowrap">
-                    {item.title}
-                  </span>
+                  {/* Title badge */}
+                  <div className="sm:min-w-[160px]">
+                    <span className="inline-block font-mono text-[11px] sm:text-xs font-medium text-foreground bg-muted px-2.5 py-1 rounded-md">
+                      {item.title}
+                    </span>
+                  </div>
 
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                  {/* Content */}
+                  <p className="text-sm sm:text-[13px] md:text-[14px] leading-relaxed text-muted-foreground">
                     {item.content}
                   </p>
                 </div>
               ))}
+
             </div>
-          </div>
-        ))}
-      </section>
-    </>
+          )}
+
+        </div>
+      ))}
+
+    </section>
   );
 }
