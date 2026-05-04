@@ -15,6 +15,7 @@ import { setResponse } from "@/app/store/slices/respSlice";
 import { useRouter } from "next/navigation";
 import { toast, Toaster } from "sonner";
 import VideoAutoPlay from "../../components/common-components/VideoAutoPlay";
+import { setCookieAction } from "./sercerAction";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ export default function LoginPage() {
   // Clear local storage when component mounts to ensure fresh state
   useEffect(() => {
     localStorage.removeItem("AUTHACCESS");
-    localStorage.removeItem("persist:root")
+    localStorage.removeItem("persist:root");
   }, []);
 
   const loginUser = async () => {
@@ -50,6 +51,7 @@ export default function LoginPage() {
 
       if (data.responseCode === 200) {
         // Store auth data first
+        await setCookieAction(data.responseData);
         localStorage.setItem("AUTHACCESS", JSON.stringify(data.responseData));
 
         // Update redux login state
@@ -79,19 +81,14 @@ export default function LoginPage() {
   const respData = data ? JSON.parse(data) : [];
 
   return (
-    <div
-      className=" min-h-screen bg-white flex items-center justify-center"
-    >
+    <div className=" min-h-screen bg-white flex items-center justify-center">
       <div className="w-full  border m-4 lg:m-0 md:m-0 max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-2">
         {/* LEFT SECTION */}
-        <div
-          className="hidden lg:flex flex-col justify-between relative p-4"
-        >
+        <div className="hidden lg:flex flex-col justify-between relative p-4">
           {/* decorative circles */}
           {/* <div className="absolute w-52 h-52 z-100 bg-white rounded-full -top-16 -right-16"></div> */}
           {/* <div className="absolute w-4 h-50 bg-[#0f2654] rounded-xl -top-3 -right-0"></div> */}
           <div className="absolute w-50 h-50 bg-[#0f2654] rounded-full -left-24 -top-24"></div>
-
 
           <div className="relative z-10   rounded-lg ">
             {/* logo */}
@@ -243,7 +240,10 @@ animate-[twinkle_4s_infinite_alternate_ease-in-out] items-center justify-center"
                 onChange={(e) => setRememberMe(e.target.checked)}
                 className="w-4 h-4 accent-blue-500 cursor-pointer"
               />
-              <label htmlFor="rememberMe" className="cursor-pointer select-none">
+              <label
+                htmlFor="rememberMe"
+                className="cursor-pointer select-none"
+              >
                 Remember me
               </label>
             </div>

@@ -62,7 +62,7 @@ export default function UserDropdown() {
           {auth?.isLoggedIn ? (
             <LogoutButton />
           ) : (
-            <FancyButton size="sm" className="ml-4">
+            <FancyButton  className="ml-4">
               Login
             </FancyButton>
           )}

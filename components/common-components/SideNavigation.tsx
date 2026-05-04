@@ -124,7 +124,7 @@ export default function Sidebar() {
                           </button>
                         ) : (
                           <Link
-                            href={item?.href}
+                            href={item?.href || ""}
                             className={`flex items-center  gap-2 px-3 py-2 rounded-lg text-sm transition
                             ${
                               active
@@ -146,7 +146,7 @@ export default function Sidebar() {
                               return (
                                 <li key={child.name}>
                                   <Link
-                                    href={child.href}
+                                    href={child.href || ""}
                                     className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-sm transition
                                     ${
                                       childActive
